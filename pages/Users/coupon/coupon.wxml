@@ -1,0 +1,7 @@
+<i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="全部"></i-tab>
+    <i-tab key="tab2" title="未使用"></i-tab>
+    <i-tab key="tab3" title="已使用"></i-tab>
+    <i-tab key="tab4" title="已过期"></i-tab>
+</i-tabs>
+<view> {{current}}</view>

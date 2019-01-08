@@ -1,0 +1,32 @@
+/* pages/Users/address/addaddress/addaddress.wxss */
+.group{
+  display: flex;
+  flex-direction: row;
+  padding: 50rpx 0;
+  align-items: center;
+}
+.citybody {
+  position: fixed;
+  bottom: 0px;
+}
+.cityheader {
+  position: absolute;
+  top:0px;
+  width: 100%;
+  z-index: 4;
+}
+.city-cancel {
+  float: left;
+  margin: 20rpx;
+  color: #818181;
+}
+.city-true {
+  float: right;
+  margin: 20rpx;
+  color: #2FB42E
+}
+.titlestyle{
+  font-size: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align:center;
+}

@@ -1,0 +1,39 @@
+<i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="全部"></i-tab>
+    <i-tab key="tab2" title="待付款" count="3"></i-tab>
+    <i-tab key="tab3" title="待发货"></i-tab>
+    <i-tab key="tab4" title="待收货"></i-tab>
+    <i-tab key="tab5" title="待评价"></i-tab>
+</i-tabs>
+<text> {{current}}</text>
+ <view wx:for="{{hairs}}" wx:key="item">
+         <view>{{item.pic}}</view>
+         <view>{{item.name}}</view>
+         <view>{{item.price}}</view>
+         <view>{{item.num}}</view>
+</view>
+   <i-panel >
+    <i-row>
+      <i-col span="4" i-class="col-class" offset="16">
+            合计：
+      </i-col>
+      <i-col span="4" i-class="col-class">
+            ￥190
+      </i-col>
+    </i-row>
+    <i-row>
+     <i-col span="6" i-class="col-class" offset="11">
+      <i-button bind:click="handleOpen1" type="warning" inline="true">
+             取消订单
+      </i-button>
+     </i-col>
+          <i-col span="6" i-class="col-class" offset="1">
+            <i-button bind:click="togglebottom" type="success" inline="true">
+             支付
+            </i-button>
+          </i-col>
+    </i-row>
+   </i-panel>
+
+<i-modal title="确认取消订单？" visible="{{ visible1 }}" bind:ok="handleClose1" bind:cancel="handleClose1">
+</i-modal>

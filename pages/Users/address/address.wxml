@@ -1,0 +1,73 @@
+<!--pages/Users/address/address.wxml-->
+<i-row>
+  <i-col span="23" offset="1">
+    <text>默认地址</text>
+  </i-col>
+</i-row>
+<view wx:for="{{adds}}" wx:key="item">
+  <block wx:if="{{item.status==1}}">
+   <i-row>
+     <i-col span="10" offset="2">用户姓名：</i-col>
+     <i-col span="12"> {{item.name}}</i-col>
+   </i-row>
+   <i-row>
+     <i-col span="10" offset="2">联系电话：</i-col>
+     <i-col span="12"> {{item.phone}}</i-col>
+   </i-row>
+    <i-row>
+     <i-col span="10" offset="2">用户地址：</i-col>
+     <i-col span="12"> {{item.address}}</i-col>
+   </i-row>
+      <i-row>
+     <i-col span="10" offset="2">地址细节：</i-col>
+     <i-col span="12"> {{item.details}}</i-col>
+   </i-row>
+   <i-row>
+     <i-col span="3" offset="18" class="delete">
+       <view bindtap="handleOpen1">删除</view>
+     </i-col>
+     <i-col span="3" class="update">
+       <view bindtap="toggle" data-name="{{item.name}}" data-phone="{{item.phone}}">修改</view>
+      </i-col>
+   </i-row>
+  </block>
+</view>
+<i-row>
+  <i-col span="23" offset="1">
+    <text>其他地址</text>
+  </i-col>
+</i-row>
+<view wx:for="{{adds}}" wx:key="item">
+  <block wx:if="{{item.status==0}}">
+   <i-row>
+     <i-col span="10" offset="2">用户姓名：</i-col>
+     <i-col span="12"> {{item.name}}</i-col>
+   </i-row>
+   <i-row>
+     <i-col span="10" offset="2">联系电话：</i-col>
+     <i-col span="12"> {{item.phone}}</i-col>
+   </i-row>
+    <i-row>
+     <i-col span="10" offset="2">用户地址：</i-col>
+     <i-col span="12"> {{item.address}}</i-col>
+   </i-row>
+      <i-row>
+     <i-col span="10" offset="2">地址细节：</i-col>
+     <i-col span="12"> {{item.details}}</i-col>
+   </i-row>
+    <i-row>
+     <i-col span="6" offset="2" class="default">
+        <view bindtap="setdefault" data-currentname="{{item.name}}">设为默认</view>
+     </i-col>
+     <i-col span="3" offset="13"  class="update">
+       <view bindtap="toggle" data-name="{{item.name}}" data-phone="{{item.phone}}">修改</view>
+     </i-col>
+   </i-row>
+   <i-divider/>
+  </block>
+</view>
+<view>
+  <navigator url="addaddress/addaddress" hover-class='clickstyle' class="nav">+添加地址</navigator>
+</view>
+<i-modal title="确认删除？" visible="{{ visible }}" bind:ok="handleClose1" bind:cancel="handleClose1">
+</i-modal>

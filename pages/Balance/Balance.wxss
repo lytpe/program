@@ -1,0 +1,11 @@
+/* pages/Balance/Balance.wxss */
+.fixbottom{
+
+  position:fixed;
+  bottom:0px;
+  width:100%;
+}
+.word{
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif；
+}

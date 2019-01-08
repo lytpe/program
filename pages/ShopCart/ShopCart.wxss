@@ -1,0 +1,23 @@
+/* pages/ShopCart/ShopCart.wxss */
+.fixbottom{
+  display:fix;
+  flex-direction: row;
+  position:fixed;
+  bottom:0;
+  width:100%;
+}
+.textstyle{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+  width:100%;
+  text-align: center;
+  vertical-align: middle;
+}
+.checkstyle{
+  height:100%;
+  width:100%;
+  text-align: center;
+  vertical-align: middle;
+}

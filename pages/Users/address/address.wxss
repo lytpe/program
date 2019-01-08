@@ -1,0 +1,13 @@
+/* pages/Users/address/address.wxss */
+.nav{
+  text-align: center;
+}
+.delete{
+  color:#e53935;
+}
+.update{
+  color:#f44336;
+}
+.default{
+  color:#00b0ff;
+}

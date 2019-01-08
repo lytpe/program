@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "订单",
+    "usingComponents": {
+      "i-row": "../../dist/row/index",
+      "i-col": "../../dist/col/index",
+      "i-button": "../../dist/button/index",
+      "i-drawer": "../../dist/drawer/index",
+      "i-icon": "../../dist/icon/index",
+      "i-modal": "../../dist/modal/index",
+      "i-toast": "../../dist/toast/index",
+      "i-panel": "../../dist/panel/index"
+    }
+}

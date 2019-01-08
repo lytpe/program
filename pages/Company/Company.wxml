@@ -1,0 +1,47 @@
+<!--pages/Company/Company.wxml-->
+
+   <i-row>
+     <image style="width:400px;height:200px;" src="{{link}}"></image>
+   </i-row>
+
+
+
+  <i-row>
+    <i-col span="20" offset="2">
+      <text>{{text}}</text>
+    </i-col>
+  </i-row>
+
+
+
+  <i-row>
+    <i-col span="8" offset="8">申请预约</i-col>
+  </i-row>
+  <i-row>
+    <i-col span="16" offset="4">
+       <form bindsubmit="FormSubmit" bindreset="FormReset">
+
+            <picker model="date" value="{{dates}}" start="2015-09-01" end="2017-09-01" bindchange="BindDateChange">
+              <view class="pickers">
+               日期选择：{{dates}}
+              </view>
+           </picker>
+
+
+           <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="BindTimeChange">
+          <view class="pickers">
+            时间选择: {{time}}
+           </view>
+      </picker>
+
+
+      <i-row>
+        <i-col span="16" offset="4">
+          <button type="primary" form-type="submit">立即预约</button>
+        </i-col>
+      </i-row>
+
+</form>
+    </i-col>
+  </i-row>
+

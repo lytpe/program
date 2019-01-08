@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "优惠券",
+    "usingComponents": {
+      "i-row": "../../../dist/row/index",
+      "i-col": "../../../dist/col/index",
+      "i-tabs": "../../../dist/tabs/index",
+      "i-tab": "../../../dist/tab/index"
+    }
+}

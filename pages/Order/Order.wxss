@@ -1,0 +1,12 @@
+/* pages/Order/Order.wxss */
+.fixbottom{
+  display:fix;
+  flex-direction: row;
+  position:fixed;
+  bottom:0;
+  width:100%;
+}
+.word{
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif；
+}
