@@ -1,13 +1,13 @@
 <!--pages/beauty/beauty.wxml-->
 <view>
-  <image src="../Images/top_bg.png"></image>
+  <image src="../Images/top_bg.png" style="width:100%;"></image>
 </view>
 <view>
   <block wx:for="{{hairs}}" wx:key="item">
      <i-row>
         <view bindtap="directto" data-links="{{item.url}}" data-pic="{{item.pic}}" data-name="{{item.name}}" data-price="{{item.price}}">
         <i-col span="6" i-class="col-class">
-           <image src="{{item.pic}}" style="height:50px;width:50px;"></image>
+           <image src="{{item.pic}}" style="height:50px;width:100%;"></image>
         </i-col>
         <i-col span="18" i-class="col-class">
             <i-row>

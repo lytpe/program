@@ -2,10 +2,9 @@
 Page({
   data: {
     imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
-
+      "../../utils/Index.jpg",
+      "../../utils/Index.jpg",
+      "../../utils/Index.jpg"
     ],
     indicatorDots: true,
     autoplay: true,
@@ -18,19 +17,19 @@ Page({
         show:"../Images/meirong.png"
       },
       {
-        url: "../hairdressing/hairdressing",
+        url: "../nail/nail",
         name: "美甲",
         show: "../Images/meijia.png"
       }
       ,
       {
-        url: "../hairdressing/hairdressing",
+        url: "../eyelash/eyelash",
         name: "美睫",
         show: "../Images/meijie.png"
       }
       ,
       {
-        url: "../hairdressing/hairdressing",
+        url: "../beauty/beauty",
         name: "美妆",
         show: "../Images/meizhuang.png"
       }
@@ -65,5 +64,14 @@ Page({
     wx.navigateTo({
       url: event.currentTarget.dataset.links,
     })
+  },
+  onShareAppMessage(res){
+    if(res.from==='menu'){
+      console.log(res.target);
+    }
+    return {
+      title:'冰尘',
+      path:'/pages/Main'
+    }
   }
 })

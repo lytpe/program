@@ -24,7 +24,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "冰尘",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
   },
   "tabBar":{
     "color":"#1c1b21",

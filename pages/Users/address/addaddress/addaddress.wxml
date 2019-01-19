@@ -7,13 +7,13 @@
   </i-row>
 
 <view>
-<form>
+<form bindsubmit="FormSubmit" >
    <i-row>
      <i-col span="8">
        <text>联系人姓名:</text>
      </i-col>
      <i-col span="16">
-       <input type="text" placeholder='联系人姓名' value="{{name}}"></input>
+       <input type="text" placeholder='联系人姓名' value="{{name}}" name="addressname"></input>
      </i-col>
   </i-row>
   <i-row>
@@ -21,7 +21,7 @@
       <text>手机号：</text>
    </i-col>
    <i-col span="16">  
-     <input type="text" placeholder='手机号' value="{{phone}}"></input>
+     <input type="text" placeholder='手机号' value="{{phone}}" name="addressphone"></input>
    </i-col>
   </i-row>
   <i-row>
@@ -29,7 +29,7 @@
     <text>省市区地址：</text>
     </i-col>
        <i-col span="16">
-    <input placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />
+    <input placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" name="addressarea"/>
     </i-col>
   </i-row>
   <i-row>
@@ -37,11 +37,18 @@
        <text>详细地址：</text>
      </i-col>
      <i-col span="8">
-       <input type="text" placeholder='详细地址'></input>
+       <input type="text" placeholder='详细地址' name="addressdetails"></input>
      </i-col>
   </i-row>
+
   <i-row>
-     <button class="primary">保存</button>
+     <i-col >
+       <input type="text" value="{{type}}" name="type" style="display:hidden"></input>
+     </i-col>
+  </i-row>
+
+  <i-row>
+     <button class="primary" form-type="submit">保存</button>
   </i-row>
 </form>
 </view>

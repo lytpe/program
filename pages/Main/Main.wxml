@@ -3,7 +3,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}" wx:key="item">
         <swiper-item>
-          <image src="{{item}}" mode="aspectFit" />
+          <image style="width:100%" src="{{item}}" mode="aspectFit" />
         </swiper-item>
       </block>
     </swiper>
@@ -14,14 +14,14 @@
     <i-col span="5" i-class="col-class" offset="1">
       <view bindtap="directto" data-links="{{item.url}}">
         <image src="{{item.show}}" style="width:40px;height:40px;"></image>
-        <view style="width:40px;">{{item.name}}</view>
+        <view style="width:60px;">{{item.name}}</view>
       </view>
     </i-col>
   </block>
 </i-row>
 <i-row>
   <i-col span="22" i-class="col-class" offset="1">
-    <image src="../Images/file_youhui.png"></image>
+    <image src="../Images/file_youhui.png" style="width:100%;"></image>
   </i-col>
 </i-row>
 <i-row>

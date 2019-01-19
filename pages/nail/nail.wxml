@@ -1,6 +1,6 @@
 <!--pages/nail/nail.wxml-->
 <view>
-  <image src="../Images/top_bg.png"></image>
+  <image src="../Images/top_bg.png" style="width:100%;"></image>
 </view>
 <view>
   <block wx:for="{{hairs}}" wx:key="item">

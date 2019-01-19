@@ -4,7 +4,7 @@
     <text>默认地址</text>
   </i-col>
 </i-row>
-<view wx:for="{{adds}}" wx:key="item">
+<view wx:for="{{adds}}" wx:key="id">
   <block wx:if="{{item.status==1}}">
    <i-row>
      <i-col span="10" offset="2">用户姓名：</i-col>
@@ -37,7 +37,7 @@
     <text>其他地址</text>
   </i-col>
 </i-row>
-<view wx:for="{{adds}}" wx:key="item">
+<view wx:for="{{address}}" wx:key="id">
   <block wx:if="{{item.status==0}}">
    <i-row>
      <i-col span="10" offset="2">用户姓名：</i-col>

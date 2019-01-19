@@ -5,7 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    hairs: [
+      {
+        name: "产品",
+        price: "￥12",
+        num: "12",
+        pic: "../Images/meirong.png",
+        url: "../Order/Order"
+      },
+      {
+        name: "产品",
+        price: "￥13",
+        num: "12",
+        pic: "../Images/meirong.png",
+        url: "../Order/Order"
+      },
+      {
+        name: "产品",
+        price: "￥14",
+        num: "12",
+        pic: "../Images/meirong.png",
+        url: "../Order/Order"
+      }, {
+        name: "产品",
+        price: "￥15",
+        num: "12",
+        pic: "../Images/meirong.png",
+        url: "../Order/Order"
+      }
+    ]
   },
 
   /**
