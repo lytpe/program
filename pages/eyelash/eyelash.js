@@ -35,6 +35,11 @@ Page({
       }
     ]
   },
+  directto: function (event) {
+    wx.navigateTo({
+      url: event.currentTarget.dataset.links + "?name=" + event.currentTarget.dataset.name + "&pic=" + event.currentTarget.dataset.pic + "&price=" + event.currentTarget.dataset.price,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
