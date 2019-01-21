@@ -9,13 +9,9 @@ Page({
     text:"这暂时只是一个测试的网站用于页面的测试，并观察是否有问题，如果有问题，就需要修改"
   },
   onLoad: function (options) {
-    var that=this;
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
-    })
+    this.setData({
+      userInfo:app.globalData.userInfo
+    });
   },
 
   /**
@@ -80,13 +76,15 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         method: 'POST', 
-        // header: {}, // 设置请求的 header
         success: function (res) {
-          console.log(res.data);
-          console.log("成功上传数据");
+         wx.showToast({
+           title: '预约成功',
+         });
         },
         fail: function(){
-          console.log("网络延迟，预约失败");
+          wx.showToast({
+            title: '网络延迟，请稍后重试',
+          });
         }
       })
     }

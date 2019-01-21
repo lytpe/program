@@ -1,41 +1,41 @@
 // pages/Users/address/address.js
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
-    address:[],
     visible:false,
-     adds:[
-       {
-         name:"小明",
-         phone:"15198273849",
-         address:"北京-北京市-东城区",
-         details:"古语巷",
-         status:"0"
-       },
-       {
-         name: "小芳",
-         phone: "15198273849",
-         address: "北京-北京市-东城区",
-         details: "东港巷",
-         status:"0"
-       }
-       ,
-       {
-         name: "小网",
-         phone: "15198273849",
-         address: "北京-北京市-东城区",
-         details: "东巷",
-         status:"1"
-       }
-
-     ]
+    name:"",
+    phone:"",
   },
-  handleOpen1:function() {
-    this.setData({
-      visible: true
+  handleOpen1:function(event) {
+    console.log(event);
+    var that=this;
+    that.setData({
+      visible: true,
+      name:event.currentTarget.dataset.name,
+      phone:event.currentTarget.dataset.phone
     });
+  },
+  deleteAddress:function(){
+   wx.request({
+     url: 'https://localhost:5001/AddressManager/DeleteAddress',
+     data: {
+       userName:this.data.name,
+       addressPhone:this.data.phone
+     },
+     header: {
+       'content-type': 'application/x-www-form-urlencoded' // 默认值
+     },
+     method: 'POST',
+     success: function (res) {
+       wx.showToast({
+         title: '删除成功',
+       })
+     },
+     fail: function () {
+       wx.showToast({
+         title: '网络延迟，请稍后重试',
+       })
+     }
+   })
   },
   handleClose1() {
     this.setData({
@@ -48,42 +48,42 @@ Page({
      })
   },
   setdefault:function(event){
-    for(var item in this.data.adds){
-      if(this.data.adds[item].status==1){
-        console.log("origianl is :")
-        console.log(this.data.adds[item].name)
-        var update='adds['+item+'].status'
-        this.setData({
-          [update]:0
-        })
-      }
-      if (this.data.adds[item].name == event.currentTarget.dataset.currentname){
-        console.log("now is :")
-        console.log(this.data.adds[item].name)
-        var updatetwo='adds['+item+'].status'
-        this.setData({
-          [updatetwo]:1
-        })
-      }
-    }
-    
+    console.log(event);
+     wx.request({
+       url: 'https://localhost:5001/AddressManager/SetDefault',
+       data: {
+         userName: getApp().globalData.userInfo.nickName,
+         addressPhone: event.currentTarget.dataset.phone,
+       },
+       header: {
+         'content-type': 'application/x-www-form-urlencoded' // 默认值
+       },
+       method: 'POST',
+       success: function (res) {
+         wx.showToast({
+           title: '设置成功',
+         })
+       },
+       fail: function () {
+         wx.showToast({
+           title: '网络延迟，请稍后重试',
+         })
+       }
+
+     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var that=this;
+  getList:function(){
+    var that = this;
     wx.request({
-      url: 'https://localhost:5001/AddressManager/GetAddress?userName='+getApp().globalData.userInfo.nickName,
+      url: 'https://localhost:5001/AddressManager/GetAddress?userName=' + getApp().globalData.userInfo.nickName,
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data[0]['addressName']);
         that.setData({
-          address:res.data
-        })
+          dataList:res.data
+        });
       },
       fail: function (res) {
         wx.showToast({
@@ -91,8 +91,16 @@ Page({
         })
       }
     })
-    console.log("next item is :");
-    console.log(address);
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+        this.getList();
+        this.setData({
+          name:options.name,
+          phone:options.phone,
+        });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

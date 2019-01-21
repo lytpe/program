@@ -169,13 +169,16 @@ Page({
         },
         method: 'POST',
         success: function (res) {
-          console.log("地址更新");
+          wx.showToast({
+            title: '修改成功',
+          });
         },
         fail: function () {
-          console.log("网络延迟，地址更新失败");
+          wx.showToast({
+            title: '网络延迟，请稍后重试',
+          });
         }
       })
-
     }else{
       wx.request({
         url: 'https://localhost:5001/AddressManager/Add',

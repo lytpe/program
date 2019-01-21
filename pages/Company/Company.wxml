@@ -46,4 +46,3 @@
   </form>
   </i-col>
 </i-row>
-<i-row>{{userInfo.nickName}}</i-row>
