@@ -30,11 +30,11 @@
   </i-col>
 </i-row>
 <i-row>
-  <block wx:for="{{details}}" wx:key="item">
+  <block wx:for="{{detail}}" wx:key="item">
     <i-col span="7" i-class="col-class" offset="1">
-      <view bindtap="showhotproject" data-links="{{item.url}}">
-        <image src="{{item.pic}}" style="width:70px;height:60px;"></image>
-        <view class="word">{{item.name}}</view>
+      <view bindtap="showhotproject" data-links="../hairdressing/hairdressing">
+        <image src="{{item.picture}}" style="width:70px;height:60px;"></image>
+        <view class="word">{{item.productInfos}}</view>
         <view>{{item.price}}</view>
       </view>
     </i-col>

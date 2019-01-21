@@ -1,22 +1,29 @@
 // pages/Order/Order.js
-const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
+    showPop: false,
+    animationData: {},  
       name:"",
       pic:"",
       price:"",
       showbottom:false,
-      showshop:false,
       visible:false
   },
   toggletoshop(){
      this.setData({
-       showshop:!this.data.showshop
+       //showshop:!this.data.showshop,
+      showPop:true
      })
   },
-  togglebottom(){
+  toggletoclose(){
      this.setData({
-       showbottom:!this.data.showbottom
+      showPop:false,
+      showbottom:false
+     });
+  },
+  togglebuy(){
+     this.setData({
+       showbottom:true
      })
   },
   next(){
@@ -26,11 +33,11 @@ Page({
   },
   handleText() {
     this.setData({
-      showshop: !this.data.showshop
-    })
-      $Toast({
-        content: '已加入购物车'
-      });
+      showPop: false
+    });
+     wx.showToast({
+       title: '已加入购物车',
+     })
   },
   backToMain: function(event){
     console.log(event)
@@ -43,8 +50,23 @@ Page({
       url: event.currentTarget.dataset.links,
     })
   },
-
-
+  showModel:function(){
+      var that=this;
+      var animation=wx.createAnimation({
+        duration:1000,
+        timingFunction:'linear',
+        delay:100,
+        success:function(res){
+          console.log(res);
+        }
+      })
+      that.animation=animation;
+      animation.step();
+      that.setData({
+        animationData:animation.export(),
+        showPop:true
+      });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

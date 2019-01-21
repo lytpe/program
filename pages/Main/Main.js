@@ -73,5 +73,26 @@ Page({
       title:'冰尘',
       path:'/pages/Main'
     }
+  },
+  onLoad:function(options){
+    var that=this;
+    wx.request({
+      url: 'https://localhost:5001/Products/GetHotProduct',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res.data.pros);
+        that.setData({
+          detail:res.data.pros
+        });
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络延迟，请稍后重试',
+        });
+      }
+    })
   }
 })
