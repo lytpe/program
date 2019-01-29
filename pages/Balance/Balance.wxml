@@ -1,20 +1,19 @@
 <view>
   <block wx:for="{{goods}}"  wx:key="id">
      <i-row>
-        <i-col span="2" i-class="col-class">
-           <checkbox bind:tap="switchSelect" data-id="{{goods.id}}"></checkbox>
+        <i-col span="1" i-class="col-class" offset="1">
+           <checkbox bind:tap="switchSelect" data-id="{{item.id}}" checked="{{isCheck}}"></checkbox>
         </i-col>
           
         <i-col span="6" i-class="col-class">
-           <image src="{{item.picture}}" style="height:50px;width:50px;"></image>
+           <image src="{{item.picture}}" style="height:50px;width:50px;" bind:tap="backtogoods"></image>
         </i-col>
-
         <i-col span="6" i-class="col-class">
             <i-row>
-              {{goods.name}}
+              {{item.name}}
             </i-row>
             <i-row>
-               {{goods.price}}
+               {{item.price}}
             </i-row>
         </i-col>
         <i-col span="10" i-class="col-class">

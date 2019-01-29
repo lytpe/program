@@ -42,9 +42,9 @@ Page({
     ]
   },
   //跳转到付款页面
-  direct:function(){
+  toggletobuy:function(){
     wx.navigateTo({
-      url: '../Balance/Balance',
+      url: "../Balance/Balance?Name="+"按摩"+"&num="+1,
     });
   },
   onLoad: function (options) {
