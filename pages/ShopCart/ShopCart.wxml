@@ -1,9 +1,8 @@
 <view>
-  <block wx:for="{{hairs}}" wx:key="item">
-     <i-row>
-        <view >
+  <block wx:for="{{hairs}}" wx:key="id">
+     <i-row  >
         <i-col span="2" i-class="checkstyle">
-            <checkbox checked="{{checkall}}"></checkbox>
+        <checkbox data-id="{{index}}" bind:tap="switchSelect"></checkbox>
         </i-col>
         <i-col span="6" i-class="col-class">
            <image src="{{item.pic}}" style="height:40px;width:50px;"></image>
@@ -13,7 +12,7 @@
                <view>{{item.name}}</view>
             </i-row>
             <i-row>
-                 <text>{{item.price}}</text>
+                 <text>{{"￥"+item.price}}</text>
             </i-row>
         </i-col>
         <i-col span="10" i-class="col-class">
@@ -21,7 +20,6 @@
           <i-input-number value="{{hairs[item.id-1].num}}" min="0" max="100" bindchange="handlechanges" ids="{{item.id}}"/>
           </i-row>
         </i-col>
-        </view>
      </i-row>
   </block>
 </view>
@@ -29,7 +27,7 @@
 <i-panel class="fixbottom">
  <i-row>
   <i-col span="8" i-class="textstyle">
-   <view bindtap="SwitchCheck"> <checkbox checked="{{checkall}}"></checkbox>全选</view>
+   <view bindtap="SwitchCheckALL"> <checkbox></checkbox>全选</view>
   </i-col>
   <i-col span="4" i-class="textstyle">
    <view>合计：</view>
@@ -38,7 +36,8 @@
    <view>{{totalprice}}元</view>
   </i-col>
   <i-col span="6" i-class="textstyle">
-    <view><i-button type="warning" inline="true">结算</i-button></view>
+    <view><i-button type="warning" inline="true" bind:tap="direct">结算</i-button>
+    </view>
   </i-col>
  </i-row>
 </i-panel>

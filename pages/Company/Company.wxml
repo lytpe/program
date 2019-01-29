@@ -18,11 +18,13 @@
 <i-row>
   <i-col span="20" offset="2">
   <form bindsubmit="FormSubmit" bindreset="FormReset">
-    <picker model="date" name="dates" value="{{dates}}" start="2015-09-01" end="2020-09-01" bindchange="BindDateChange">
-        <view class="pickers">
-            日期选择：{{dates}}
+  
+    <picker model="date" name="dates" value="{{date}}" start="2018-09-01" end="2019-09-01" fields="day" bindchange="BindDateChange">
+        <view class="picker">
+            日期选择：{{date}}
         </view>
      </picker>
+
      <picker mode="time" name="times" value="{{time}}" start="00:00" end="23:59" bindchange="BindTimeChange">
       <view class="pickers">
         时间选择: {{time}}

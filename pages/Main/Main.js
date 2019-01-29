@@ -37,9 +37,9 @@ Page({
     details:[
         {
         pic: "../Images/file_demo1.png",
-         name:"头部/颈肩",
-         price:"￥130",
-         url: "../hairdressing/hairdressing"
+        name:"头部/颈肩",
+        price:"￥130",
+        url: "../hairdressing/hairdressing"
         },
         {
         pic: "../Images/file_demo2.png",
@@ -67,7 +67,6 @@ Page({
   },
   onShareAppMessage(res){
     if(res.from==='menu'){
-      console.log(res.target);
     }
     return {
       title:'冰尘',
@@ -77,13 +76,12 @@ Page({
   onLoad:function(options){
     var that=this;
     wx.request({
-      url: 'https://localhost:5001/Products/GetHotProduct',
+      url: 'https://www.瑞兰雅.top//Products/GetHotProduct',
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data.pros);
         that.setData({
           detail:res.data.pros
         });

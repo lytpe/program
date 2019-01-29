@@ -1,7 +1,6 @@
 // pages/Balance/Balance.js
 Page({
   data: {
-     checkall:false,
      current:"微信支付",
      saletype:[
        {
@@ -12,6 +11,8 @@ Page({
          name:"支付宝支付",
        }
      ],
+     num:1,
+     totalPrice:0,
     hairs: [
       {
         id:1,
@@ -47,10 +48,9 @@ Page({
     ]
   },
   handlechanges: function ({ detail }) {
-    console.log(detail);
-    var str = "hairs[" + (parseInt(detail.ids) - 1) + "].num"
     this.setData({
-      [str]: detail.value
+      num: detail.value,
+      totalPrice:detail.value*10
     })
   },
   handlechange:function({detail}){
@@ -58,19 +58,84 @@ Page({
       current:detail.value
     })
   },
+  switchSelect:function(event){
+   console.log(event);
+  },
+  toggletoaddress:function(){
+      wx.navigateTo({
+        url: '../Users/address/address',
+      })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      var that=this;
+      wx.request({
+        url: 'https://localhost:5001/Products/GetItemDetail',
+        data:{
+          name:options.Name,
+          num:options.num
+        },
+        method:'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success:function(res){
+          console.log(res.data);
+          that.setData({
+           goods:res.data
+          });
+        },
+        fail:function(){
+          wx.showToast({
+            title: '网络延迟，请稍后重试',
+          });
+        }
+      });
+      wx.request({
+        url: 'https://localhost:5001/AddressManager/GetDefaultAddress',
+        data: {
+          userName: getApp().globalData.userInfo.nickName,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: function (res) {
+          that.setData({
+            address:res.data.address
+          });
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络延迟，请稍后重试',
+          });
+        }
+      })
   },
-
+  payForGoods:function(){
+    wx.requestPayment({
+      timeStamp: '',
+      nonceStr: '',
+      package: '',
+      signType: 'MD5',
+      paySign: '',
+      success(res) { 
+        wx.showToast({
+          title: '支付成功',
+        })
+      },
+      fail(res) {
+        console.log("网络延迟！");
+       }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

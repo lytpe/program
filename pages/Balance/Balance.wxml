@@ -1,30 +1,29 @@
 <view>
-  <block wx:for="{{hairs}}" wx:key="item">
+  <block wx:for="{{goods}}"  wx:key="id">
      <i-row>
-        <view >
         <i-col span="2" i-class="col-class">
-           <checkbox checked="{{checkall}}"></checkbox>
+           <checkbox bind:tap="switchSelect" data-id="{{goods.id}}"></checkbox>
         </i-col>
+          
         <i-col span="6" i-class="col-class">
-           <image src="{{item.pic}}" style="height:50px;width:50px;"></image>
+           <image src="{{item.picture}}" style="height:50px;width:50px;"></image>
         </i-col>
+
         <i-col span="6" i-class="col-class">
             <i-row>
-               <view>{{item.name}}</view>
+              {{goods.name}}
             </i-row>
             <i-row>
-                 <text>{{item.price}}</text>
+               {{goods.price}}
             </i-row>
         </i-col>
         <i-col span="10" i-class="col-class">
-              <i-row>
-               <i-input-number value="{{hairs[item.id-1].num}}" min="0" max="100" bindchange="handlechanges" ids="{{item.id}}"/>
-              </i-row>
+  <i-input-number value="{{num}}" min="0" max="100" bindchange="handlechanges" ids="{{item.id}}"/>
         </i-col>
-        </view>
      </i-row>
   </block>
 </view>
+
 <view>
  <i-row>
    <i-col span="22" offset="1">
@@ -33,9 +32,25 @@
  </i-row>
 
 </view>
-<view>
-     地址栏
-</view>
+
+
+<i-row>
+    <i-col span="22">
+     <i-row>
+        <i-col span="8">{{address.addressName}}</i-col>
+        <i-col span="16">{{address.addressPhone}}</i-col>
+     </i-row>
+     <i-row>
+       <i-col span="12">{{address.addressArea}}</i-col>
+       <i-col span="12">{{address.addressDetails}}   </i-col>
+     </i-row>
+    </i-col>
+    <i-col span="2">
+      <i-icon type="enter" size="28" color="#80848f" bind:tap="toggletoaddress"/>
+    </i-col>
+</i-row>
+
+
 <view>
    <i-row>
       <i-col span="19" i-class="col-class" offset="1">
@@ -65,9 +80,6 @@
 <i-panel title="空白">
  <text>空白</text>
  <text>空白</text>
- <text>空白</text>
- <text>空白</text>
- <text>空白</text>
 </i-panel>
 <i-panel class="fixbottom">
   <i-row>
@@ -76,10 +88,10 @@
         合计：
     </i-col>
     <i-col span="4" i-class="col-class" offset="1">
-        ￥190
+        ￥{{totalPrice}}
     </i-col>
     <i-col span="7" i-class="col-class" offset="7">
-       <i-button bind:click="togglebottom" type="success" inline="true">
+       <i-button bind:click="payForGoods" type="success" inline="true">
           去付款
         </i-button>
     </i-col>

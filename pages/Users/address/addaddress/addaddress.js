@@ -156,7 +156,7 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     if(e.detail.value.type=="update"){
       wx.request({
-        url:  'https://localhost:5001/AddressManager/Update',
+        url:  'https://www.瑞兰雅.top/AddressManager/Update',
         data: {
           userName: getApp().globalData.userInfo.nickName,
           addressName: e.detail.value.addressname,
@@ -181,7 +181,7 @@ Page({
       })
     }else{
       wx.request({
-        url: 'https://localhost:5001/AddressManager/Add',
+        url: 'https://www.瑞兰雅.top/AddressManager/Add',
         data: {
           userName: getApp().globalData.userInfo.nickName,
           addressName: e.detail.value.addressname,

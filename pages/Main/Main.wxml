@@ -9,6 +9,7 @@
     </swiper>
   </i-col>
 </i-row>
+
 <i-row>
   <block wx:for="{{lists}}" wx:key="item">
     <i-col span="5" i-class="col-class" offset="1">
@@ -19,21 +20,24 @@
     </i-col>
   </block>
 </i-row>
+
 <i-row>
   <i-col span="22" i-class="col-class" offset="1">
     <image src="../Images/file_youhui.png" style="width:100%;"></image>
   </i-col>
 </i-row>
+
 <i-row>
   <i-col offset="1" span="23">
     <text class="word">热门项目</text>
   </i-col>
 </i-row>
+
 <i-row>
-  <block wx:for="{{detail}}" wx:key="item">
+  <block wx:for="{{details}}" wx:key="item">
     <i-col span="7" i-class="col-class" offset="1">
-      <view bindtap="showhotproject" data-links="../hairdressing/hairdressing">
-        <image src="{{item.picture}}" style="width:70px;height:60px;"></image>
+      <view bind:tap="showhotproject" data-links="../hairdressing/hairdressing">
+        <image src="{{item.pic}}" style="width:70px;height:60px;"></image>
         <view class="word">{{item.productInfos}}</view>
         <view>{{item.price}}</view>
       </view>

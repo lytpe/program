@@ -10,3 +10,10 @@
   font-size: 15px;
   font-family: 'Times New Roman', Times, serif；
 }
+.togglestyle{
+  background: skyblue;
+  opacity: 1;
+  position:fixed;
+  width:100%;
+  bottom:0;
+}

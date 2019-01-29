@@ -4,7 +4,7 @@ Page({
   data: {
     userInfo: {},
     time: "12:01",
-    dates: "2018-09-09",
+    date: "2018-09-09",
     link:"../../utils/Index.jpg",
     text:"这暂时只是一个测试的网站用于页面的测试，并观察是否有问题，如果有问题，就需要修改"
   },
@@ -49,19 +49,16 @@ Page({
   onShareAppMessage: function () {
   },
   BindDateChange:function(e){
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      dates: e.detail.value
+      date:e.detail.value
     })
   },
   BindTimeChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       time: e.detail.value
     })
   },
   FormSubmit:function(e){
-    console.log('form发生了submit事件，携带数据为：', e.detail.value);
     if(e.detail.value.dates!=null&&e.detail.value.times!=null){
       wx.request({
         url: 'https://localhost:5001/Appointments/Add',
