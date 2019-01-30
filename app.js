@@ -52,6 +52,8 @@ App({
     console.log("app hide")
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    goodsItemArary:[],
+    shopsItemArray:[]
   }
 })

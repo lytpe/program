@@ -92,5 +92,11 @@ Page({
         });
       }
     })
+  },
+  onReachBottom:function(){
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.hideLoading();
   }
 })

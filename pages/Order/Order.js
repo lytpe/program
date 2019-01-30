@@ -7,7 +7,8 @@ Page({
       pic:"",
       price:"",
       showbottom:false,
-      visible:false
+      visible:false,
+      storageNum:100
   },
   onLoad: function (options) {
     console.log(options);
@@ -27,7 +28,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(animationData);
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -61,10 +61,8 @@ Page({
   },
     //处理数量变化
   handlechanges: function ({ detail }) {
-    console.log(detail);
-    var str = "hairs[" + (parseInt(detail.ids) - 1) + "].num"
     this.setData({
-      [str]: detail.value
+      num: detail.value
     });
   },
   toggletoshop() {
@@ -79,18 +77,20 @@ Page({
       showbottom: false
     });
   },
-  toggletobuy() {
+  toggletobuy(e) {
     this.setData({
       showbottom: true
     })
   },
   nexttobuy(event) {
-    console.log(event);
+    console.log("toBuy");
+    console.log(event)
     wx.navigateTo({
-      url: "../Balance/Balance?Name="+event.currentTarget.dataset.goodname+"&num=" + event.currentTarget.dataset.num,
+      url: "../Balance/Balance?name="+event.currentTarget.dataset.goodname+"&num=" + event.currentTarget.dataset.num+"&price="+this.data.price,
     })
   },
-  handleResult() {
+  jointoshop(e){
+    getApp().globalData.shopsItemArray.push({ name: e.currentTarget.dataset.goodname, num: e.currentTarget.dataset.num, price: this.data.price,isSelect:false});
     this.setData({
       showPop: false
     });

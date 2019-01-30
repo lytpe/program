@@ -11,7 +11,7 @@
   font-family: 'Times New Roman', Times, serif；
 }
 .togglestyle{
-  background: skyblue;
+  background: whitesmoke;
   opacity: 1;
   position:fixed;
   width:100%;

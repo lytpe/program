@@ -7,28 +7,28 @@ Page({
   data: {
      hairs:[
        {
-         name:"产品",
-         price:"￥12",
+         name:"产品1",
+         price:12,
          num:"12",
          pic: "../Images/meirong.png",
          url:"../Order/Order"
        },
        {
-         name: "产品",
-         price: "￥13",
+         name: "产品2",
+         price: 13,
          num: "12",
          pic: "../Images/meirong.png",
          url: "../Order/Order"
        },
        {
-         name: "产品",
-         price: "￥14",
+         name: "产品3",
+         price: 14,
          num: "12",
          pic: "../Images/meirong.png",
          url: "../Order/Order"
        }, {
-         name: "产品",
-         price: "￥15",
+         name: "产品4",
+         price: 26,
          num: "12",
          pic: "../Images/meirong.png",
          url: "../Order/Order"

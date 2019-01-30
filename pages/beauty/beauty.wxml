@@ -15,7 +15,7 @@
             </i-row>
             <i-row>
                <i-col span="3" i-class="col-class">
-                 <text>{{item.price}}</text>
+                 <text>￥{{item.price}}</text>
                </i-col>
                <i-col i-class="col-class" span="10" offset="4">
                   <text>销量为：</text>

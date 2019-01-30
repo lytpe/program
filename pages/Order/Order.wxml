@@ -6,9 +6,10 @@
       <view>{{name}}</view>
     </i-col>
   </i-row>
+
   <i-row>
      <i-col offset="1" span="23">
-       <view>{{price}}</view>
+       <view>￥{{price}}</view>
      </i-col>
   </i-row>
   <i-row>
@@ -72,16 +73,15 @@
             </i-col>
          </i-row>
          <i-row>
-            <i-col span="4" i-class="col-class">数量</i-col>
-            <i-col span="2" i-class="col-class">8</i-col>
             <i-col span="4" i-class="col-class">库存</i-col>
-            <i-col span="2" i-class="col-class">8</i-col>
+            <i-col span="4" i-class="col-class">{{storageNum}}</i-col>
+            <i-col span="4" i-class="col-class">数量</i-col>
             <i-col span="12" i-class="col-class">
-          <i-input-number value="1" min="0" max="100" bindchange="handlechanges" ids="{{item.id}}"/>
+          <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges" />
              </i-col>
          </i-row>
          <i-row>
-         <i-button bind:click="nexttobuy" type="info" data-goodName="按摩" data-num="1">下一步</i-button>
+         <i-button bind:click="nexttobuy" type="info" data-goodName="按摩" data-num="{{num}}">下一步</i-button>
          </i-row>
      </view>
   </view>
@@ -97,15 +97,14 @@
             </i-col>
          </i-row>
          <i-row>
-            <i-col span="4" i-class="col-class">数量</i-col>
-            <i-col span="2" i-class="col-class">8</i-col>
             <i-col span="4" i-class="col-class">库存</i-col>
-            <i-col span="2" i-class="col-class">8</i-col>
+            <i-col span="4" i-class="col-class">{{storageNum}}</i-col>
+            <i-col span="4" i-class="col-class">数量</i-col>
             <i-col span="12" i-class="col-class">
-           <i-input-number value="1" min="0" max="100" bindchange="handlechanges" ids="{{item.id}}"/>
+           <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges"/>
             </i-col>
          </i-row>
          <i-row>
-         <i-button type="warning" style="width:100%;" bind:click="handleResult">加入购物车</i-button>
+         <i-button type="warning" style="width:100%;" bind:click="jointoshop" data-goodName="{{name}}" data-num="{{num}}">加入购物车</i-button>
          </i-row>
 </view>

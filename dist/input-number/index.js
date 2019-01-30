@@ -46,14 +46,14 @@ Component({
             const { dataset = {} } = e.currentTarget;
             const { disabled } = dataset;
 
-            console.log("handlechangesetp this.data is ")
-            console.log(this.data)
+            //console.log("handlechangesetp this.data is ")
+            //console.log(this.data)
             const { step } = this.data;
-            console.log("the step is "+step)
+           // console.log("the step is "+step)
             let { value } = this.data;
-            console.log("the value is "+value)
+            //console.log("the value is "+value)
             let {ids}=this.data;
-            console.log("this id is "+ids)
+            //console.log("this id is "+ids)
             if (disabled) return null;
             if (type === 'minus') {
                 value = addNum(value, -step);
@@ -67,9 +67,9 @@ Component({
             this.handleChangeStep(e, 'minus');
         },
         handlePlus(e) {
-          console.log("handleplus data:")
-          console.log(e)
-           console.log(e.currentTarget.dataset)
+         // console.log("handleplus data:")
+         // console.log(e)
+          // console.log(e.currentTarget.dataset)
             this.handleChangeStep(e, 'plus');
         },
         handleBlur(e) {

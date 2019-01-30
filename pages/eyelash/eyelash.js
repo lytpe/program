@@ -8,27 +8,27 @@ Page({
     hairs: [
       {
         name: "产品",
-        price: "￥12",
+        price: 16,
         num: "12",
         pic: "../Images/meirong.png",
         url: "../Order/Order"
       },
       {
         name: "产品",
-        price: "￥13",
+        price: 16,
         num: "12",
         pic: "../Images/meirong.png",
         url: "../Order/Order"
       },
       {
         name: "产品",
-        price: "￥14",
+        price: 16,
         num: "12",
         pic: "../Images/meirong.png",
         url: "../Order/Order"
       }, {
         name: "产品",
-        price: "￥15",
+        price: 16,
         num: "12",
         pic: "../Images/meirong.png",
         url: "../Order/Order"

@@ -1,61 +1,30 @@
-// pages/ShopCart/ShopCart.js
+//pages/ShopCart/ShopCart.js
+var app = getApp()
 Page({
   data: {
-    checkall:false,
-    totalprice:0,
-    hairs: [
-      {
-        id: 1,
-        name: "产品",
-        price: 12,
-        num: 12,
-        pic: "../Images/meirong.png",
-        isSelect:false,
-        url: "../Order/Order"
-      },
-      {
-        id: 2,
-        name: "产品",
-        price: 13,
-        num: 12,
-        pic: "../Images/meirong.png",
-        isSelect: false,
-        url: "../Order/Order"
-      },
-      {
-        id: 3,
-        name: "产品",
-        price: 14,
-        num: 15,
-        pic: "../Images/meirong.png",
-        isSelect: false,
-        url: "../Order/Order"
-      }, {
-        id: 4,
-        name: "产品",
-        price: 15,
-        num: 18,
-        pic: "../Images/meirong.png",
-        isSelect: false,
-        url: "../Order/Order"
-      }
-    ]
+    checkedall:false,
+    totalprice:0
   },
   //跳转到付款页面
   toggletobuy:function(){
+    app.globalData.goodsItemArary=app.globalData.shopsItemArray;
     wx.navigateTo({
-      url: "../Balance/Balance?Name="+"按摩"+"&num="+1,
+      url: "../Balance/Balance",
     });
   },
   onLoad: function (options) {
-    console.log("显示购物车：");
-    console.log(options)
+    if(app.globalData.shopsItemArray.length!=0){
+      this.setData({
+        hairs:app.globalData.shopsItemArray,
+        checkedall:false
+      });
+    }
   },
   onReady: function () {
 
   },
   onShow: function () {
-
+    app.globalData.goodsItemArary = app.globalData.shopsItemArray;
   },
   onHide: function () {
 
@@ -73,32 +42,53 @@ Page({
 
   },
   switchSelect: function (e) {
-    var temp=0;
-    var n=0;
+    var temp = 0;
+    var n = 0;
     var id = e.currentTarget.dataset.id;
-    this.data.hairs[id].isSelect=!this.data.hairs[id].isSelect;
-      for(var i=0;i<this.data.hairs.length;i++){
-        if (this.data.hairs[i].isSelect){ 
-          n++;
-          temp += this.data.hairs[i].price * this.data.hairs[i].num;
-          this.setData({
-            totalprice: temp
-          });
-        }
-      }
-      if(n==0){
+    var arrays = app.globalData.shopsItemArray;
+    arrays[id].isSelect =!arrays[id].isSelect;
+    for (var i = 0; i < arrays.length; i++) {
+      if (arrays[i].isSelect) {
+        n++;
+        temp += arrays[i].price * arrays[i].num;
         this.setData({
-          totalprice:0
+          totalprice: temp
         });
       }
+    }
+    if (n == 0) {
+      this.setData({
+        totalprice: 0
+      });
+    }
   },
-
-  //处理数量变化
-  handlechanges: function ({ detail }) {
-    console.log(detail);
-    var str = "hairs[" + (parseInt(detail.ids) - 1) + "].num"
-    this.setData({
-      [str]: detail.value,
-    });
-  },
+  
+   handlechanges:function({detail}){
+     console.log("show detail:");
+     app.globalData.shopsItemArray[detail.ids].num=detail.value;
+     console.log(app.globalData.shopsItemArray[detail.ids].num);
+     var str="app.globalData.shopsItemArray["+detail.ids+"].num";
+     this.setData({
+      [str]:detail.value
+     });
+   },
+  switchCheckAll:function(){
+    var a=this;
+    a.setData({
+      checkedall:!a.data.checkedall
+    })
+    var temp=0;
+    var arrays = app.globalData.shopsItemArray;
+     if(checkedall==true){
+       for (var i = 0; i < arrays.length; i++) {
+         arrays[id].isSelect = true;
+         if (arrays[i].isSelect) {
+           temp += arrays[i].price * arrays[i].num;
+           a.setData({
+             totalprice: temp
+           });
+         }
+       }
+    }
+  }
 })
