@@ -15,7 +15,7 @@
   <i-row>
      <i-col offset="1" span="23">
        <text>库存为：</text>
-       <text>9</text>
+       <text>{{storageNum}}</text>
      </i-col>
   </i-row>
   <i-row>
@@ -25,7 +25,7 @@
   </i-row>
     <i-row>
      <i-col offset="1" span="23">
-       <view>这只是一个测试的详情表</view>
+       <view>{{productInfo}}</view>
      </i-col>
   </i-row>
   <i-toast id="toast" />
@@ -34,13 +34,13 @@
 <view class="fixbottom">
   <i-row>
     <i-col span="4" i-class="word" offset="1">
-      <view bindtap="toShopCart" data-links="../ShopCart/ShopCart">
+      <view bind:tap="toShopCart" data-links="../ShopCart/ShopCart">
         <i-icon type="publishgoods_fill" size="30"/>
         <view>购物车</view>
       </view>
     </i-col>
     <i-col span="4" i-class="word">
-       <view bindtap="backToMain" data-indexs="../Main/Main">
+       <view bind:tap="backToMain" data-indexs="../Main/Main">
          <i-icon type="shop_fill" size="30"/>
          <view>商店</view>
        </view>
@@ -59,52 +59,48 @@
   </i-row>
 </view>
 
+<view wx:if="{{showbottom}}" animation="{{animationData}}" class="togglestyle">
+  <i-row>
+    <i-col span="4" offset="2">
+    <image src="../Images/file_demo2.png" mode="aspectFit" style="width:60px;height:60px;"></image>
+    </i-col>
+    <i-col span="4" offset="14">
+      <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
+    </i-col>
+  </i-row>
 
-
-
-  <view wx:if="{{showbottom}}" animation="{{animationData}}" class="togglestyle">
-     <view>
-         <i-row>
-           <i-col span="4">
-                <image src="../Images/file_demo2.png" mode="aspectFit" style="width:60px;height:60px;"></image>
-            </i-col>
-            <i-col span="4" offset="16">
-             <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
-            </i-col>
-         </i-row>
-         <i-row>
-            <i-col span="4" i-class="col-class">库存</i-col>
-            <i-col span="4" i-class="col-class">{{storageNum}}</i-col>
-            <i-col span="4" i-class="col-class">数量</i-col>
-            <i-col span="12" i-class="col-class">
-          <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges" />
-             </i-col>
-         </i-row>
-         <i-row>
-         <i-button bind:click="nexttobuy" type="info" data-goodName="按摩" data-num="{{num}}">下一步</i-button>
-         </i-row>
-     </view>
-  </view>
+  <i-row>
+    <i-col span="3" offset="1" i-class="col-class">库存:</i-col>
+    <i-col span="5" i-class="col-class">{{storageNum}}</i-col>
+    <i-col span="4" i-class="col-class">数量:</i-col>
+    <i-col span="11" i-class="col-class">
+      <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges" />
+    </i-col>
+  </i-row>
+  <i-row>
+  <i-button bind:click="toBalance" type="info" data-goodName="{{name}}" data-num="{{num}}">下一步</i-button>
+  </i-row>
+</view>
 
 
 <view wx:if="{{showPop}}" animation="{{animationData}}" class="togglestyle">
-         <i-row>
-            <i-col span="4">
-      <image src="../Images/file_demo2.png" mode="aspectFit" style="width:60px;height:60px;"></image>
-            </i-col>
-            <i-col span="4" offset="16">
-            <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
-            </i-col>
-         </i-row>
-         <i-row>
-            <i-col span="4" i-class="col-class">库存</i-col>
-            <i-col span="4" i-class="col-class">{{storageNum}}</i-col>
-            <i-col span="4" i-class="col-class">数量</i-col>
-            <i-col span="12" i-class="col-class">
-           <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges"/>
-            </i-col>
-         </i-row>
-         <i-row>
-         <i-button type="warning" style="width:100%;" bind:click="jointoshop" data-goodName="{{name}}" data-num="{{num}}">加入购物车</i-button>
-         </i-row>
+  <i-row>
+    <i-col span="4" offset="2">
+    <image src="../Images/file_demo2.png" mode="aspectFit" style="width:60px;height:60px;"></image>
+    </i-col>
+    <i-col span="4" offset="14">
+      <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
+    </i-col>
+  </i-row>
+  <i-row>
+    <i-col span="3"  offset="1" i-class="col-class">库存:</i-col>
+    <i-col span="5" i-class="col-class">{{storageNum}}</i-col>
+    <i-col span="4" i-class="col-class">数量:</i-col>
+    <i-col span="11" i-class="col-class">
+      <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges"/>
+    </i-col>
+  </i-row>
+  <i-row>
+  <i-button type="warning" style="width:100%;" bind:click="jointoshop" data-goodName="{{name}}" data-num="{{num}}">加入购物车</i-button>
+  </i-row>
 </view>

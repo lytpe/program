@@ -1,4 +1,5 @@
 // pages/Order/Order.js
+var app=getApp();
 Page({
   data: {
       showPop: false,
@@ -8,21 +9,25 @@ Page({
       price:"",
       showbottom:false,
       visible:false,
-      storageNum:100
+      storageNum:100,
+      productInfo:"",
+      type:""
   },
   onLoad: function (options) {
-    console.log(options);
-        this.setData({
-          name:options.name,
-          pic:options.pic,
-          price:options.price
-        });
+  this.setData({
+    name: app.globalData.singleItem.name,
+    pic: app.globalData.singleItem.pic,
+    price: app.globalData.singleItem.price,
+    storageNum: app.globalData.singleItem.storageNum,
+    productInfo: app.globalData.singleItem.productInfos,
+    type: app.globalData.singleItem.type
+  });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -65,32 +70,41 @@ Page({
       num: detail.value
     });
   },
-  toggletoshop() {
+  toggletoshop:function() {
     this.setData({
       showPop: true
     });
   },
-  toggletoclose() {
-    var that = this;
-    that.setData({
+  toggletoclose:function(){
+     this.setData({
       showPop: false,
       showbottom: false
     });
   },
-  toggletobuy(e) {
+  toggletobuy:function(e) {
     this.setData({
       showbottom: true
     })
   },
-  nexttobuy(event) {
-    console.log("toBuy");
-    console.log(event)
+  //到付款页面
+  toBalance:function(e) {
+    getApp().globalData.goodsItemArary.push({
+      name:e.currentTarget.dataset.goodname,
+      num:e.currentTarget.dataset.num,
+      price:this.data.price,
+      isSelect:true
+    });
     wx.navigateTo({
-      url: "../Balance/Balance?name="+event.currentTarget.dataset.goodname+"&num=" + event.currentTarget.dataset.num+"&price="+this.data.price,
-    })
+    url: "../Balance/Balance",
+    });
   },
-  jointoshop(e){
-    getApp().globalData.shopsItemArray.push({ name: e.currentTarget.dataset.goodname, num: e.currentTarget.dataset.num, price: this.data.price,isSelect:false});
+  //加入购物车
+  jointoshop:function(e){
+    app.globalData.shopsItemArray.push({
+      name: e.currentTarget.dataset.goodname,
+      num: e.currentTarget.dataset.num,
+      price: this.data.price,
+      isSelect:false});
     this.setData({
       showPop: false
     });
@@ -98,6 +112,7 @@ Page({
       title: '已加入购物车',
     });
   },
+
   backToMain: function (event) {
     console.log(event)
     wx.switchTab({

@@ -10,52 +10,33 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
+    detail:[],
     lists:[
       {
-        url:"../hairdressing/hairdressing",
+        url:"../Section/Section",
         name:"美容",
         show:"../Images/meirong.png"
       },
       {
-        url: "../nail/nail",
+        url: "../Section/Section",
         name: "美甲",
         show: "../Images/meijia.png"
       }
       ,
       {
-        url: "../eyelash/eyelash",
+        url: "../Section/Section",
         name: "美睫",
         show: "../Images/meijie.png"
       }
       ,
       {
-        url: "../beauty/beauty",
+        url: "../Section/Section",
         name: "美妆",
         show: "../Images/meizhuang.png"
       }
-    ],
-    details:[
-        {
-        pic: "../Images/file_demo1.png",
-        name:"头部/颈肩",
-        price:"￥130",
-        url: "../hairdressing/hairdressing"
-        },
-        {
-        pic: "../Images/file_demo2.png",
-        name: "高端私人红妆",
-        price: "￥120",
-        url: "../hairdressing/hairdressing"
-        },
-        {
-        pic: "../Images/file_demo3.png",
-        name: "特价自然",
-        price: "￥166",
-        url: "../hairdressing/hairdressing"
-        },
     ]
   },
-  directto:function(event){
+  toSection:function(event){
      wx.navigateTo({
        url: event.currentTarget.dataset.links,
      })
@@ -76,7 +57,7 @@ Page({
   onLoad:function(options){
     var that=this;
     wx.request({
-      url: 'https://www.瑞兰雅.top//Products/GetHotProduct',
+      url: 'https://localhost:5001/Products/GetHotProduct',
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -88,7 +69,7 @@ Page({
       },
       fail: function () {
         wx.showToast({
-          title: '网络延迟，请稍后重试',
+          title: '网络延迟！',
         });
       }
     })

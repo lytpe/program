@@ -1,25 +1,24 @@
 <view>
-  <block wx:for="{{goods}}"  wx:key="id">
-     <i-row>
-        <i-col span="1" i-class="col-class" offset="1">
-           <checkbox bind:tap="switchSelect" data-id="{{item.id}}" checked="{{item.isSelect}}"></checkbox>
-        </i-col>
-          
-        <i-col span="6" i-class="col-class">
-           <image src="" style="height:50px;width:50px;" bind:tap="backtogoods"></image>
-        </i-col>
-        <i-col span="6" i-class="col-class">
-            <i-row>
-              {{item.name}}
-            </i-row>
-            <i-row>
-               ￥{{item.price}}
-            </i-row>
-        </i-col>
-        <i-col span="10" i-class="col-class">
-  <i-input-number value="{{item.num}}" min="1" max="100" bindchange="handlechanges" ids="{{item.id}}"/>
-        </i-col>
-     </i-row>
+  <block wx:for="{{goods}}"  wx:key="id" wx:for-index="index">
+  <i-row>
+    <i-col span="1" i-class="col-class" offset="1">
+        <checkbox bind:tap="switchSelect" checked="{{item.isSelect}}"></checkbox>
+    </i-col>
+    <i-col span="6" i-class="col-class">
+        <image src="" style="height:50px;width:50px;" bind:tap="backtogoods"></image>
+    </i-col>
+    <i-col span="6" i-class="col-class">
+        <i-row>
+          {{item.name}}
+        </i-row>
+        <i-row>
+          ￥{{item.price}}
+        </i-row>
+    </i-col>
+    <i-col span="10" i-class="col-class">
+    <i-input-number value="{{item.num}}" min="0" max="100" bindchange="changeNum" ids="{{index}}"/>
+    </i-col>
+  </i-row>
   </block>
 </view>
 
@@ -36,17 +35,20 @@
 <i-row>
     <i-col span="22">
      <i-row>
-        <i-col span="8">{{address.addressName}}</i-col>
-        <i-col span="16">{{address.addressPhone}}</i-col>
+        <i-col span="11" offset="2">{{address.addressName}}</i-col>
+        <i-col span="11">{{address.addressPhone}}</i-col>
      </i-row>
      <i-row>
-       <i-col span="12">{{address.addressArea}}</i-col>
-       <i-col span="12">{{address.addressDetails}}   </i-col>
+       <i-col span="11" offset="2">{{address.addressArea}}</i-col>
+       <i-col span="11">{{address.addressDetails}}   </i-col>
      </i-row>
     </i-col>
     <i-col span="2">
-      <i-icon type="enter" size="28" color="#80848f" bind:tap="toggletoaddress"/>
+     <i-row>
+      <i-icon type="enter" size="38" color="#80848f" bind:tap="toggletoaddress"/>
+      </i-row>
     </i-col>
+    
 </i-row>
 
 
@@ -76,13 +78,8 @@
     </i-radio-group>
 </i-panel>
 </view>
-<i-panel title="空白">
- <text>空白</text>
- <text>空白</text>
-</i-panel>
-<i-panel class="fixbottom">
+<view class="fixbottom">
   <i-row>
-  
     <i-col span="4" i-class="col-class" offset="1">
         合计：
     </i-col>
@@ -95,4 +92,4 @@
         </i-button>
     </i-col>
   </i-row>
-</i-panel>
+</view>

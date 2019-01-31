@@ -1,13 +1,13 @@
-<!--pages/nail/nail.wxml-->
+<!--pages/hairdressing/hairdressing.wxml-->
 <view>
   <image src="../Images/top_bg.png" style="width:100%;"></image>
 </view>
 <view>
-  <block wx:for="{{hairs}}" wx:key="item">
+  <block wx:for="{{products}}" wx:key="item">
      <i-row>
-        <view bindtap="directto" data-links="{{item.url}}" data-pic="{{item.pic}}" data-name="{{item.name}}" data-price="{{item.price}}">
+        <view bind:tap="directto" data-links="../Order/Order" data-pic="../Images/meirong.png" data-name="{{item.name}}" data-price="{{item.price}}" data-storage="{{item.storageNums}}" data-productInfos="{{item.productInfos}}" data-type="{{item.type}}">
         <i-col span="6" i-class="col-class">
-           <image src="{{item.pic}}" style="height:50px;width:50px;"></image>
+           <image src="../Images/meirong.png" style="height:50px;width:50px;"></image>
         </i-col>
         <i-col span="18" i-class="col-class">
             <i-row>
@@ -21,7 +21,7 @@
                   <text>销量为：</text>
                </i-col>
                <i-col i-class="col-class" span="3">
-                 <text>{{item.num}}</text>
+                 <text>{{item.sellNums}}</text>
                </i-col>
             </i-row>
         </i-col>

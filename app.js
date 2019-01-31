@@ -54,6 +54,7 @@ App({
   globalData: {
     userInfo: null,
     goodsItemArary:[],
-    shopsItemArray:[]
+    shopsItemArray:[],
+    singleItem:{}
   }
 })

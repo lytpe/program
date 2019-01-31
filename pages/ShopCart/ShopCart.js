@@ -1,22 +1,19 @@
 //pages/ShopCart/ShopCart.js
 var app = getApp()
+let arrays=app.globalData.shopsItemArray;
 Page({
   data: {
-    checkedall:false,
-    totalprice:0
-  },
-  //跳转到付款页面
-  toggletobuy:function(){
-    app.globalData.goodsItemArary=app.globalData.shopsItemArray;
-    wx.navigateTo({
-      url: "../Balance/Balance",
-    });
+    totalprice:0,
+    checkedall:false
   },
   onLoad: function (options) {
     if(app.globalData.shopsItemArray.length!=0){
       this.setData({
-        hairs:app.globalData.shopsItemArray,
-        checkedall:false
+        arrays:app.globalData.shopsItemArray
+      });
+    }else{
+      wx.showToast({
+        title: '购物车为空',
       });
     }
   },
@@ -24,8 +21,9 @@ Page({
 
   },
   onShow: function () {
-    app.globalData.goodsItemArary = app.globalData.shopsItemArray;
+     arrays = app.globalData.shopsItemArray;
   },
+
   onHide: function () {
 
   },
@@ -41,11 +39,17 @@ Page({
   onShareAppMessage: function () {
 
   },
+  //跳转到付款页面
+  toBalance: function () {
+    app.globalData.goodsItemArary = arrays;
+    wx.navigateTo({
+      url: "../Balance/Balance",
+    });
+  },
   switchSelect: function (e) {
     var temp = 0;
     var n = 0;
     var id = e.currentTarget.dataset.id;
-    var arrays = app.globalData.shopsItemArray;
     arrays[id].isSelect =!arrays[id].isSelect;
     for (var i = 0; i < arrays.length; i++) {
       if (arrays[i].isSelect) {
@@ -62,33 +66,68 @@ Page({
       });
     }
   },
-  
+
    handlechanges:function({detail}){
      console.log("show detail:");
-     app.globalData.shopsItemArray[detail.ids].num=detail.value;
-     console.log(app.globalData.shopsItemArray[detail.ids].num);
-     var str="app.globalData.shopsItemArray["+detail.ids+"].num";
+     console.log(detail);
+     arrays[detail.ids].num=detail.value;
+     var str="arrays["+detail.ids+"].num";
      this.setData({
       [str]:detail.value
      });
+     if (detail.value < 1) {
+       wx.showModal({
+         title: '取消选择',
+         content: '确定要取消该产品？',
+         showCancel: true,//是否显示取消按钮
+         cancelColor: 'skyblue',//取消文字的颜色
+         confirmText: "是",//默认是确定
+         confirmColor: "red",//确定的颜色
+         success: function (res) {
+           if (res.cancel) {
+             //点击取消，默认隐藏弹框
+           } else {
+             arrays.pop(arrays[detail.ids]);
+             wx.navigateTo({
+               url: '../Order/Order',
+             })
+           }
+         },
+         fail: function (res) {
+           wx.showToast({
+             title: '网络延迟',
+           });
+         }
+       })
+     }
    },
   switchCheckAll:function(){
-    var a=this;
-    a.setData({
-      checkedall:!a.data.checkedall
+    this.setData({
+      checkedall:!this.data.checkedall
     })
     var temp=0;
-    var arrays = app.globalData.shopsItemArray;
-     if(checkedall==true){
+     if(this.data.checkedall==true){
        for (var i = 0; i < arrays.length; i++) {
-         arrays[id].isSelect = true;
+         arrays[i].isSelect = true;
          if (arrays[i].isSelect) {
            temp += arrays[i].price * arrays[i].num;
-           a.setData({
-             totalprice: temp
+           var str="arrays["+i+"].isSelect";
+           this.setData({
+             totalprice: temp,
+             [str]:true
            });
          }
        }
+    }else{
+      for (var i = 0; i < arrays.length; i++) {
+        var str = "arrays[" + i + "].isSelect";
+        this.setData({
+          [str]: false
+        });
+       }
+      this.setData({
+        totalprice:0
+      });
     }
   }
 })

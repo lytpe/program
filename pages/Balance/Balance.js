@@ -12,30 +12,28 @@ Page({
          name:"支付宝支付",
        }
      ],
-     num:1,
      totalPrice:0,
+     goods:[],
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
      var that=this;
+     var tempprice=0;
      if (app.globalData.goodsItemArary.length!=0){
        for(var i=0;i<app.globalData.goodsItemArary.length;i++){
          if(app.globalData.goodsItemArary[i].isSelect==false){
            app.globalData.goodsItemArary.pop(app.globalData.goodsItemArary[i]);
+         }else{
+           tempprice+= app.globalData.goodsItemArary[i].price*app.globalData.goodsItemArary[i].num;
          }
        }
        that.setData({
-         goods: app.globalData.goodsItemArary
+         goods: app.globalData.goodsItemArary,
+         totalPrice:tempprice
        });
      }
-     else{
-       that.setData({
-         goods: { options }
-       });
-     }
-
       // wx.request({
       //   url: 'https://localhost:5001/Products/GetItemDetail',
       //   data:{
@@ -86,7 +84,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function(){
+    this.setData({
+      goods: app.globalData.goodsItemArary
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -113,11 +114,18 @@ Page({
    */
   onShareAppMessage: function () {
   },
-  handlechanges: function ({ detail }) {
-    if (app.globalData.goodsItemArary[detail.ids].isSelect == true) {
-      this.setData({
-        num: detail.value,
-        totalPrice: detail.value * 10
+
+  changeNum:function ({ detail }) {
+    var that=this;
+    if (this.data.goods[detail.ids].isSelect == true) {
+      console.log("show the selected items :");
+      console.log(this.data.goods[detail.ids]);
+      var str="goods["+detail.ids+"].num";
+      console.log("show detail.value");
+      console.log(detail.value);
+      that.setData({
+        [str]: detail.value,
+        totalPrice: detail.value * this.data.goods[detail.ids].price
       });
       if (detail.value < 1) {
         wx.showModal({
@@ -131,6 +139,7 @@ Page({
             if (res.cancel) {
               //点击取消，默认隐藏弹框
             } else {
+              app.globalData.goodsItemArary.pop(app.globalData.goodsItemArary[detail.ids]);
               wx.navigateTo({
                 url: '../Order/Order',
               })
@@ -141,12 +150,12 @@ Page({
               title: '网络延迟',
             });
           }
-
         })
       }
     } else {
-      this.setData({
-        num: detail.value
+      var str = "goods["+detail.ids+"].num";
+      that.setData({
+        [str]: detail.value
       });
     }
   },
@@ -155,18 +164,23 @@ Page({
       current: detail.value
     })
   },
+  //是否选中该商品
   switchSelect: function (event) {
-    if (isCheck == true) {
-      this.setData({
-        totalPrice: num * 10
-      });
+    for(var i=0;i<this.data.goods.length;i++){
+      if (this.data.goods[i].isSelect == true) {
+        this.setData({
+          totalPrice: this.data.goods[i].num * this.data.goods[i].price
+        });
+      }
     }
   },
+  //到地址一栏
   toggletoaddress: function () {
     wx.navigateTo({
       url: '../Users/address/address',
     });
   },
+  //回到前一页
   backtogoods: function () {
     wx.navigateTo({
       url: '../Order/Order',

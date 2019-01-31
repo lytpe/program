@@ -2,14 +2,10 @@
   "pages":[
    
     "pages/Main/Main",
-    "pages/index/index",
     "pages/Company/Company",
     "pages/Users/Users",
     "pages/logs/logs",
-    "pages/hairdressing/hairdressing",
-    "pages/nail/nail",
-    "pages/eyelash/eyelash",
-    "pages/beauty/beauty",
+    "pages/Section/Section",
     "pages/Users/order/order",
     "pages/Users/coupon/coupon",
     "pages/Users/custom/custom",
