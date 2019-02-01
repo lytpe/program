@@ -117,16 +117,22 @@ Page({
 
   changeNum:function ({ detail }) {
     var that=this;
+    var tempprice=0;
     if (this.data.goods[detail.ids].isSelect == true) {
-      console.log("show the selected items :");
-      console.log(this.data.goods[detail.ids]);
       var str="goods["+detail.ids+"].num";
-      console.log("show detail.value");
-      console.log(detail.value);
       that.setData({
-        [str]: detail.value,
-        totalPrice: detail.value * this.data.goods[detail.ids].price
+        [str]: detail.value
       });
+      for(var i=0;i<this.data.goods.length;i++){
+        if(this.data.goods[i].isSelect==true){
+          tempprice+=this.data.goods[i].num*this.data.goods[i].price;
+        }
+        that.setData({
+          totalPrice:tempprice
+        });
+        console.log("the total price is ");
+        console.log(this.data.totalPrice);
+      }
       if (detail.value < 1) {
         wx.showModal({
           title: '取消选择',
@@ -165,14 +171,20 @@ Page({
     })
   },
   //是否选中该商品
-  switchSelect: function (event) {
+  switchSelect: function (e) {
+    var tempprice=0;
+    var str="goods["+e.currentTarget.dataset.index+"].isSelect";
+    this.setData({
+      [str]:!this.data.goods[e.currentTarget.dataset.index].isSelect
+    })
     for(var i=0;i<this.data.goods.length;i++){
       if (this.data.goods[i].isSelect == true) {
-        this.setData({
-          totalPrice: this.data.goods[i].num * this.data.goods[i].price
-        });
+        tempprice += this.data.goods[i].num * this.data.goods[i].price;
       }
     }
+    this.setData({
+      totalPrice: tempprice
+     });
   },
   //到地址一栏
   toggletoaddress: function () {
