@@ -14,6 +14,7 @@ Page({
      ],
      totalPrice:0,
      goods:[],
+     deadOrders:[],
   },
   /**
    * 生命周期函数--监听页面加载
@@ -122,16 +123,14 @@ Page({
       var str="goods["+detail.ids+"].num";
       that.setData({
         [str]: detail.value
-      });
+      })
       for(var i=0;i<this.data.goods.length;i++){
         if(this.data.goods[i].isSelect==true){
           tempprice+=this.data.goods[i].num*this.data.goods[i].price;
         }
         that.setData({
           totalPrice:tempprice
-        });
-        console.log("the total price is ");
-        console.log(this.data.totalPrice);
+        })
       }
       if (detail.value < 1) {
         wx.showModal({
@@ -184,7 +183,7 @@ Page({
     }
     this.setData({
       totalPrice: tempprice
-     });
+     })
   },
   //到地址一栏
   toggletoaddress: function () {
@@ -199,19 +198,41 @@ Page({
     });
   },
   payForGoods: function () {
-    wx.requestPayment({
-      timeStamp: '',
-      nonceStr: '',
-      package: '',
-      signType: 'MD5',
-      paySign: '',
-      success(res) {
-        wx.showToast({
-          title: '支付成功',
-        })
+    app.globalData.ordersItemArray=this.data.goods;
+    for(var i=0;i<this.data.length;i++){
+      var temp={};
+      temp["name"]=this.data[i].name;
+      temp["num"]=this.data[i].num;
+      temp["username"]=app.globalData.userInfo.name;
+      deadOrders.push(temp);
+    }
+      // wx.requestPayment({
+      //   timeStamp: '',
+      //   nonceStr: '',
+      //   package: '',
+      //   signType: 'MD5',
+      //   paySign: '',
+      //   success(res) {
+      //     wx.showToast({
+      //       title: '支付成功',
+      //     })
+      //   },
+      //   fail(res) {
+      //     console.log("网络延迟！");
+      //   }
+      // });
+    wx.request({
+      url: 'https://localhost:5001/Orders/weChatAdd',
+      data:{
+        arrays: JSON.stringify(this.data.deadOrders)
       },
-      fail(res) {
-        console.log("网络延迟！");
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+      },
+      fail: function () {
+        console.log("失败!");
       }
     })
   },

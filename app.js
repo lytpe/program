@@ -55,6 +55,7 @@ App({
     userInfo: null,
     goodsItemArary:[],
     shopsItemArray:[],
+    ordersItemArray:[],
     singleItem:{}
   }
 })

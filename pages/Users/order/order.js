@@ -1,4 +1,4 @@
-
+var app=getApp();
 Page({
 
   data: {
@@ -37,7 +37,8 @@ Page({
         pic: "../../Images/meirong.png",
         url: "../../Order/Order"
       }
-    ]
+    ],
+    allinfos:[]
   },
   handleOpen1() {
     this.setData({
@@ -49,18 +50,21 @@ Page({
       visible1: false
     });
   },
-  handleChange:function({detail}){
-    console.log(detail)
+  changeTab:function(e){
     this.setData({
-      current: detail.key,
-      //temp:hairs
+      current: e.detail.key,
     });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    console.log("show the global data:")
+    console.log(getApp().globalData.ordersItemArray);
+    that.setData({
+      allinfos:getApp().globalData.ordersItemArray
+    })
   },
 
   /**

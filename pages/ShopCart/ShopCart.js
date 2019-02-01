@@ -75,6 +75,7 @@ Page({
        that.setData({
           [str]:detail.value
        });
+       //arrays[detail.ids].num=detail.value;
        for(var i=0;i<arrays.length;i++){
          if(arrays[i].isSelect==true){
            temp+=arrays[i].price*arrays[i].num;
@@ -114,6 +115,7 @@ Page({
        that.setData({
          [str]: detail.value
        });
+      //arrays[detail.ids].num=detail.value;
      }
    },
   switchCheckAll:function(){

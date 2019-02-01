@@ -43,6 +43,8 @@ Page({
     that.setData({
       userInfo:getApp().globalData.userInfo
     })
+    console.log("show the array in my");
+    console.log(getApp().globalData.ordersItemArray);
   },
 
 
