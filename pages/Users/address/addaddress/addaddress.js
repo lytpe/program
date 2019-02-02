@@ -19,19 +19,15 @@ Page({
     var val = e.detail.value
     var t = this.data.values;
     var cityData = this.data.cityData;
-
     if (val[0] != t[0]) {
-      console.log('province no ');
       const citys = [];
       const countys = [];
-
       for (let i = 0; i < cityData[val[0]].sub.length; i++) {
         citys.push(cityData[val[0]].sub[i].name)
       }
       for (let i = 0; i < cityData[val[0]].sub[0].sub.length; i++) {
         countys.push(cityData[val[0]].sub[0].sub[i].name)
       }
-
       this.setData({
         province: this.data.provinces[val[0]],
         city: cityData[val[0]].sub[0].name,
@@ -44,12 +40,10 @@ Page({
       return;
     }
     if (val[1] != t[1]) {
-      console.log('city no');
       const countys = [];
       for (let i = 0; i < cityData[val[0]].sub[val[1]].sub.length; i++) {
         countys.push(cityData[val[0]].sub[val[1]].sub[i].name)
       }
-
       this.setData({
         city: this.data.citys[val[1]],
         county: cityData[val[0]].sub[val[1]].sub[0].name,
@@ -60,7 +54,6 @@ Page({
       return;
     }
     if (val[2] != t[2]) {
-      console.log('county no');
       this.setData({
         county: this.data.countys[val[2]],
         values: val
@@ -77,7 +70,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("onLoad");
+    //console.log("onLoad");
     this.setData({
       name:options.name,
       phone:options.phone,
@@ -89,7 +82,6 @@ Page({
     const provinces = [];
     const citys = [];
     const countys = [];
-
     for (let i = 0; i < cityData.length; i++) {
       provinces.push(cityData[i].name);
     }
@@ -153,10 +145,10 @@ Page({
   onShareAppMessage: function () {
   }, 
   FormSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    //console.log('form发生了submit事件，携带数据为：', e.detail.value);
     if(e.detail.value.type=="update"){
       wx.request({
-        url:  'https://www.瑞兰雅.top/AddressManager/Update',
+        url:  'https://localhost:5001/AddressManager/Update',
         data: {
           userName: getApp().globalData.userInfo.nickName,
           addressName: e.detail.value.addressname,
@@ -181,7 +173,7 @@ Page({
       })
     }else{
       wx.request({
-        url: 'https://www.瑞兰雅.top/AddressManager/Add',
+        url: 'https://locahost:5001/AddressManager/Add',
         data: {
           userName: getApp().globalData.userInfo.nickName,
           addressName: e.detail.value.addressname,

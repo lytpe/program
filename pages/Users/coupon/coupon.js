@@ -1,11 +1,13 @@
 // pages/Users/coupon/coupon.js
+var app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    current: 'tab1'
+    current: 'tab1',
+    coupons:[]
   },
   handleChange:function({ detail }) {
     this.setData({
@@ -16,7 +18,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.request({
+      url: 'https://localhost:5001/Coupons/GetCoupons',
+      data:{
+        username: app.globalData.userInfo.nickName
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },
+      method: 'POST',
+      success: function(res) {
+         console.log("show the data:");
+         console.log(res.data);
+         that.setData({
+           coupons:res.data.coupons
+         })
+      },
+      fail: function(res) {
+         console.log("failure");
+      },
+    })
   },
 
   /**

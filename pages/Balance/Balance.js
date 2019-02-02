@@ -199,12 +199,13 @@ Page({
   },
   payForGoods: function () {
     app.globalData.ordersItemArray=this.data.goods;
-    for(var i=0;i<this.data.length;i++){
+    for(var i=0;i<this.data.goods.length;i++){
       var temp={};
-      temp["name"]=this.data[i].name;
-      temp["num"]=this.data[i].num;
-      temp["username"]=app.globalData.userInfo.name;
-      deadOrders.push(temp);
+      temp["name"]=this.data.goods[i].name;
+      temp["num"]=this.data.goods[i].num;
+      temp["price"]=this.data.goods[i].price;
+      temp["username"] = app.globalData.userInfo.nickName;
+      this.data.deadOrders.push(temp);
     }
       // wx.requestPayment({
       //   timeStamp: '',

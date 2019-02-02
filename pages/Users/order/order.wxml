@@ -1,56 +1,56 @@
 <i-tabs current="{{ current }}" bindchange="changeTab">
     <i-tab key="tab1" title="全部"></i-tab>
-    <i-tab key="tab2" title="待付款" count="3"></i-tab>
-    <i-tab key="tab3" title="待发货"></i-tab>
-    <i-tab key="tab4" title="待收货"></i-tab>
-    <i-tab key="tab5" title="待评价"></i-tab>
+    <i-tab key="tab2" title="待发货"></i-tab>
+    <i-tab key="tab3" title="待收货"></i-tab>
+    <i-tab key="tab4" title="待评价"></i-tab>
 </i-tabs>
 <view wx:if="{{current=='tab1'}}">
     <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
        <i-row>
-          <i-col span="15" offset="1">{{item.name}}</i-col>
+          <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
-            <i-row>数量：{{item.num}}</i-row>
-            <i-row>价格：￥{{item.price}}</i-row>
+            <i-row>数量：{{item.productNums}}</i-row>
+            <i-row>价格：￥{{item.productPrice}}</i-row>
           </i-col>
        </i-row>
     </block>
-   <i-row>
-      <i-col span="4" i-class="col-class" offset="16">
-            合计：
-      </i-col>
-      <i-col span="4" i-class="col-class">
-            ￥190
-      </i-col>
-    </i-row>
-    <i-row>
-     <i-col span="6" i-class="col-class" offset="11">
-      <i-button bind:click="handleOpen1" type="warning" size="small" inline="true">
-             取消订单
-      </i-button>
-     </i-col>
-          <i-col span="6" i-class="col-class" offset="1">
-            <i-button bind:click="togglebottom" type="success" size="small" inline="true">
-             支付
-            </i-button>
-          </i-col>
-    </i-row>
 </view>
 <view wx:if="{{current=='tab2'}}">
-
+  <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
+     <block wx:if="{{item.isDelivered=='0'}}">
+       <i-row>
+          <i-col span="15" offset="1">{{item.productName}}</i-col>
+          <i-col span="8">
+            <i-row>数量：{{item.productNums}}</i-row>
+            <i-row>价格：￥{{item.productPrice}}</i-row>
+          </i-col>
+       </i-row>
+     </block>
+  </block>
 </view>
 <view wx:if="{{current=='tab3'}}">
-
+  <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
+     <block wx:if="{{item.isDelivered=='1' && item.isReceived=='0'}}">
+               <i-row>
+          <i-col span="15" offset="1">{{item.productName}}</i-col>
+          <i-col span="8">
+            <i-row>数量：{{item.productNums}}</i-row>
+            <i-row>价格：￥{{item.productPrice}}</i-row>
+          </i-col>
+       </i-row>
+     </block>
+  </block>
 </view>
 <view wx:if="{{current=='tab4'}}">
-
+     <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
+     <block wx:if="{{item.isEstimated=='0'}}">
+               <i-row>
+          <i-col span="15" offset="1">{{item.productName}}</i-col>
+          <i-col span="8">
+            <i-row>数量：{{item.productNums}}</i-row>
+            <i-row>价格：￥{{item.productPrice}}</i-row>
+          </i-col>
+       </i-row>
+     </block>
+  </block>
 </view>
-<view wx:if="{{current=='tab5'}}">
-
-</view>
-
-
-
-
-<i-modal title="确认取消订单？" visible="{{ visible1 }}" bind:ok="handleClose1" bind:cancel="handleClose1">
-</i-modal>

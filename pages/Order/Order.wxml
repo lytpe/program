@@ -9,20 +9,26 @@
 
   <i-row>
      <i-col offset="1" span="23">
-       <view>￥{{price}}</view>
+       <view class="moneytype">￥{{price}}</view>
      </i-col>
   </i-row>
   <i-row>
-     <i-col offset="1" span="23">
+     <i-col offset="1" span="10">
        <text>库存为：</text>
        <text>{{storageNum}}</text>
      </i-col>
-  </i-row>
-  <i-row>
-     <i-col offset="1" span="23">
-       <view>产品详情：</view>
+      <i-col offset="1" span="12">
+       <text>运费：</text>
+       <text>包邮</text>
      </i-col>
   </i-row>
+  <i-divider content="详情" ></i-divider>
+  <i-row>
+     <i-col offset="1" span="23">
+       <view style="text-size:20;">产品详情：</view>
+     </i-col>
+  </i-row>
+  <i-divider></i-divider>
     <i-row>
      <i-col offset="1" span="23">
        <view>{{productInfo}}</view>

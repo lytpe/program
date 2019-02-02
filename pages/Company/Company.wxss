@@ -1,1 +1,4 @@
 /* pages/Company/Company.wxss */
+.textalign{
+  text-align:center;
+}

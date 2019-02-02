@@ -1,1 +1,4 @@
 /* pages/hairdressing/hairdressing.wxss */
+.moneytype{
+  color:#ff7100;
+}

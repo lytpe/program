@@ -4,4 +4,44 @@
     <i-tab key="tab3" title="已使用"></i-tab>
     <i-tab key="tab4" title="已过期"></i-tab>
 </i-tabs>
-<view> {{current}}</view>
+
+<block wx:for="{{coupons}}" wx:key="id" >
+  <view wx:if="{{current=='tab1'}}">
+     <i-row>
+         <i-col span="8">{{item.couponName}}</i-col>
+         <i-col span="8">{{item.couponDetails}}</i-col>
+         <i-col span="4">{{item.startDate}}</i-col>
+         <i-col span="4">{{item.endDate}}</i-col>
+     </i-row>
+  </view>
+  <view wx:if="{{current=='tab2'}}">
+      <block wx:if="{{item.isUsed=='1' &&item.isDated=='1'}}">
+        <i-row>
+          <i-col span="8">{{item.couponName}}</i-col>
+          <i-col span="8">{{item.couponDetails}}</i-col>
+          <i-col span="4">{{item.startDate}}</i-col>
+          <i-col span="4">{{item.endDate}}</i-col>
+       </i-row>
+      </block>
+  </view>
+  <view wx:if="{{current=='tab3'}}">
+      <block wx:if="{{item.isUsed=='2'}}">
+        <i-row>
+          <i-col span="8">{{item.couponName}}</i-col>
+          <i-col span="8">{{item.couponDetails}}</i-col>
+          <i-col span="4">{{item.startDate}}</i-col>
+          <i-col span="4">{{item.endDate}}</i-col>
+       </i-row>
+      </block>
+  </view>
+  <view wx:if="{{current=='tab4'}}">
+      <block wx:if="{{item.isDated=='2'}}">
+        <i-row>
+          <i-col span="8">{{item.couponName}}</i-col>
+          <i-col span="8">{{item.couponDetails}}</i-col>
+          <i-col span="4">{{item.startDate}}</i-col>
+          <i-col span="4">{{item.endDate}}</i-col>
+       </i-row>
+      </block>
+  </view>
+</block>

@@ -11,7 +11,6 @@
     "pages/Users/custom/custom",
     "pages/Users/address/address",
     "pages/Users/address/addaddress/addaddress",
-    "pages/Users/questions/questions",
     "pages/Order/Order",
     "pages/ShopCart/ShopCart",
     "pages/Balance/Balance"

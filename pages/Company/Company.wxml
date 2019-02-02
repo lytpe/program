@@ -5,7 +5,7 @@
     <image  src="{{link}}" style="width:100%;"></image>
     </i-col>
   </i-row>
-
+  
   <i-row>
     <i-col span="20" offset="2">
       <text>{{text}}</text>
@@ -13,35 +13,41 @@
   </i-row>
 
   <i-row>
-    <i-col span="8" offset="8">申请预约</i-col>
+    <i-col span="8" offset="8" class="textalign">申请预约</i-col>
   </i-row>
 <i-row>
   <i-col span="20" offset="2">
   <form bindsubmit="FormSubmit" bindreset="FormReset">
   
-    <picker model="date" name="dates" value="{{date}}" start="2018-09-01" end="2019-09-01" fields="day" bindchange="BindDateChange">
-        <view class="picker">
-            日期选择：{{date}}
-        </view>
-     </picker>
+   <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange">
+        <i-row class="textalign">
+          <i-col span="12">日期选择: </i-col>
+          <i-col span="12">{{dateValue}}</i-col>
+        </i-row>
+</picker>
 
-     <picker mode="time" name="times" value="{{time}}" start="00:00" end="23:59" bindchange="BindTimeChange">
-      <view class="pickers">
-        时间选择: {{time}}
-        </view>
+     <picker mode="time" name="times" value="{{time}}" start="00:00" end="23:59" bindchange="timeBindChange">
+      <i-row class="textalign">
+      <i-col span="12">时间选择: </i-col>
+      <i-col span="12">{{time}}</i-col>
+      </i-row>
       </picker>
   <i-row>
-    <i-col>
-     <textarea placeholder="细节" auto-focus name="message" />
-    </i-col>
+       <view>
+     <i-col span="18" offset="3">
+     <textarea placeholder="预约细节" placeholder-class="textalign" auto-focus name="message"/>
+     </i-col>
+     </view>
   </i-row>
+  
   <i-row class="hidden">
    <i-col>
       <input type="text" value="{{userInfo.nickName}}" name="userName"/>
    </i-col>
   </i-row>
+
   <i-row>
-    <i-col span="16" offset="4">
+    <i-col span="16" offset="4" class="textalign">
       <button type="primary" form-type="submit">立即预约         </button>
     </i-col>
   </i-row>

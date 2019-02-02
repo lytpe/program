@@ -12,7 +12,7 @@
               <view>{{item.name}}</view>
           </i-row>
           <i-row>
-                <text>{{"￥"+item.price}}</text>
+                <text class="moneytype">{{"￥"+item.price}}</text>
           </i-row>
       </i-col>
       <i-col span="10" i-class="col-class">
@@ -32,7 +32,7 @@
    <view>合计：</view>
   </i-col>
   <i-col span="6" i-class="textstyle">
-   <view>{{totalprice}}元</view>
+   <view class="moneytype">{{totalprice}}元</view>
   </i-col>
   <i-col span="6" i-class="textstyle">
     <view><i-button type="warning" inline="true" bind:tap="toBalance">结算</i-button>

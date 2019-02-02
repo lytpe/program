@@ -40,16 +40,6 @@ Page({
     ],
     allinfos:[]
   },
-  handleOpen1() {
-    this.setData({
-      visible1: true
-    });
-  },
-  handleClose1() {
-    this.setData({
-      visible1: false
-    });
-  },
   changeTab:function(e){
     this.setData({
       current: e.detail.key,
@@ -60,10 +50,24 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
-    console.log("show the global data:")
-    console.log(getApp().globalData.ordersItemArray);
-    that.setData({
-      allinfos:getApp().globalData.ordersItemArray
+    wx.request({
+      url: 'https://localhost:5001/Orders/GetOrders',
+      data:{
+        username: app.globalData.userInfo.nickName
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res.data);
+        that.setData({
+          allinfos:res.data.orders
+        })
+      },
+      fail: function(res) {
+        console.log("fail")
+      },
     })
   },
 

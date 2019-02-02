@@ -81,7 +81,6 @@ Page({
     wx.hideLoading();
   },
   onShow:function(){
-    console.log("show the array in main:");
-    console.log(getApp().globalData.ordersItemArray);
+    
   }
 })

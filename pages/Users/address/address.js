@@ -48,7 +48,6 @@ Page({
      })
   },
   setdefault:function(event){
-    console.log(event);
      wx.request({
        url: 'https://localhost:5001/AddressManager/SetDefault',
        data: {
@@ -97,10 +96,12 @@ Page({
    */
   onLoad: function (options) {
         this.getList();
+        if(options.name!=null &&options.phone!=null){
         this.setData({
           name:options.name,
           phone:options.phone,
         });
+        }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

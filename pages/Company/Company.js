@@ -3,8 +3,8 @@ var app = getApp()
 Page({
   data: {
     userInfo: {},
-    time: "12:01",
-    date: "2018-09-09",
+    time: "请选择预约时间",
+    dateValue: '请选择预约日期',
     link:"../../utils/Index.jpg",
     text:"这暂时只是一个测试的网站用于页面的测试，并观察是否有问题，如果有问题，就需要修改"
   },
@@ -48,14 +48,14 @@ Page({
    */
   onShareAppMessage: function () {
   },
-  BindDateChange:function(e){
-    this.setData({
-      date:e.detail.value
-    })
-  },
-  BindTimeChange: function (e) {
+  timeBindChange: function (e) {
     this.setData({
       time: e.detail.value
+    })
+  },
+  dateBindChange: function (e) {
+    this.setData({
+      dateValue: e.detail.value
     })
   },
   FormSubmit:function(e){

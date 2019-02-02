@@ -43,10 +43,7 @@ Page({
     that.setData({
       userInfo:getApp().globalData.userInfo
     })
-    console.log("show the array in my");
-    console.log(getApp().globalData.ordersItemArray);
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
