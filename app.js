@@ -1,15 +1,32 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+   // 展示本地存储能力
+   // var logs = wx.getStorageSync('logs') || []
+   // logs.unshift(Date.now())
+   // wx.setStorageSync('logs', logs)
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if(res.code){
+            wx.request({
+              url: "https://localhost:5001/Products/GetUserInfo",
+              data:{
+                code:res.code
+              },
+              method:'POST',
+              header:{
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success:function(res){
+                console.log(res);
+              },
+              fail:function(){
+                console.log("send failure");
+              }
+            })
+        }
       }
-    })
+    });
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {

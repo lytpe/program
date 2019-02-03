@@ -1,17 +1,15 @@
 // pages/Company/Company.js
 var app = getApp()
 Page({
+
   data: {
-    userInfo: {},
     time: "请选择预约时间",
     dateValue: '请选择预约日期',
     link:"../../utils/Index.jpg",
     text:"这暂时只是一个测试的网站用于页面的测试，并观察是否有问题，如果有问题，就需要修改"
   },
   onLoad: function (options) {
-    this.setData({
-      userInfo:app.globalData.userInfo
-    });
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -59,14 +57,15 @@ Page({
     })
   },
   FormSubmit:function(e){
+    console.log(e);
     if(e.detail.value.dates!=null&&e.detail.value.times!=null){
       wx.request({
         url: 'https://localhost:5001/Appointments/Add',
         data: {
          dates:e.detail.value.dates,
-         userName:e.detail.value.userName,
          times:e.detail.value.times,
-         message:e.detail.value.message
+         message:e.detail.value.message,
+         formId:e.detail.formId
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值

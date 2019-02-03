@@ -5,16 +5,29 @@
 </view>
 <view class="info_list">
     <block wx:for="{{userListInfo}}" wx:key="item">
+      
+      <block wx:if="{{item.text=='联系客服'}}">
+        <view class="weui_cell">
+            <view class="weui_cell_hd">
+                <image src="{{item.icon}}"></image>
+            </view>
+            <view>
+                <button class='contact-btn' open-type='contact'>联系客服</button> 
+            </view>
+        </view>
+     </block>
+      <block wx:else>
         <view class="weui_cell" bindtap="directto" data-links="{{item.link}}">
             <view class="weui_cell_hd">
                 <image src="{{item.icon}}"></image>
             </view>
             <view class="weui_cell_bd">
-                <view class="weui_cell_bd_p"> {{item.text}} </view>
+              <text  decode="{{true}}">&nbsp;&nbsp;&nbsp;{{item.text}} </text>
             </view>
             <view wx:if="{{item.isunread}}" class="badge">
                  {{item.unreadNum}}
             </view>
         </view>
+      </block>
     </block>
   </view>

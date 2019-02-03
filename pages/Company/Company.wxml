@@ -17,9 +17,9 @@
   </i-row>
 <i-row>
   <i-col span="20" offset="2">
-  <form bindsubmit="FormSubmit" bindreset="FormReset">
+  <form bindsubmit="FormSubmit" bindreset="FormReset" report-submit='true'>
   
-   <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange">
+   <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange" name="dates">
         <i-row class="textalign">
           <i-col span="12">日期选择: </i-col>
           <i-col span="12">{{dateValue}}</i-col>
@@ -35,17 +35,10 @@
   <i-row>
        <view>
      <i-col span="18" offset="3">
-     <textarea placeholder="预约细节" placeholder-class="textalign" auto-focus name="message"/>
+     <textarea placeholder="预约项目" placeholder-class="textalign" auto-focus name="message"/>
      </i-col>
      </view>
   </i-row>
-  
-  <i-row class="hidden">
-   <i-col>
-      <input type="text" value="{{userInfo.nickName}}" name="userName"/>
-   </i-col>
-  </i-row>
-
   <i-row>
     <i-col span="16" offset="4" class="textalign">
       <button type="primary" form-type="submit">立即预约         </button>
