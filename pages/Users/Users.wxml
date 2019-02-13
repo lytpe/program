@@ -11,8 +11,14 @@
             <view class="weui_cell_hd">
                 <image src="{{item.icon}}"></image>
             </view>
+<<<<<<< HEAD
             <view>
                 <button class='contact-btn' open-type='contact'>联系客服</button>
+=======
+            <view class="weui_cell_bd">
+               <contact-button type="default-light" size="15" session-from='weapp'>{{item.text}}</contact-button>
+               <button open-type="contact">link</button>
+>>>>>>> 53a9374cdc4f1e470407fbdd18bdda875489f6a0
             </view>
         </view>
      </block>
@@ -22,7 +28,11 @@
                 <image src="{{item.icon}}"></image>
             </view>
             <view class="weui_cell_bd">
+<<<<<<< HEAD
               <text  decode="{{true}}">&nbsp;&nbsp;&nbsp;{{item.text}} </text>
+=======
+              <text class="txtstyle" decode="{{true}}">&emsp;{{item.text}} </text>
+>>>>>>> 53a9374cdc4f1e470407fbdd18bdda875489f6a0
             </view>
             <view wx:if="{{item.isunread}}" class="badge">
                  {{item.unreadNum}}
