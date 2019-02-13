@@ -1,0 +1,8 @@
+/* pages/Users/staff/staff.wxss */
+.moneytype{
+  color:#ff7100;
+  font-size:15px;
+}
+.adtype{
+  font-size: 12px;
+}

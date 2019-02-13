@@ -1,4 +1,5 @@
 // pages/Main/Main.js
+var app=getApp();
 Page({
   data: {
     imgUrls: [
@@ -72,7 +73,30 @@ Page({
           title: '网络延迟！',
         });
       }
-    })
+    });
+    wx.login({
+      success: res => {
+        if (res.code) {
+          wx.request({
+            // url: "https://localhost:5001/Products/GetUserInfo",
+            data: {
+              code: res.code
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: function (res) {
+              console.log("the userInfo is :");
+              console.log(res);
+            },
+            fail: function () {
+              console.log("send failure");
+            }
+          })
+        }
+      }
+    });
   },
   onReachBottom:function(){
     wx.showLoading({

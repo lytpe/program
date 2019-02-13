@@ -2,43 +2,23 @@
 App({
   onLaunch: function () {
    // 展示本地存储能力
-   // var logs = wx.getStorageSync('logs') || []
-   // logs.unshift(Date.now())
-   // wx.setStorageSync('logs', logs)
-    wx.login({
-      success: res => {
-        if(res.code){
-            wx.request({
-              url: "https://localhost:5001/Products/GetUserInfo",
-              data:{
-                code:res.code
-              },
-              method:'POST',
-              header:{
-                'content-type': 'application/x-www-form-urlencoded' // 默认值
-              },
-              success:function(res){
-                console.log(res);
-              },
-              fail:function(){
-                console.log("send failure");
-              }
-            })
-        }
-      }
-    });
+   var logs = wx.getStorageSync('logs') || []
+   logs.unshift(Date.now())
+   wx.setStorageSync('logs', logs);
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: res => {
               this.globalData.userInfo = res.userInfo
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
             }
+          })
+        } else {
+          wx.reLaunch({
+            url: '/pages/Index/Index',
           })
         }
       }
@@ -48,8 +28,8 @@ App({
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
+    } 
+    else {
       wx.login({
         success: function () {
           wx.getUserInfo({
@@ -63,10 +43,10 @@ App({
     }
   },
   onShow:function(){
-    console.log("app show")
+
   },
   onHide:function(){
-    console.log("app hide")
+
   },
   globalData: {
     userInfo: null,

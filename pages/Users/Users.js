@@ -1,4 +1,5 @@
 // pages/Users/Users.js
+var app=getApp();
 Page({
   data: {
     userInfo:{},
@@ -23,10 +24,11 @@ Page({
       icon: '../Images/iconfont-kefu.png',
       text: '联系客服',
       link:'../Users/custom/custom'
-    }, {
-      icon: '../Images/iconfont-help.png',
-      text: '常见问题',
-      link:'../Users/questions/questions'
+    },
+    {
+      icon:'../Images/iconfont-help.png',
+      text:'公司成员',
+      link:'../Users/staff/staff'
     }]
   },
   directto:function(event){
@@ -41,10 +43,32 @@ Page({
     var that = this
     //调用应用实例的方法获取全局数据
     that.setData({
-      userInfo:getApp().globalData.userInfo
+      userInfo:app.globalData.userInfo
+    })
+    wx.request({
+      url: 'https://localhost:5001/Customer/AddStaff',
+      data:{
+       name:that.data.userInfo.nickName,
+        gender: that.data.userInfo.gender,
+        city: that.data.userInfo.city,
+        province: that.data.userInfo.province,
+        country: that.data.userInfo.country,
+        referee:"无"
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络延迟！',
+        });
+      }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

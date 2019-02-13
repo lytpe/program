@@ -12,7 +12,7 @@
                 <image src="{{item.icon}}"></image>
             </view>
             <view>
-                <button class='contact-btn' open-type='contact'>联系客服</button> 
+                <button class='contact-btn' open-type='contact'>联系客服</button>
             </view>
         </view>
      </block>
