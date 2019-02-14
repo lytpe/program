@@ -207,21 +207,21 @@ Page({
       temp["username"] = app.globalData.userInfo.nickName;
       this.data.deadOrders.push(temp);
     }
-      // wx.requestPayment({
-      //   timeStamp: '',
-      //   nonceStr: '',
-      //   package: '',
-      //   signType: 'MD5',
-      //   paySign: '',
-      //   success(res) {
-      //     wx.showToast({
-      //       title: '支付成功',
-      //     })
-      //   },
-      //   fail(res) {
-      //     console.log("网络延迟！");
-      //   }
-      // });
+      wx.requestPayment({
+        timeStamp: '',
+        nonceStr: '',
+        package: '',
+        signType: 'MD5',
+        paySign: '',
+        success(res) {
+          wx.showToast({
+            title: '支付成功',
+          })
+        },
+        fail(res) {
+          console.log("网络延迟！");
+        }
+      });
     wx.request({
       url: 'https://localhost:5001/Orders/weChatAdd',
       data:{

@@ -78,7 +78,7 @@ Page({
       success: res => {
         if (res.code) {
           wx.request({
-            // url: "https://localhost:5001/Products/GetUserInfo",
+            //url: "https://localhost:5001/Products/GetUserInfo",
             data: {
               code: res.code
             },

@@ -45,7 +45,7 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     })
-    wx.request({
+   /* wx.request({
       url: 'https://localhost:5001/Customer/AddStaff',
       data:{
        name:that.data.userInfo.nickName,
@@ -67,7 +67,25 @@ Page({
           title: '网络延迟！',
         });
       }
-    })
+    });*/
+    wx.request({
+      url: 'https://localhost:5001/Customer/GetCode',
+      data: {
+        name: that.data.userInfo.nickName,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络延迟！',
+        });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
