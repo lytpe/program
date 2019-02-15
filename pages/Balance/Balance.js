@@ -1,4 +1,5 @@
 // pages/Balance/Balance.js
+var utilMd5 = require('../../utils/md5.js');  
 var app=getApp();
 Page({
   data: {
@@ -207,34 +208,49 @@ Page({
       temp["username"] = app.globalData.userInfo.nickName;
       this.data.deadOrders.push(temp);
     }
-      wx.requestPayment({
-        timeStamp: '',
-        nonceStr: '',
-        package: '',
-        signType: 'MD5',
-        paySign: '',
-        success(res) {
-          wx.showToast({
-            title: '支付成功',
-          })
-        },
-        fail(res) {
-          console.log("网络延迟！");
-        }
-      });
     wx.request({
-      url: 'https://localhost:5001/Orders/weChatAdd',
-      data:{
-        arrays: JSON.stringify(this.data.deadOrders)
-      },
+      url: 'https://localhost:5001/WeChatPay/GetPrePay',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       success: function (res) {
         console.log(res);
+        var temp="appId=wxd678efh567hg6787&nonceStr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS& package=prepay_id=wx2017033010242291fcfe0db70013231072&signType=MD5&timeStamp=1490840662 & key=qazwsxedcrfvtgbyhnujmikolp111111";
+        var stemp=utilMd5.hexMD5(temp);
+        wx.requestPayment({
+          timeStamp:'',
+          nonceStr: '',
+          package: 'prepay_id='+res.data.result.prepay_id,
+          signType: 'MD5',
+          paySign:stemp,
+          success(res) {
+            wx.showToast({
+              title: '支付成功',
+            });
+            wx.request({
+              url: 'https://localhost:5001/Orders/weChatOrder',
+              data: {
+                arrays: JSON.stringify(this.data.deadOrders)
+              },
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              method: 'POST',
+              success: function (res) {
+                console.log(res);
+              },
+              fail: function () {
+                console.log("失败!");
+              }
+            })
+          },
+          fail(res) {
+            console.log("网络延迟！");
+          }
+        });
       },
       fail: function () {
         console.log("失败!");
       }
     })
+    
+    
   },
 })

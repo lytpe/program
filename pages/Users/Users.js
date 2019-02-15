@@ -71,7 +71,7 @@ Page({
     wx.request({
       url: 'https://localhost:5001/Customer/GetCode',
       data: {
-        name: that.data.userInfo.nickName,
+        name:that.data.userInfo.nickName,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
