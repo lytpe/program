@@ -1,5 +1,5 @@
 // pages/Balance/Balance.js
-var utilMd5 = require('../../utils/md5.js');  
+var utilMd5 = require('../../utils/md5.js');
 var app=getApp();
 Page({
   data: {
@@ -8,10 +8,12 @@ Page({
        {
          id:1,
          name:"微信支付",
-       },{
-         id:2,
-         name:"支付宝支付",
        }
+      //  ,
+      //  {
+      //    id:2,
+      //    name:"支付宝支付",
+      //  }
      ],
      totalPrice:0,
      goods:[],
@@ -208,17 +210,18 @@ Page({
       temp["username"] = app.globalData.userInfo.nickName;
       this.data.deadOrders.push(temp);
     }
+    var time=Date.now();
     wx.request({
       url: 'https://localhost:5001/WeChatPay/GetPrePay',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       success: function (res) {
         console.log(res);
-        var temp="appId=wxd678efh567hg6787&nonceStr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS& package=prepay_id=wx2017033010242291fcfe0db70013231072&signType=MD5&timeStamp=1490840662 & key=qazwsxedcrfvtgbyhnujmikolp111111";
-        var stemp=utilMd5.hexMD5(temp);
+        var links="appId="+res.data.result.appId+"&nonceStr="+res.data.result.nonceStr+"& package=prepay_id="+res.data.result.prepay_id+"&signType=MD5&timeStamp="+time+"& key=qazwsxedcrfvtgbyhnujmikolp111111";
+        var stemp=utilMd5.hexMD5(links);
         wx.requestPayment({
-          timeStamp:'',
-          nonceStr: '',
+          timeStamp:time,
+          nonceStr:res.data.result.nonceStr,
           package: 'prepay_id='+res.data.result.prepay_id,
           signType: 'MD5',
           paySign:stemp,

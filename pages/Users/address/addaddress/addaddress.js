@@ -72,9 +72,9 @@ Page({
   onLoad: function (options) {
     //console.log("onLoad");
     this.setData({
-      name:options.name,
-      phone:options.phone,
-      type:options.type
+      name:"",
+      phone:"",
+      type:""
     })
     var that = this;
     tcity.init(that);
@@ -85,11 +85,11 @@ Page({
     for (let i = 0; i < cityData.length; i++) {
       provinces.push(cityData[i].name);
     }
-    console.log('省份完成');
+    //console.log('省份完成');
     for (let i = 0; i < cityData[0].sub.length; i++) {
       citys.push(cityData[0].sub[i].name)
     }
-    console.log('city完成');
+    //console.log('city完成');
     for (let i = 0; i < cityData[0].sub[0].sub.length; i++) {
       countys.push(cityData[0].sub[0].sub[i].name)
     }
@@ -101,7 +101,7 @@ Page({
       'city': cityData[0].sub[0].name,
       'county': cityData[0].sub[0].sub[0].name
     })
-    console.log('初始化完成');
+    //console.log('初始化完成');
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -173,7 +173,7 @@ Page({
       })
     }else{
       wx.request({
-        url: 'https://locahost:5001/AddressManager/Add',
+        url: 'https://localhost:5001/AddressManager/Add',
         data: {
           userName: getApp().globalData.userInfo.nickName,
           addressName: e.detail.value.addressname,

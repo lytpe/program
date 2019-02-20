@@ -3,7 +3,7 @@ Page({
   data: {
     visible:false,
     name:"",
-    phone:"",
+    phone:""
   },
   handleOpen1:function(event) {
     console.log(event);
@@ -48,6 +48,7 @@ Page({
      })
   },
   setdefault:function(event){
+    var that=this;
      wx.request({
        url: 'https://localhost:5001/AddressManager/SetDefault',
        data: {
@@ -61,7 +62,8 @@ Page({
        success: function (res) {
          wx.showToast({
            title: '设置成功',
-         })
+         });
+         that.getList();
        },
        fail: function () {
          wx.showToast({
@@ -99,7 +101,7 @@ Page({
         if(options.name!=null &&options.phone!=null){
         this.setData({
           name:options.name,
-          phone:options.phone,
+          phone:options.phone
         });
         }
   },
@@ -113,6 +115,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getList();
   },
   /**
    * 生命周期函数--监听页面隐藏

@@ -37,6 +37,9 @@ Page({
   onShow: function () {
     page=1;
     reachBottom=false;
+    this.setData({
+      products:[]
+    })
     this.getProductList(page);
 
   },

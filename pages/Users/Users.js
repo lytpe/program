@@ -42,6 +42,8 @@ Page({
   onLoad: function (options) {
     var that = this
     //调用应用实例的方法获取全局数据
+    console.log("show the nickname:");
+    console.log(app.globalData.userInfo);
     that.setData({
       userInfo:app.globalData.userInfo
     })

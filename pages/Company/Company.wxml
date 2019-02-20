@@ -15,8 +15,10 @@
   <i-row>
     <i-col span="8" offset="8" class="textalign">申请预约</i-col>
   </i-row>
+
 <i-row>
-  <i-col span="20" offset="2">
+  <i-col span="1"></i-col>
+  <i-col span="22">
   <form bindsubmit="FormSubmit" bindreset="FormReset" report-submit='true'>
   
    <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange" name="dates">
@@ -33,11 +35,9 @@
       </i-row>
       </picker>
   <i-row>
-       <view>
-     <i-col span="18" offset="3">
-     <textarea placeholder="预约项目" placeholder-class="textalign" auto-focus name="message"/>
+     <i-col span="14" offset="3">
+     <textarea style="background-color:gray;" placeholder="预约项目" placeholder-class="textalign" auto-focus name="message"/>
      </i-col>
-     </view>
   </i-row>
   <i-row>
     <i-col span="16" offset="4" class="textalign">
@@ -46,4 +46,5 @@
   </i-row>
   </form>
   </i-col>
+  <i-col span="1"></i-col>
 </i-row>
