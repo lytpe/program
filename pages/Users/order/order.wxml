@@ -1,8 +1,9 @@
 <i-tabs current="{{ current }}" bindchange="changeTab">
     <i-tab key="tab1" title="全部"></i-tab>
-    <i-tab key="tab2" title="待发货"></i-tab>
-    <i-tab key="tab3" title="待收货"></i-tab>
-    <i-tab key="tab4" title="待评价"></i-tab>
+    <i-tab key="tab2" title="待付款"></i-tab>
+    <i-tab key="tab3" title="待发货"></i-tab>
+    <i-tab key="tab4" title="待收货"></i-tab>
+    <i-tab key="tab5" title="待评价"></i-tab>
 </i-tabs>
 <view wx:if="{{current=='tab1'}}">
     <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
@@ -16,8 +17,30 @@
     </block>
 </view>
 <view wx:if="{{current=='tab2'}}">
+    <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
+    <block wx:if="{{item.isPayed=='2'}}">
+       <i-row>
+          <i-col span="15" offset="1">{{item.productName}}</i-col>
+          <i-col span="8">
+            <i-row>数量：{{item.productNums}}</i-row>
+            <i-row>价格：￥{{item.productPrice}}</i-row>
+          </i-col>
+       </i-row>
+       <i-row>
+          <i-col span="8" offset="12">
+            <view class="quit" bind:tap="quit" data-id="{{item.id}}">取消订单</view>
+          </i-col>
+          <i-col span="4">
+           <view class="pay" bind:tap="payIt"
+           data-id="{{item.id}}">去支付</view>
+          </i-col>
+       </i-row>
+    </block>
+  </block>
+</view>
+<view wx:if="{{current=='tab3'}}">
   <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
-     <block wx:if="{{item.isDelivered=='0'}}">
+     <block wx:if="{{item.isDelivered=='1'}}">
        <i-row>
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
@@ -28,9 +51,9 @@
      </block>
   </block>
 </view>
-<view wx:if="{{current=='tab3'}}">
+<view wx:if="{{current=='tab4'}}">
   <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
-     <block wx:if="{{item.isDelivered=='1' && item.isReceived=='0'}}">
+     <block wx:if="{{item.isDelivered=='2' && item.isReceived=='1'}}">
                <i-row>
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
@@ -41,9 +64,9 @@
      </block>
   </block>
 </view>
-<view wx:if="{{current=='tab4'}}">
+<view wx:if="{{current=='tab5'}}">
      <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
-     <block wx:if="{{item.isEstimated=='0'}}">
+     <block wx:if="{{item.isEstimated=='1'}}">
                <i-row>
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">

@@ -1,1 +1,11 @@
 /* pages/Users/order/order.wxss */
+.quit{
+  color:gray;
+  border:0ch;
+  size:14px;
+}
+.pay{
+  color:orange;
+  border:0ch;
+  size:14px;
+}

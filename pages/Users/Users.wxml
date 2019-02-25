@@ -2,9 +2,8 @@
 <view style="background-image:url('{{link}}');" class="bg">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-   <text>something</text>
+   <text>余额为：0</text>
 </view>
-
 <view class="info_list">
     <view wx:for="{{userListInfo}}" wx:key="item">
         <view wx:if="{{item.text=='联系客服'}}" class="weui_cell">
@@ -12,12 +11,12 @@
                 <image src="{{item.icon}}"></image>
             </view>
 
-            <view class="weui_cell_bd">
-               <contact-button type="default-light" size="15" session-from='weapp'>{{item.text}}</contact-button>
+            <!-- <view class="weui_cell_bd"> -->
+            <view>
+               <!-- <contact-button type="default-light" size="16" session-from='weapp'>{{item.text}}</contact-button> -->
+                <button class='contact-btn' open-type='contact'>联系客服</button>
             </view>
-     </view>
-
-
+        </view>
         <view  wx:else class="weui_cell" bindtap="directto" data-links="{{item.link}}">
             <view class="weui_cell_hd">
                 <image src="{{item.icon}}"></image>
@@ -29,6 +28,5 @@
                  {{item.unreadNum}}
             </view>
         </view>
-      
     </view>
   </view>

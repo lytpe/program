@@ -49,23 +49,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
+    this.getOrder();
+  },
+  getOrder:function(){
+    var that = this;
     wx.request({
       url: 'https://localhost:5001/Orders/GetOrders',
-      data:{
+      data: {
         username: app.globalData.userInfo.nickName
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method: 'POST',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data);
         that.setData({
-          allinfos:res.data.orders
+          allinfos: res.data.orders
         })
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log("fail")
       },
     })
@@ -82,7 +85,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getOrder();
   },
 
   /**
@@ -118,5 +121,35 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  payIt:function(e){
+    console.log("show payIt e:");
+    var id=e.currentTarget.dataset.id;
+    console.log(id);
+
+
+  },
+  quit:function(e){
+    var that=this;
+    var id = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'https://localhost:5001/Orders/QuitOrder',
+      data:{
+        orderId:id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      success: function (res) {
+        wx.showToast({
+          title: '取消成功',
+        });
+        that.onShow();
+      },
+      fail: function (res) {
+        console.log("fail")
+      },
+    })
   }
 })

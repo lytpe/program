@@ -80,6 +80,7 @@ Page({
       },
       method: 'POST',
       success: function (res) {
+        console.log("show person code:");
         console.log(res);
       },
       fail: function () {
