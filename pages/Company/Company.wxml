@@ -36,7 +36,7 @@
       </picker>
   <i-row>
      <i-col span="14" offset="3">
-     <textarea style="background-color:gray;" placeholder="预约项目" placeholder-class="textalign" auto-focus name="message"/>
+     <textarea placeholder="预约项目" placeholder-class="textalign" auto-focus name="message"/>
      </i-col>
   </i-row>
   <i-row>

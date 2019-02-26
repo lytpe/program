@@ -7,8 +7,6 @@
     "pages/logs/logs",
     "pages/Section/Section",
     "pages/Users/order/order",
-    "pages/Users/coupon/coupon",
-    "pages/Users/custom/custom",
     "pages/Users/staff/staff",
     "pages/Users/address/address",
     "pages/Users/address/addaddress/addaddress",

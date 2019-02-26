@@ -10,13 +10,15 @@ Page({
       isunread: true,
       unreadNum: 2,
       link:'../Users/order/order'
-    }, {
-      icon: '../Images/iconfont-card.png',
-      text: '我的优惠券',
-      isunread: false,
-      unreadNum: 2,
-      link:'../Users/coupon/coupon'
-    }, {
+    }, 
+    // {
+    //   icon: '../Images/iconfont-card.png',
+    //   text: '我的优惠券',
+    //   isunread: false,
+    //   unreadNum: 2,
+    //   link:'../Users/coupon/coupon'
+    // },
+     {
       icon: '../Images/iconfont-shouhuodizhi.png',
       text: '收货地址管理',
       link:'../Users/address/address'
@@ -47,7 +49,7 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     })
-   /* wx.request({
+    wx.request({
       url: 'https://localhost:5001/Customer/AddStaff',
       data:{
        name:that.data.userInfo.nickName,
@@ -69,7 +71,7 @@ Page({
           title: '网络延迟！',
         });
       }
-    });*/
+    });
     wx.request({
       url: 'https://localhost:5001/Customer/GetCode',
       data: {

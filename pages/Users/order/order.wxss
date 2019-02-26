@@ -2,10 +2,10 @@
 .quit{
   color:gray;
   border:0ch;
-  size:14px;
+  size:15px;
 }
 .pay{
   color:orange;
   border:0ch;
-  size:14px;
+  size:15px;
 }

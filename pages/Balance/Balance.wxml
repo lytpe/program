@@ -58,20 +58,6 @@
    </i-row>
    <i-divider></i-divider>
    <i-row>
-     <i-col span="21" offset="1">
-       优惠方式：
-     </i-col>
-     <i-col span="2">
-       <i-icon type="enter" size="25" color="#80848f"/>
-     </i-col>
-   </i-row>
-   <i-row>
-       <i-col span="21" offset="1">
-       暂无
-     </i-col>
-   </i-row>
-   <i-divider></i-divider>
-   <i-row>
       <i-col span="19" i-class="col-class" offset="1">
         运费
       </i-col>
