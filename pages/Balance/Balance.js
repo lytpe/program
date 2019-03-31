@@ -218,40 +218,43 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       success: function(res){
-     //var links = "appId=" + res.data.result.appId + "&nonceStr=" + res.data.result.nonceStr + "& //package=prepay_id=" + res.data.result.prepay_id + "&signType=MD5&timeStamp=" + time +"& //key=MIIEvAIBADANBgkqhkiG9w0BAQEFAASC";
-      wx.request({
-            url: 'https://localhost:5001/Orders/weChatOrder',
-            data: {
-              arrays: JSON.stringify(that.data.deadOrders)
-            },
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            method: 'POST',
-            success: function (res) {
-              console.log("成功添加");
-            },
-            fail: function(){
-              console.log("失败!");
-            }
-          });
-        //var stemp=utilMd5.hexMD5(links).toUpperCase();
+        var order=res.data;
+        console.log(order);
+        console.log(order["timeStamp"]);
+        // var stemp=utilMd5.hexMD5(links).toUpperCase();
         // wx.requestPayment({
-        //   timeStamp:time,
-        //   nonceStr:res.data.result.nonceStr,
-        //   package: 'prepay_id='+res.data.result.prepay_id,
+        //   timeStamp:order.timeStamp,
+        //   nonceStr:order.nonceStr,
+        //   package: order.package,
         //   signType: 'MD5',
-        //   paySign:stemp,
+        //   paySign:order.paySign,
         //   success(res) {
-        //     wx.showToast({
-        //       title: '支付成功',
+        //     //添加用户的订单，这部分和微信支付无关
+        //     wx.request({
+        //       url: 'https://localhost:5001/Orders/weChatOrder',
+        //       data: {
+        //         arrays: JSON.stringify(that.data.deadOrders)
+        //       },
+        //       header: { 'content-type': 'application/x-www-form-urlencoded' },
+        //       method: 'POST',
+        //       success: function (res) {
+        //         console.log("成功添加");
+        //       },
+        //       fail: function () {
+        //         console.log("添加失败!");
+        //       }
         //     });
         //   },
         //   fail(res) {
-        //     console.log("网络延迟！");
+        //     wx.showToast({
+        //       title: '支付失败',
+        //       duration:1000
+        //     });
         //   }
         // });
       },
       fail: function(){
-        console.log("失败!");
+        console.log("请求失败!");
       }
     });
   },
