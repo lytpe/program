@@ -5,39 +5,6 @@ Page({
     current: 'tab1',
     temp:'',
     visible1:false,
-    hairs: [
-      {
-        id: 1,
-        name: "产品",
-        price: "￥12",
-        num: "12",
-        pic: "../../Images/meirong.png",
-        url: "../../Order/Order"
-      },
-      {
-        id: 2,
-        name: "产品",
-        price: "￥13",
-        num: "12",
-        pic: "../../Images/meirong.png",
-        url: "../../Order/Order"
-      },
-      {
-        id: 3,
-        name: "产品",
-        price: "￥14",
-        num: "12",
-        pic: "../../Images/meirong.png",
-        url: "../../Order/Order"
-      }, {
-        id: 4,
-        name: "产品",
-        price: "￥15",
-        num: "12",
-        pic: "../../Images/meirong.png",
-        url: "../../Order/Order"
-      }
-    ],
     allinfos:[]
   },
   changeTab:function(e){
@@ -122,12 +89,40 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+  toBalance: function () {
+    app.globalData.goodsItemArary = arrays;
+    wx.navigateTo({
+      url: "../Balance/Balance",
+    });
+  },
   payIt:function(e){
-    console.log("show payIt e:");
     var id=e.currentTarget.dataset.id;
-    console.log(id);
-
-
+    wx.request({
+      url: 'https://localhost:5001/Orders/GetOrderInfo',
+      data: {
+        id:id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res.data);
+        app.globalData.goodsItemArary.push({
+          name: res.data.productName,
+          num: res.data.productNums,
+          price: res.data.productPrice,
+          isSelect: true
+        });
+      },
+      fail: function (res) {
+        console.log("fail")
+      },
+    });
+    wx.navigateTo({
+      url: "../../Balance/Balance",
+    });
   },
   quit:function(e){
     var that=this;
@@ -148,7 +143,9 @@ Page({
         that.onShow();
       },
       fail: function (res) {
-        console.log("fail")
+        wx.showToast({
+          title: '网络延迟',
+        });
       },
     })
   }

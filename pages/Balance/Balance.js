@@ -49,8 +49,7 @@ Page({
       //       title: '网络延迟，请稍后重试',
       //     });
       //   }
-      // });
-       
+      // }); 
   },
   getAddress:function(){
     var that=this;
@@ -213,6 +212,7 @@ Page({
       temp["username"] = app.globalData.userInfo.nickName;
       that.data.deadOrders.push(temp);
     };
+    
     wx.request({
       url: 'https://localhost:5001/WeChatPay/GetPrePay',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -222,39 +222,46 @@ Page({
         console.log(order);
         console.log(order["timeStamp"]);
         // var stemp=utilMd5.hexMD5(links).toUpperCase();
-        // wx.requestPayment({
-        //   timeStamp:order.timeStamp,
-        //   nonceStr:order.nonceStr,
-        //   package: order.package,
-        //   signType: 'MD5',
-        //   paySign:order.paySign,
-        //   success(res) {
-        //     //添加用户的订单，这部分和微信支付无关
-        //     wx.request({
-        //       url: 'https://localhost:5001/Orders/weChatOrder',
-        //       data: {
-        //         arrays: JSON.stringify(that.data.deadOrders)
-        //       },
-        //       header: { 'content-type': 'application/x-www-form-urlencoded' },
-        //       method: 'POST',
-        //       success: function (res) {
-        //         console.log("成功添加");
-        //       },
-        //       fail: function () {
-        //         console.log("添加失败!");
-        //       }
-        //     });
-        //   },
-        //   fail(res) {
-        //     wx.showToast({
-        //       title: '支付失败',
-        //       duration:1000
-        //     });
-        //   }
-        // });
+        wx.requestPayment({
+          timeStamp: order["timeStamp"],
+          nonceStr:order["nonceStr"],
+          package:order["package"],
+          signType:'MD5',
+          paySign:order["paySign"],
+          success(res) {
+            //添加用户的订单，这部分和微信支付无关
+            wx.request({
+              url: 'https://localhost:5001/Orders/weChatOrder',
+              data: {
+                arrays: JSON.stringify(that.data.deadOrders)
+              },
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              method: 'POST',
+              success: function (res) {
+                wx.showToast({
+                  title: '商品支付成功',
+                  duration: 1000
+                });
+              },
+              fail: function () {
+                console.log("商品支付失败!");
+              }
+            });
+          },
+          fail(res) {
+            console.log(res);
+            wx.showToast({
+              title: '支付失败',
+              duration:1000
+            });
+          }
+        });
       },
       fail: function(){
-        console.log("请求失败!");
+        wx.showToast({
+          title: '预支付请求失败!',
+          duration: 1000
+        });
       }
     });
   },
