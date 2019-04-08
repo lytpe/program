@@ -1,1 +1,13 @@
 .word{font-size:small}
+.board{
+  background:white;
+  box-shadow:2px 2px 2px #f7eeee;
+  border-radius: 4px 4px;
+}
+.image{
+  width:343.75rpx;
+  border-radius: 4px 4px;
+}
+.pricestyle{
+  color: gold;
+}

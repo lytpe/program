@@ -36,7 +36,9 @@ Page({
         })
       },
       fail: function (res) {
-        console.log("fail")
+        wx.showToast({
+          title: '网络延迟！',
+        });
       },
     })
   },

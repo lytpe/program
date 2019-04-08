@@ -1,9 +1,6 @@
 <!--pages/Company/Company.wxml-->
-
   <i-row>
-  <i-col span="24">
-    <image  src="{{link}}" style="width:100%;"></image>
-    </i-col>
+    <image  src="{{link}}" class="image"></image>
   </i-row>
   
   <i-row>
@@ -17,34 +14,32 @@
   </i-row>
 
 <i-row>
-  <i-col span="1"></i-col>
-  <i-col span="22">
+  <i-col span="22" offset="1">
   <form bindsubmit="FormSubmit" bindreset="FormReset" report-submit='true'>
   
-   <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange" name="dates">
-        <i-row class="textalign">
-          <i-col span="12">日期选择: </i-col>
-          <i-col span="12">{{dateValue}}</i-col>
-        </i-row>
-</picker>
-
-     <picker mode="time" name="times" value="{{time}}" start="00:00" end="23:59" bindchange="timeBindChange">
-      <i-row class="textalign">
-      <i-col span="12">时间选择: </i-col>
-      <i-col span="12">{{time}}</i-col>
-      </i-row>
+      <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange" name="dates">
+          <i-row class="textalign">
+            <i-col span="12">日期选择: </i-col>
+            <i-col span="12">{{dateValue}}</i-col>
+          </i-row>
       </picker>
-  <i-row>
+      <picker mode="time" name="times" value="{{time}}" start="00:00" end="23:59" bindchange="timeBindChange">
+        <i-row class="textalign">
+        <i-col span="12">时间选择: </i-col>
+        <i-col span="12">{{time}}</i-col>
+        </i-row>
+      </picker>
+
+    <i-row>
      <i-col span="14" offset="3">
      <textarea placeholder="预约项目" placeholder-class="textalign" auto-focus name="message"/>
      </i-col>
-  </i-row>
-  <i-row>
-    <i-col span="16" offset="4" class="textalign">
-      <button type="primary" form-type="submit">立即预约         </button>
-    </i-col>
-  </i-row>
+    </i-row>
+    <i-row>
+      <i-col span="16" offset="4" class="textalign">
+        <button type="primary" form-type="submit">立即预约</button>
+      </i-col>
+    </i-row>
   </form>
   </i-col>
-  <i-col span="1"></i-col>
 </i-row>

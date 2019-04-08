@@ -1,4 +1,6 @@
 // pages/Main/Main.js
+let page=1;
+let reachBottom=false;
 var app=getApp();
 Page({
   data: {
@@ -22,14 +24,12 @@ Page({
         url: "../Section/Section",
         name: "美甲",
         show: "../Images/meijia.png"
-      }
-      ,
+      },
       {
         url: "../Section/Section",
         name: "美睫",
         show: "../Images/meijie.png"
-      }
-      ,
+      },
       {
         url: "../Section/Section",
         name: "美妆",
@@ -42,38 +42,21 @@ Page({
        url: event.currentTarget.dataset.links,
      })
   },
-  showhotproject:function(event){
+  showhotproject:function(e){
+    app.globalData.singleItem=
+      {"name":e.currentTarget.dataset.name,
+      "pic": e.currentTarget.dataset.pic,
+      "price": e.currentTarget.dataset.price,
+      "storageNum": e.currentTarget.dataset.snum,
+      "productInfo": e.currentTarget.dataset.pinfos,
+      "type": e.currentTarget.dataset.type
+      };
     wx.navigateTo({
-      url: event.currentTarget.dataset.links,
+      url: "../Order/Order",
     })
   },
-  onShareAppMessage(res){
-    if(res.from==='menu'){
-    }
-    return {
-      title:'冰尘',
-      path:'/pages/Main'
-    }
-  },
+
   onLoad:function(options){
-    var that=this;
-    wx.request({
-      url: 'https://localhost:5001/Products/GetHotProduct',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success: function (res) {
-        that.setData({
-          detail:res.data.pros
-        });
-      },
-      fail: function () {
-        wx.showToast({
-          title: '网络延迟！',
-        });
-      }
-    });
     wx.login({
       success: res => {
         if (res.code) {
@@ -87,24 +70,80 @@ Page({
               'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             success: function (res) {
-              console.log("the userInfo is :");
-              console.log(res);
+              // console.log("the userInfo is :");
+              // console.log(res);
             },
             fail: function () {
-              console.log("send failure");
+              wx.showToast({
+                title: '登录失败！',
+              });
             }
           })
         }
       }
     });
   },
-  onReachBottom:function(){
+  onShow:function(){
+    page = 1;
+    reachBottom = false;
+    this.setData({
+      detail: []
+    })
+    this.getProductList(page);
+  },
+  onReachBottom: function () {
     wx.showLoading({
       title: '加载中',
     });
-    wx.hideLoading();
+    this.getProductList(page);
+    setTimeout(function () {
+      wx.hideLoading(), 2000
+    })
   },
-  onShow:function(){
-    
+  getProductList: function (temppage) {
+    if (reachBottom != false) {
+      wx.showToast({
+        title: '到达底部',
+      });
+      return;
+    }
+    var that = this;
+    wx.request({
+      url: 'https://localhost:5001/Products/GetHotProduct',
+      data: {
+        page: temppage
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function (res) {
+        var listdata = that.data.detail;
+        for (var i = 0; i < res.data.pros.length; i++)        {
+          listdata.push(res.data.pros[i]);
+        }
+        if (res.data.pros <4) {
+          reachBottom = true;
+        } else {
+          page++;
+        }
+        that.setData({
+          detail: listdata
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络延迟！',
+        });
+      }
+    });
+  },
+  onShareAppMessage(res) {
+    if (res.from === 'menu') {
+    }
+    return {
+      title: '冰尘',
+      path: '/pages/Main'
+    }
   }
 })

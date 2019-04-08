@@ -9,7 +9,7 @@ Page({
     text:"这暂时只是一个测试的网站用于页面的测试，并观察是否有问题，如果有问题，就需要修改"
   },
   onLoad: function (options) {
-
+    
   },
   /** 
    * 生命周期函数--监听页面初次渲染完成
@@ -85,6 +85,8 @@ Page({
     }
   },
   FormReset:function(e){
-    console.log('form发生了reset事件')
+    wx.showToast({
+      title: '表单内容已重置！',
+    });
   }
 })

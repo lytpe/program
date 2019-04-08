@@ -4,11 +4,12 @@ Page({
   data: {
       showPop: false,
       animationData:{},
+      showbottom: false,
+      visible: false,
       name:"",
       pic:"",
       price:"",
-      showbottom:false,
-      visible:false,
+
       storageNum:100,
       productInfo:"",
       type:""
@@ -19,7 +20,7 @@ Page({
     pic: app.globalData.singleItem.pic,
     price: app.globalData.singleItem.price,
     storageNum: app.globalData.singleItem.storageNum,
-    productInfo: app.globalData.singleItem.productInfos,
+    productInfo: app.globalData.singleItem.productInfo,
     type: app.globalData.singleItem.type
   });
   },

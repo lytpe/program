@@ -1,26 +1,26 @@
 <!--pages/hairdressing/hairdressing.wxml-->
 <view>
-  <image src="../Images/top_bg.png" style="width:100%;"></image>
+  <image src="../Images/top_bg.png" class="image" mode="widthFix"></image>
 </view>
 <view>
   <block wx:for="{{products}}" wx:key="item">
      <i-row>
-        <view bind:tap="directto" data-links="../Order/Order" data-pic="../Images/meirong.png" data-name="{{item.name}}" data-price="{{item.price}}" data-storage="{{item.storageNums}}" data-productInfos="{{item.productInfos}}" data-type="{{item.type}}">
-        <i-col span="6" i-class="col-class">
-           <image src="../Images/meirong.png" style="height:50px;width:50px;"></image>
+        <view bind:tap="directto" data-links="../Order/Order" data-pic="{{item.picture}}" data-name="{{item.name}}" data-price="{{item.price}}" data-storage="{{item.storageNums}}" data-productInfos="{{item.productInfos}}" data-type="{{item.type}}">
+        <i-col span="6">
+        <image src="{{item.picture}}" class="smallimage" mode="widthFix"></image>
         </i-col>
-        <i-col span="18" i-class="col-class">
+        <i-col span="17"  offset="1">
             <i-row>
                <view>{{item.name}}</view>
             </i-row>
             <i-row>
-               <i-col span="3" i-class="col-class">
+               <i-col span="3" >
                  <text class="moneytype">￥{{item.price}}</text>
                </i-col>
-               <i-col i-class="col-class" span="10" offset="4">
+               <i-col  span="10" offset="4">
                   <text>销量为：</text>
                </i-col>
-               <i-col i-class="col-class" span="3">
+               <i-col span="3">
                  <text>{{item.sellNums}}</text>
                </i-col>
             </i-row>

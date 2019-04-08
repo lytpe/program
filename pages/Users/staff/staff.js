@@ -126,7 +126,9 @@ Page({
         })
       },
       fail: function () {
-        console.log("网络延迟！");
+        wx.showToast({
+          title: '网络延迟！',
+        });
       }
     });
   }

@@ -12,7 +12,7 @@ Page({
     pic: e.currentTarget.dataset.pic,
     price: e.currentTarget.dataset.price,
     storageNum: e.currentTarget.dataset.storage,
-    productInfos: e.currentTarget.dataset.productinfos,
+    productInfo: e.currentTarget.dataset.productinfos,
     type: e.currentTarget.dataset.type};
     wx.navigateTo({
       url: e.currentTarget.dataset.links
@@ -22,7 +22,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options){
   },
 
   /**
@@ -114,7 +114,9 @@ Page({
         })
       },
       fail:function(){
-        console.log("网络延迟！");
+        wx.showToast({
+          title: '网络延迟！',
+        });
       }
     });
   }

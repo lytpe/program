@@ -22,25 +22,33 @@
 </i-row>
 
 <i-row>
-  <i-col span="22" i-class="col-class" offset="1">
-    <image src="../Images/file_youhui.png" style="width:100%;"></image>
-  </i-col>
-</i-row>
-
-<i-row>
   <i-col offset="1" span="23">
     <text class="word">热门项目</text>
   </i-col>
 </i-row>
 
 <i-row>
-  <block wx:for="{{detail}}" wx:key="item">
-    <i-col span="7" i-class="col-class" offset="1">
-      <view bind:tap="showhotproject" data-links="../hairdressing/hairdressing">
-        <image src="../Images/file_demo2.png" style="width:70px;height:60px;"></image>
-        <view class="word">{{item.productInfos}}</view>
-        <view>￥{{item.price}}</view>
+  <block wx:for="{{detail}}" wx:key="item" wx:for-index="index">
+    
+      <view wx:if="{{index%2==0}}" bind:tap="showhotproject"  class="board"  data-pinfos="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
+      <i-col span="11" i-class="col-class" offset="1">
+        <image src="../Images/file_demo2.png" mode="widthFix" class="image"></image>
+        <view class="word">{{item.name}}</view>
+        <view class="pricestyle">￥{{item.price}}</view>
+        </i-col>
       </view>
-    </i-col>
+    
+    
+      <view wx:if="{{index%2==1}}" bind:tap="showhotproject" class="board" data-info="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
+      <i-col span="11" i-class="col-class" offset="1">
+        <image src="../Images/file_demo2.png" mode="widthFix" class="image"></image>
+        <view class="word">{{item.name}}</view>
+        <view class="pricestyle">￥{{item.price}}</view>
+        </i-col>
+      </view>
+    
+    <view wx:if="{{index%2==1}}">
+     <text> \n </text>
+    </view>
   </block>
 </i-row>
