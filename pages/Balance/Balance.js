@@ -212,16 +212,14 @@ Page({
       temp["username"] = app.globalData.userInfo.nickName;
       that.data.deadOrders.push(temp);
     };
-    
+
     wx.request({
       url: 'https://localhost:5001/WeChatPay/GetPrePay',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       success: function(res){
         var order=res.data;
-        console.log(order);
-        console.log(order["timeStamp"]);
-        // var stemp=utilMd5.hexMD5(links).toUpperCase();
+        
         wx.requestPayment({
           timeStamp: order["timeStamp"],
           nonceStr:order["nonceStr"],
@@ -244,7 +242,10 @@ Page({
                 });
               },
               fail: function () {
-                console.log("商品支付失败!");
+                wx.showToast({
+                  title: '商品支付失败',
+                  duration: 1000
+                });
               }
             });
           },

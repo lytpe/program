@@ -32,7 +32,7 @@
     
       <view wx:if="{{index%2==0}}" bind:tap="showhotproject"  class="board"  data-pinfos="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
       <i-col span="11" i-class="col-class" offset="1">
-        <image src="../Images/file_demo2.png" mode="widthFix" class="image"></image>
+        <image src="{{item.picture}}" mode="widthFix" class="image"></image>
         <view class="word">{{item.name}}</view>
         <view class="pricestyle">￥{{item.price}}</view>
         </i-col>
@@ -41,7 +41,7 @@
     
       <view wx:if="{{index%2==1}}" bind:tap="showhotproject" class="board" data-info="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
       <i-col span="11" i-class="col-class" offset="1">
-        <image src="../Images/file_demo2.png" mode="widthFix" class="image"></image>
+        <image src="{{item.picture}}" mode="widthFix" class="image"></image>
         <view class="word">{{item.name}}</view>
         <view class="pricestyle">￥{{item.price}}</view>
         </i-col>

@@ -1,0 +1,33 @@
+<!--pages/Class/Class.wxml-->
+<i-row>
+  <block wx:for="{{detail}}" wx:key="item" wx:for-index="index">
+    
+      <view wx:if="{{index%2==0}}" bind:tap="directToCompany"  class="board">
+      <i-col span="11" i-class="col-class" offset="1">
+        <image src="{{item.coursePic}}" mode="widthFix" class="image"></image>
+        <view class="word">{{item.courseName}}</view>
+        <view>
+          <text class="pricestyle">￥{{item.coursePrice}}</text>
+          <text class="wordstyle">\t免费预约体验</text>
+        </view>
+         
+        </i-col>
+      </view>
+    
+    
+      <view wx:if="{{index%2==1}}" bind:tap="directToCompany" class="board">
+      <i-col span="11" i-class="col-class" offset="1">
+        <image src="{{item.coursePic}}" mode="widthFix" class="image"></image>
+        <view class="word">{{item.courseName}}</view>
+        <view>
+          <text class="pricestyle">￥{{item.coursePrice}}</text>
+          <text class="wordstyle">\t免费预约体验</text>
+        </view>
+        </i-col>
+      </view>
+    
+    <view wx:if="{{index%2==1}}">
+     <text> \n </text>
+    </view>
+  </block>
+</i-row>

@@ -12,7 +12,8 @@
     "pages/Users/address/addaddress/addaddress",
     "pages/Order/Order",
     "pages/ShopCart/ShopCart",
-    "pages/Balance/Balance"
+    "pages/Balance/Balance",
+    "pages/Class/Class"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -32,8 +33,8 @@
       "selectedIconPath":"pages/Images/selected_home.png"
     },
        {
-      "pagePath": "pages/logs/logs",
-      "text": "日志",
+      "pagePath": "pages/Class/Class",
+      "text": "课程",
       "iconPath": "pages/Images/other.png",
       "selectedIconPath": "pages/Images/selected_other.png"
        }

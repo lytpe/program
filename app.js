@@ -53,6 +53,8 @@ App({
     goodsItemArary:[],
     shopsItemArray:[],
     ordersItemArray:[],
-    singleItem:{}
+    singleItem:{},
+    openId:null,
+    accesstoken:null
   }
 })

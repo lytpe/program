@@ -57,24 +57,52 @@ Page({
     })
   },
   FormSubmit:function(e){
-    console.log(e);
     if(e.detail.value.dates!=null&&e.detail.value.times!=null){
       wx.request({
-        url: 'https://localhost:5001/Appointments/Add',
+        url: 'http://47.106.9.133/Appointments/Add',
         data: {
          dates:e.detail.value.dates,
          times:e.detail.value.times,
          message:e.detail.value.message,
-         formId:e.detail.formId
+         userName: app.globalData.userInfo.nickName
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         method: 'POST', 
         success: function (res) {
-         wx.showToast({
-           title: '预约成功',
-         });
+          var access_token=null;
+          wx.request({
+            url: 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + app.globalData.accesstoken,
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            data:{
+              "touser": app.globalData.openId,
+              "template_id":'a0JPDbqkrWeKMBdSCwjQbwCPEjUu-IUY2kXHub1_4iM',
+              "form_id": e.detail.formId,
+              "data":{
+                "keyword1":{
+                  "value":e.detail.value.message,
+                  "color":"#173177"
+                },
+                "keyword2": {
+                  "value": e.detail.value.dates+e.detail.value.times,
+                  "color": "#173177"
+                },
+                "keyword3": {
+                  "value": app.globalData.userInfo.nickName,
+                  "color": "#173177"
+                }
+              },
+            },
+            method: 'POST', 
+            success:function(res){
+              wx.showToast({
+                title: '预约成功',
+              });
+            }
+          });
         },
         fail: function(){
           wx.showToast({

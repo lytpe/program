@@ -61,7 +61,7 @@ Page({
       success: res => {
         if (res.code) {
           wx.request({
-            url: "https://localhost:5001/Products/GetUserInfo",
+            url: "http://47.106.9.133/Products/GetUserInfo",
             data: {
               code: res.code
             },
@@ -70,8 +70,8 @@ Page({
               'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             success: function (res) {
-              // console.log("the userInfo is :");
-              // console.log(res);
+              app.globalData.openId=res.data.open_id
+              app.globalData.accesstoken=res.data.access_token;
             },
             fail: function () {
               wx.showToast({
