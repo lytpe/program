@@ -217,6 +217,9 @@ Page({
       url: 'https://localhost:5001/WeChatPay/GetPrePay',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
+      data:{
+        open_id: app.globalData.openId
+      },
       success: function(res){
         var order=res.data;
         

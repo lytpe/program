@@ -73,14 +73,15 @@ Page({
       url: 'https://localhost:5001/Customer/GetCode',
       data: {
         name:that.data.userInfo.nickName,
+        access_token: app.globalData.accesstoken
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method: 'POST',
       success: function (res) {
-        // console.log("show person code:");
-        // console.log(res);
+        console.log("show person code:");
+         console.log(res);
       },
       fail: function () {
         wx.showToast({

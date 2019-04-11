@@ -64,8 +64,8 @@
 
 <view wx:if="{{showbottom}}" animation="{{animationData}}" class="togglestyle">
   <i-row>
-    <i-col span="4" offset="2">
-    <image src="../Images/file_demo2.png" mode="aspectFit" style="width:60px;height:60px;"></image>
+    <i-col span="5" offset="1">
+    <image src="{{pic}}" mode="widthFix" class="smallImage"></image>
     </i-col>
     <i-col span="4" offset="14">
       <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
@@ -73,10 +73,10 @@
   </i-row>
 
   <i-row>
-    <i-col span="3" offset="1" i-class="col-class">库存:</i-col>
-    <i-col span="5" i-class="col-class">{{storageNum}}</i-col>
-    <i-col span="4" i-class="col-class">数量:</i-col>
-    <i-col span="11" i-class="col-class">
+    <i-col span="3" offset="1" >库存:</i-col>
+    <i-col span="5" >{{storageNum}}</i-col>
+    <i-col span="4" >数量:</i-col>
+    <i-col span="11" >
       <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges" />
     </i-col>
   </i-row>
@@ -88,18 +88,18 @@
 
 <view wx:if="{{showPop}}" animation="{{animationData}}" class="togglestyle">
   <i-row>
-    <i-col span="4" offset="2">
-    <image src="../Images/file_demo2.png" mode="aspectFit" style="width:60px;height:60px;"></image>
+    <i-col span="5" offset="1">
+    <image src="{{pic}}" mode="widthFix" class="smallImage"></image>
     </i-col>
     <i-col span="4" offset="14">
       <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
     </i-col>
   </i-row>
   <i-row>
-    <i-col span="3"  offset="1" i-class="col-class">库存:</i-col>
-    <i-col span="5" i-class="col-class">{{storageNum}}</i-col>
-    <i-col span="4" i-class="col-class">数量:</i-col>
-    <i-col span="11" i-class="col-class">
+    <i-col span="3"  offset="1" >库存:</i-col>
+    <i-col span="5" >{{storageNum}}</i-col>
+    <i-col span="4" >数量:</i-col>
+    <i-col span="11" >
       <i-input-number value="{{num}}" min="1" max="100" bindchange="handlechanges"/>
     </i-col>
   </i-row>

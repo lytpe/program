@@ -24,3 +24,7 @@
   width:750rpx;
   border-radius: 4px 4px;
 }
+.smallImage{
+  width:200rpx;
+  border-radius: 4px 4px;
+}
