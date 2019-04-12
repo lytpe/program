@@ -44,7 +44,13 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if (res.from === 'menu') {
+    }
+    return {
+      title: '冰尘',
+      path: '/pages/Company'
+    }
   },
   timeBindChange: function (e) {
     this.setData({

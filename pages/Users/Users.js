@@ -11,13 +11,6 @@ Page({
       unreadNum: 2,
       link:'../Users/order/order'
     }, 
-    // {
-    //   icon: '../Images/iconfont-card.png',
-    //   text: '我的优惠券',
-    //   isunread: false,
-    //   unreadNum: 2,
-    //   link:'../Users/coupon/coupon'
-    // },
      {
       icon: '../Images/iconfont-shouhuodizhi.png',
       text: '收货地址管理',
@@ -61,7 +54,8 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res);
+        //console.log(res);
+        //添加用户
       },
       fail: function () {
         wx.showToast({

@@ -5,25 +5,27 @@
     <i-tab key="tab4" title="待收货"></i-tab>
     <i-tab key="tab5" title="待评价"></i-tab>
 </i-tabs>
-<view wx:if="{{current=='tab1'}}">
-    <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
-       <i-row>
+<view wx:if="{{current=='tab1'}}" >
+    <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index" >
+       <i-row  i-class="board">
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
             <i-row>数量：{{item.productNums}}</i-row>
-            <i-row>价格：￥{{item.productPrice}}</i-row>
+            <i-row>单价：￥<text class="pricetype">{{item.productPrice}}</text></i-row>
           </i-col>
        </i-row>
+       <i-row><text> \n</text></i-row>
     </block>
 </view>
 <view wx:if="{{current=='tab2'}}">
     <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
     <block wx:if="{{item.isPayed=='2'}}">
-       <i-row>
+      <view  class="board">
+       <i-row >
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
             <i-row>数量：{{item.productNums}}</i-row>
-            <i-row>价格：￥{{item.productPrice}}</i-row>
+            <i-row>单价：￥<text class="pricetype">{{item.productPrice}}</text></i-row>
           </i-col>
        </i-row>
        <i-row>
@@ -35,45 +37,58 @@
            data-id="{{item.id}}">去支付</view>
           </i-col>
        </i-row>
+     </view>
+      <i-row><text> \n</text></i-row>
     </block>
   </block>
 </view>
-<view wx:if="{{current=='tab3'}}">
+<view wx:if="{{current=='tab3'}}" >
   <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
      <block wx:if="{{item.isDelivered=='1'&&item.isPayed=='1'}}">
-       <i-row>
+       <i-row  class="board">
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
             <i-row>数量：{{item.productNums}}</i-row>
-            <i-row>价格：￥{{item.productPrice}}</i-row>
+            <i-row>单价：￥<text class="pricetype">{{item.productPrice}}</text></i-row>
           </i-col>
        </i-row>
+      <i-row><text> \n</text></i-row>
      </block>
   </block>
 </view>
-<view wx:if="{{current=='tab4'}}">
+<view wx:if="{{current=='tab4'}}" >
   <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
      <block wx:if="{{item.isDelivered=='2' && item.isReceived=='1'}}">
-               <i-row>
+     <view  class="board">
+        <i-row>
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
             <i-row>数量：{{item.productNums}}</i-row>
-            <i-row>价格：￥{{item.productPrice}}</i-row>
+            <i-row>单价：￥<text class="pricetype">{{item.productPrice}}</text></i-row>
           </i-col>
        </i-row>
+      <i-row>
+          <i-col span="6" offset="18">
+           <view class="checkgood" bind:tap="checkgood"
+           data-id="{{item.id}}">确认收货</view>
+          </i-col>
+       </i-row>
+    </view>
+    <i-row><text> \n</text></i-row>
      </block>
   </block>
 </view>
-<view wx:if="{{current=='tab5'}}">
-     <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
-     <block wx:if="{{item.isEstimated=='1'&&item.isPayed=='1'}}">
-               <i-row>
+<view wx:if="{{current=='tab5'}}" >
+    <block wx:for="{{allinfos}}" wx:key="id" wx:for-index="index">
+     <block wx:if="{{item.isEstimated=='1'&&item.isPayed=='1'&&item.isReceived=='2'}}">
+      <i-row i-class="board">
           <i-col span="15" offset="1">{{item.productName}}</i-col>
           <i-col span="8">
             <i-row>数量：{{item.productNums}}</i-row>
-            <i-row>价格：￥{{item.productPrice}}</i-row>
+            <i-row>单价：￥<text class="pricetype">{{item.productPrice}}</text></i-row>
           </i-col>
        </i-row>
+       <i-row><text> \n</text></i-row>
      </block>
   </block>
 </view>

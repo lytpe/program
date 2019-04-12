@@ -4,13 +4,18 @@
    <i-collapse-item title="{{item.userName}}" name="{{item.id}}">
       <view slot="content">
           <i-row>
-            <i-col span="4">{{item.userPic}}</i-col>
+            <i-col span="8"><image src="{{item.userPic}}" mode="widthFix" class="imagestyle"/></i-col>
              <i-col span="10"><view class="adtype">
              {{item.address}}
-             </view></i-col>
-            <i-col span="10">
+             </view>
+             </i-col>
+
+            <i-col span="6">
+            <view class="fontsize">
+               余额:
+            </view>
             <view class="moneytype">
-            余额：{{item.balance}}
+              {{item.balance}}
             </view>
             </i-col>
           </i-row>

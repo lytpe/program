@@ -6,3 +6,10 @@
 .adtype{
   font-size: 12px;
 }
+.imagestyle{
+  width:200rpx;
+  border-radius: 4px 4px;
+}
+.fontsize{
+  font-size:13px;
+}

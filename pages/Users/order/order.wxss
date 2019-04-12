@@ -9,3 +9,16 @@
   border:0ch;
   size:15px;
 }
+.checkgood{
+  color:red;
+  border:0ch;
+  size:15px;
+}
+.board{
+  background:white;
+  box-shadow:2px 2px 2px gainsboro;
+  border-radius: 2px 2px;
+}
+.pricetype{
+  color: gold;
+}

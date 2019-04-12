@@ -30,7 +30,6 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data);
         that.setData({
           allinfos: res.data.orders
         })
@@ -99,18 +98,16 @@ Page({
     });
   },
   payIt:function(e){
-    var id=e.currentTarget.dataset.id;
     wx.request({
       url: 'https://localhost:5001/Orders/GetOrderInfo',
       data: {
-        id:id
+        id: e.currentTarget.dataset.id
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data);
         app.globalData.goodsItemArary.push({
           name: res.data.productName,
           num: res.data.productNums,
@@ -119,7 +116,9 @@ Page({
         });
       },
       fail: function (res) {
-        console.log("fail")
+        wx.showToast({
+          title: '网络延迟',
+        });
       },
     });
     wx.navigateTo({
@@ -128,11 +127,10 @@ Page({
   },
   quit:function(e){
     var that=this;
-    var id = e.currentTarget.dataset.id;
     wx.request({
       url: 'https://localhost:5001/Orders/QuitOrder',
       data:{
-        orderId:id
+        orderId: e.currentTarget.dataset.id
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -142,6 +140,27 @@ Page({
         wx.showToast({
           title: '取消成功',
         });
+        that.onShow();
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '网络延迟',
+        });
+      },
+    })
+  },
+  checkgood:function(e){
+    var that = this;
+    wx.request({
+      url: 'https://localhost:5001/Orders/CheckOrder',
+      data: {
+        orderId: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      success: function (res) {
         that.onShow();
       },
       fail: function (res) {

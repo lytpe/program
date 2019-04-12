@@ -70,16 +70,21 @@ Page({
       wx.hideLoading(), 2000
     })
   },
-  directToCompany: function (e) {
-    wx.navigateTo({
-      url: "../Company/Company",
-    });
+  directToCompany:function(e) {
+    wx.switchTab({
+      url: '../Company/Company',
+    })
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'menu') {
+    }
+    return {
+      title: '冰尘',
+      path: '/pages/Class'
+    }
   },
   getClassList: function (temppage) {
     if (reachBottom != false) {
