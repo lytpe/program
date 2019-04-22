@@ -40,7 +40,7 @@ Page({
       userInfo:app.globalData.userInfo
     })
     wx.request({
-      url: 'https://localhost:5001/Customer/AddStaff',
+      url: 'https://www.ruilanya.top/Customer/AddStaff',
       data:{
        name:that.data.userInfo.nickName,
         gender: that.data.userInfo.gender,
@@ -64,7 +64,7 @@ Page({
       }
     });
     wx.request({
-      url: 'https://localhost:5001/Customer/GetCode',
+      url: 'https://www.ruilanya.top/Customer/GetCode',
       data: {
         name:that.data.userInfo.nickName,
         access_token: app.globalData.accesstoken

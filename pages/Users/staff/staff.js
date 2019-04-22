@@ -101,7 +101,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: "https://localhost:5001/Customer/GetAllInfos",
+      url: "https://www.ruilanya.top/Customer/GetAllInfos",
       data: {
         page: temppage
       },

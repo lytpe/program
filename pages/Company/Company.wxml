@@ -8,8 +8,9 @@
       <text>{{text}}</text>
     </i-col>
   </i-row>
-
+   <text>\n</text>
   <i-row>
+
     <i-col span="8" offset="8" class="textalign">预约体验课程</i-col>
   </i-row>
 

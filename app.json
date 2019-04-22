@@ -56,7 +56,7 @@
     "position":"bottom"
   },
   "networkTimeout":{
-    "request":10000
+    "request":60000
   },
   "debug":true
 }

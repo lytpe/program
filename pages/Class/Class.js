@@ -10,7 +10,6 @@ Page({
   data: {
     detail: [],
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -95,7 +94,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://localhost:5001/CoursesManage/GetCourses',
+      url: 'https://www.ruilanya.top/CoursesManage/GetCourses',
       data: {
         page: temppage
       },

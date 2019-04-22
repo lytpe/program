@@ -222,7 +222,6 @@ Page({
       },
       success: function(res){
         var order=res.data;
-        
         wx.requestPayment({
           timeStamp: order["timeStamp"],
           nonceStr:order["nonceStr"],

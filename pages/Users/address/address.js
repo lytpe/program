@@ -16,7 +16,7 @@ Page({
   },
   deleteAddress:function(){
    wx.request({
-     url: 'https://localhost:5001/AddressManager/DeleteAddress',
+     url: 'https://www.ruilanya.top/AddressManager/DeleteAddress',
      data: {
        userName:this.data.name,
        addressPhone:this.data.phone
@@ -50,7 +50,7 @@ Page({
   setdefault:function(event){
     var that=this;
      wx.request({
-       url: 'https://localhost:5001/AddressManager/SetDefault',
+       url: 'https://www.ruilanya.top/AddressManager/SetDefault',
        data: {
          userName: getApp().globalData.userInfo.nickName,
          addressPhone: event.currentTarget.dataset.phone,
@@ -76,7 +76,7 @@ Page({
   getList:function(){
     var that = this;
     wx.request({
-      url: 'https://localhost:5001/AddressManager/GetAddress?userName=' + getApp().globalData.userInfo.nickName,
+      url: 'https://www.ruilanya.top/AddressManager/GetAddress?userName=' + getApp().globalData.userInfo.nickName,
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
