@@ -4,7 +4,7 @@
     <block wx:if="{{index%2==0}}" >
       <view bind:tap="directToCompany"  class="board">
           <i-col span="11" i-class="col-class" offset="1">
-            <image src="{{item.coursePic}}" mode="widthFix" class="image"></image>
+            <image src="{{item.coursePic}}" mode="widthFix" class="image" lazy-load='true'></image>
             <view class="word">{{item.courseName}}</view>
             <view>
               <text class="pricestyle">￥{{item.coursePrice}}</text>
@@ -17,7 +17,7 @@
       <block wx:if="{{index%2==1}}" >
           <view bind:tap="directToCompany" class="board">
               <i-col span="11" i-class="col-class" offset="1">
-                <image src="{{item.coursePic}}" mode="widthFix" class="image"></image>
+                <image src="{{item.coursePic}}" mode="widthFix" class="image" lazy-load='true'></image>
                 <view class="word">{{item.courseName}}</view>
                 <view>
                   <text class="pricestyle">￥{{item.coursePrice}}</text>

@@ -1,6 +1,6 @@
 <!--pages/Order/Order.wxml-->
 <view>
-  <image src="{{pic}}" class="image" mode="widthFix"></image>
+  <image src="{{pic}}" class="image" mode="widthFix" lazy-load='true'></image>
   <i-row>
     <i-col offset="1" span="22">
       <view>{{name}}</view>
@@ -48,12 +48,12 @@
          <view>商店</view>
        </view>
     </i-col>
-    <i-col span="6" i-class="col-class">
+    <i-col span="6" >
       <i-button bind:click="toggletoshop" type="warning" inline="true">
        加入购物车
        </i-button>
     </i-col>
-    <i-col span="6" i-class="col-class" offset="2">
+    <i-col span="6"  offset="2">
        <i-button bind:click="toggletobuy" type="success" inline="true">
           立即购买
         </i-button>
@@ -65,7 +65,7 @@
 <view wx:if="{{showbottom}}" animation="{{animationData}}" class="togglestyle">
   <i-row>
     <i-col span="5" offset="1">
-    <image src="{{pic}}" mode="widthFix" class="smallImage"></image>
+    <image src="{{pic}}" mode="widthFix" class="smallImage" lazy-load='true'></image>
     </i-col>
     <i-col span="4" offset="14">
       <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>
@@ -89,7 +89,7 @@
 <view wx:if="{{showPop}}" animation="{{animationData}}" class="togglestyle">
   <i-row>
     <i-col span="5" offset="1">
-    <image src="{{pic}}" mode="widthFix" class="smallImage"></image>
+    <image src="{{pic}}" mode="widthFix" class="smallImage" lazy-load='true'></image>
     </i-col>
     <i-col span="4" offset="14">
       <i-icon type="close" size="20" color="#000000" bind:tap="toggletoclose"></i-icon>

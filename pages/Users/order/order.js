@@ -21,7 +21,7 @@ Page({
   getOrder:function(){
     var that = this;
     wx.request({
-      url: 'https://www.ruilanya.top/Orders/GetOrders',
+      url: 'https://www.ruilanya.top/OrderManage/GetOrders',
       data: {
         username: app.globalData.userInfo.nickName
       },
@@ -99,7 +99,7 @@ Page({
   },
   payIt:function(e){
     wx.request({
-      url: 'https://www.ruilanya.top/Orders/GetOrderInfo',
+      url: 'https://www.ruilanya.top/OrderManage/GetOrderInfo',
       data: {
         id: e.currentTarget.dataset.id
       },
@@ -128,7 +128,7 @@ Page({
   quit:function(e){
     var that=this;
     wx.request({
-      url: 'https://www.ruilanya.top/Orders/QuitOrder',
+      url: 'https://www.ruilanya.top/OrderManage/QuitOrder',
       data:{
         orderId: e.currentTarget.dataset.id
       },
@@ -152,7 +152,7 @@ Page({
   checkgood:function(e){
     var that = this;
     wx.request({
-      url: 'https://www.ruilanya.top/Orders/CheckOrder',
+      url: 'https://www.ruilanya.top/OrderManage/CheckOrder',
       data: {
         orderId: e.currentTarget.dataset.id
       },

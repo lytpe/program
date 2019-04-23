@@ -7,7 +7,7 @@
      <i-row>
         <view bind:tap="directto" data-links="../Order/Order" data-pic="{{item.picture}}" data-name="{{item.name}}" data-price="{{item.price}}" data-storage="{{item.storageNums}}" data-productInfos="{{item.productInfos}}" data-type="{{item.type}}">
         <i-col span="6">
-        <image src="{{item.picture}}" class="smallimage" mode="widthFix"></image>
+        <image src="{{item.picture}}" class="smallimage" mode="widthFix" lazy-load='true'></image>
         </i-col>
         <i-col span="17"  offset="1">
             <i-row>

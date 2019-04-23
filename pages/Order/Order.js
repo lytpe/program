@@ -93,6 +93,7 @@ Page({
       name:e.currentTarget.dataset.goodname,
       num:e.currentTarget.dataset.num,
       price:this.data.price,
+      pic:this.data.pic,
       isSelect:true
     });
     wx.navigateTo({
@@ -105,6 +106,7 @@ Page({
       name: e.currentTarget.dataset.goodname,
       num: e.currentTarget.dataset.num,
       price: this.data.price,
+      pic:this.data.pic,
       isSelect:false});
     this.setData({
       showPop: false

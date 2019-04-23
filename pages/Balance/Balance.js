@@ -54,7 +54,7 @@ Page({
   getAddress:function(){
     var that=this;
     wx.request({
-      url: 'https://localhost:5001/AddressManager/GetDefaultAddress',
+      url: 'https://www.ruilanya.top/AddressManager/GetDefaultAddress',
       data: {
         userName: getApp().globalData.userInfo.nickName,
       },
@@ -214,7 +214,7 @@ Page({
     };
 
     wx.request({
-      url: 'https://localhost:5001/WeChatPay/GetPrePay',
+      url: 'https://www.ruilanya.top/WeChatPay/GetPrePay',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       data:{
@@ -231,7 +231,7 @@ Page({
           success(res) {
             //添加用户的订单，这部分和微信支付无关
             wx.request({
-              url: 'https://localhost:5001/Orders/weChatOrder',
+              url: 'https://www.ruilanya.top/OrderManage/weChatOrder',
               data: {
                 arrays: JSON.stringify(that.data.deadOrders)
               },

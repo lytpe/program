@@ -24,9 +24,6 @@
             <view class="weui_cell_bd">
               <text class="txtstyle" decode="{{true}}">&emsp;{{item.text}} </text>
             </view>
-            <view wx:if="{{item.isunread}}" class="badge">
-                 {{item.unreadNum}}
-            </view>
         </view>
     </view>
   </view>

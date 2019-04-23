@@ -1,6 +1,6 @@
 <!--pages/Company/Company.wxml-->
   <i-row>
-    <image  src="{{link}}" class="image"></image>
+    <image  src="{{link}}" class="image" lazy-load='true'></image>
   </i-row>
   
   <i-row>

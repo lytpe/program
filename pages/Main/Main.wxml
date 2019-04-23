@@ -1,9 +1,9 @@
 <i-row>
-  <i-col span="22" i-class="col-class" offset="1">
+  <i-col span="22"  offset="1">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}" wx:key="item">
         <swiper-item>
-          <image style="width:100%" src="{{item}}" mode="aspectFit" />
+          <image style="width:100%" src="{{item}}" mode="aspectFit" lazy-load='true'/>
         </swiper-item>
       </block>
     </swiper>
@@ -12,9 +12,9 @@
 
 <i-row>
   <block wx:for="{{lists}}" wx:key="item">
-    <i-col span="5" i-class="col-class" offset="1">
+    <i-col span="5"  offset="1">
       <view bind:tap="toSection" data-links="{{item.url}}">
-        <image src="{{item.show}}" style="width:40px;height:40px;"></image>
+        <image src="{{item.show}}" style="width:40px;height:40px;" lazy-load='true'></image>
         <view style="width:60px;">{{item.name}}</view>
       </view>
     </i-col>
@@ -31,8 +31,8 @@
   <block wx:for="{{detail}}" wx:key="item" wx:for-index="index">
     
       <view wx:if="{{index%2==0}}" bind:tap="showhotproject"  class="board"  data-pinfos="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
-      <i-col span="11" i-class="col-class" offset="1">
-        <image src="{{item.picture}}" mode="widthFix" class="image"></image>
+      <i-col span="11"  offset="1">
+        <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
         <view class="word">{{item.name}}</view>
         <view class="pricestyle">￥{{item.price}}</view>
         </i-col>
@@ -40,8 +40,8 @@
     
     
       <view wx:if="{{index%2==1}}" bind:tap="showhotproject" class="board" data-info="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
-      <i-col span="11" i-class="col-class" offset="1">
-        <image src="{{item.picture}}" mode="widthFix" class="image"></image>
+      <i-col span="11"  offset="1">
+        <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
         <view class="word">{{item.name}}</view>
         <view class="pricestyle">￥{{item.price}}</view>
         </i-col>

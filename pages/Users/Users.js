@@ -7,8 +7,6 @@ Page({
     userListInfo: [{
       icon: '../Images/iconfont-dingdan.png',
       text: '我的订单',
-      isunread: true,
-      unreadNum: 2,
       link:'../Users/order/order'
     }, 
      {
