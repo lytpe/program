@@ -3,6 +3,7 @@ var app=getApp();
 Page({
   data: {
     userInfo:{},
+    isEmployee:"1",
     "link":"../Images/top_bg.png",
     userListInfo: [{
       icon: '../Images/iconfont-dingdan.png',
@@ -52,8 +53,9 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        //console.log(res);
-        //添加用户
+        that.setData({
+          isEmployee:res.data
+        });
       },
       fail: function () {
         wx.showToast({
@@ -72,8 +74,8 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log("show person code:");
-         console.log(res);
+         //console.log("show person code:");
+         //console.log(res);
       },
       fail: function () {
         wx.showToast({

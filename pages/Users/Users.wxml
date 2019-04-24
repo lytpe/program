@@ -10,20 +10,26 @@
             <view class="weui_cell_hd">
                 <image src="{{item.icon}}"></image>
             </view>
-
-            <!-- <view class="weui_cell_bd"> -->
             <view>
-               <!-- <contact-button type="default-light" size="16" session-from='weapp'>{{item.text}}</contact-button> -->
                 <button class='contact-btn' open-type='contact'>联系客服</button>
             </view>
         </view>
-        <view  wx:else class="weui_cell" bindtap="directto" data-links="{{item.link}}">
-            <view class="weui_cell_hd">
-                <image src="{{item.icon}}"></image>
-            </view>
-            <view class="weui_cell_bd">
-              <text class="txtstyle" decode="{{true}}">&emsp;{{item.text}} </text>
-            </view>
+        <view wx:if="{{item.text!='联系客服'&& item.text != '公司成员'}}" class="weui_cell" bindtap="directto" data-links="{{item.link}}">
+
+              <view class="weui_cell_hd">
+                  <image src="{{item.icon}}"></image>
+              </view>
+              <view class="weui_cell_bd">
+                <text class="txtstyle" decode="{{true}}">&emsp;{{item.text}} </text>
+              </view>
         </view>
+         <view wx:if="{{item.text=='公司成员'&&isEmployee=='2'}}" class="weui_cell" bindtap="directto" data-links="{{item.link}}">
+              <view class="weui_cell_hd">
+                  <image src="{{item.icon}}"></image>
+              </view>
+              <view class="weui_cell_bd">
+                <text class="txtstyle" decode="{{true}}">&emsp;{{item.text}} </text>
+              </view>
+          </view>
     </view>
   </view>

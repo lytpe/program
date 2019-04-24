@@ -32,13 +32,13 @@
       </picker>
 
     <i-row>
-     <i-col span="10" offset="2">
+     <i-col span="18" offset="3">
      <textarea placeholder="预约课程名" placeholder-class="textalign" auto-focus name="message"/>
      </i-col>
     </i-row>
 
     <i-row>
-      <i-col span="16" offset="4" class="textalign">
+      <i-col span="12" offset="6" class="textalign">
         <button type="primary" form-type="submit">立即预约</button>
       </i-col>
     </i-row>
