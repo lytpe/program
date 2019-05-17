@@ -30,7 +30,7 @@ Page({
      }
     this.getAddress();
       // wx.request({
-      //   url: 'https://localhost:5001/Products/GetItemDetail',
+      //   url: 'https://localhost:5001/ProductsManage/GetItemDetail',
       //   data:{
       //     name:options.Name,
       //     num:options.num

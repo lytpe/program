@@ -3,7 +3,14 @@ var app=getApp();
 Page({
   data: {
     userInfo:{},
+    piclist: ["../Images/20190517092752.png"],
+    // piclist: ["https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJcPfvl3FMjVY23op42K8BhR5oSx4q1kfuRoe1ULo1X366iazZg6R94nXXUibaGNutLTb75Qds5LiaGA/132"],
     isEmployee:"1",
+    cid:0,
+    hasQR:false,
+    blanace:"",
+    referee:"无",
+    
     "link":"../Images/top_bg.png",
     userListInfo: [{
       icon: '../Images/iconfont-dingdan.png',
@@ -35,18 +42,28 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      userInfo:app.globalData.userInfo
-    })
+    if(app.globalData.pid!=null){
+      that.setData({
+        userInfo: app.globalData.userInfo,
+        referee:app.globalData.pid
+      })
+    }
+    else{
+      that.setData({
+        userInfo: app.globalData.userInfo,
+        referee: "无"
+      })
+    }
     wx.request({
-      url: 'https://www.ruilanya.top/Customer/AddStaff',
+      url: 'https://localhost:5001/CustomerManage/AddStaff',
       data:{
        name:that.data.userInfo.nickName,
         gender: that.data.userInfo.gender,
         city: that.data.userInfo.city,
         province: that.data.userInfo.province,
         country: that.data.userInfo.country,
-        referee:"无"
+        referee: that.data.referee,
+        picurl:that.data.userInfo.avatarUrl
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -54,8 +71,38 @@ Page({
       method: 'POST',
       success: function (res) {
         that.setData({
-          isEmployee:res.data
+          isEmployee:res.data.ctype,
+          cid:res.data.cid,
+          hasQR:res.data.hasQR,
+          balance:res.data.balance
         });
+        if (that.data.hasQR == false) {
+          wx.request({
+            url: 'https://localhost:5001/CustomerManage/GetCode',
+            data: {
+              s: that.data.cid,
+              page: 'pages/Main/Main',
+              access_token: app.globalData.accesstoken
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            method: 'POST',
+            success: function (res) {
+              that.setData({
+                piclist: res.data.imgurl
+              });
+            },
+            fail: function () {
+              wx.showToast({
+                title: '网络延迟！',
+              });
+            }
+          });
+        }
+        else{
+        }
+
       },
       fail: function () {
         wx.showToast({
@@ -63,32 +110,19 @@ Page({
         });
       }
     });
-    wx.request({
-      url: 'https://www.ruilanya.top/Customer/GetCode',
-      data: {
-        name:that.data.userInfo.nickName,
-        access_token: app.globalData.accesstoken
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success: function (res) {
-         //console.log("show person code:");
-         //console.log(res);
-      },
-      fail: function () {
-        wx.showToast({
-          title: '网络延迟！',
-        });
-      }
-    });
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  previewImage:function(e){
+    var pic=e.currentTarget.dataset.list;
+     wx.previewImage({
+       current:pic,
+       urls:[pic],
+     })
+  },
   onReady: function () {
-
   },
 
   /**

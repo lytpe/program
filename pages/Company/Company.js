@@ -65,7 +65,7 @@ Page({
   FormSubmit:function(e){
     if(e.detail.value.dates!=null&&e.detail.value.times!=null){
       wx.request({
-        url: 'https://www.ruilanya.top/Appointments/Add',
+        url: 'https://www.ruilanya.top/AppointmentManage/Add',
         data: {
          dates:e.detail.value.dates,
          times:e.detail.value.times,

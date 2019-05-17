@@ -55,6 +55,7 @@ App({
     ordersItemArray:[],
     singleItem:{},
     openId:null,
-    accesstoken:null
+    accesstoken:null,
+    pid:null,
   }
 })

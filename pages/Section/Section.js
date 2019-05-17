@@ -91,7 +91,7 @@ Page({
     }
     var that=this;
     wx.request({
-      url: "https://www.ruilanya.top/Products/GetProductsList",
+      url: "https://www.ruilanya.top/ProductsManage/GetProductsList",
       data:{
         page: temppage
       },

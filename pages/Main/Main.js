@@ -57,11 +57,12 @@ Page({
   },
 
   onLoad:function(options){
+    app.globalData.pid = decodeURIComponent(options.scene);
     wx.login({
       success: res => {
         if (res.code) {
           wx.request({
-            url: "https://www.ruilanya.top/Products/GetUserInfo",
+            url: "https://localhost:5001/ProductsManage/GetUserInfo",
             data: {
               code: res.code
             },
@@ -109,7 +110,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://www.ruilanya.top/Products/GetHotProduct',
+      url: 'https://www.ruilanya.top/ProductsManage/GetHotProduct',
       data: {
         page: temppage
       },
@@ -142,7 +143,7 @@ Page({
     if (res.from === 'menu') {
     }
     return {
-      title: '冰尘',
+      title: '冰晨',
       path: '/pages/Main'
     }
   }

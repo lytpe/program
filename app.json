@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/Index/Index",
     "pages/Main/Main",
     "pages/Company/Company",
@@ -15,37 +15,35 @@
     "pages/Balance/Balance",
     "pages/Class/Class"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "冰尘",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "冰晨",
+    "navigationBarTextStyle": "black"
   },
-  "tabBar":{
-    "color":"#1c1b21",
-    "selectedColor":"#bf9e5f",
-    "backgroundColor":"#fff",
-    "list":[
+  "tabBar": {
+    "color": "#1c1b21",
+    "selectedColor": "#bf9e5f",
+    "backgroundColor": "#fff",
+    "list": [
       {
-      "pagePath":"pages/Main/Main",
-      "text":"主页",
-      "iconPath":"pages/Images/home.png",
-      "selectedIconPath":"pages/Images/selected_home.png"
-    },
-       {
-      "pagePath": "pages/Class/Class",
-      "text": "课程",
-      "iconPath": "pages/Images/other.png",
-      "selectedIconPath": "pages/Images/selected_other.png"
-       }
-       ,
+        "pagePath": "pages/Main/Main",
+        "text": "主页",
+        "iconPath": "pages/Images/home.png",
+        "selectedIconPath": "pages/Images/selected_home.png"
+      },
+      {
+        "pagePath": "pages/Class/Class",
+        "text": "课程",
+        "iconPath": "pages/Images/other.png",
+        "selectedIconPath": "pages/Images/selected_other.png"
+      },
       {
         "pagePath": "pages/Company/Company",
         "text": "简介",
         "iconPath": "pages/Images/company.png",
         "selectedIconPath": "pages/Images/selected_company.png"
-      }
-      ,
+      },
       {
         "pagePath": "pages/Users/Users",
         "text": "我的",
@@ -53,10 +51,11 @@
         "selectedIconPath": "pages/Images/selected_users.png"
       }
     ],
-    "position":"bottom"
+    "position": "bottom"
   },
-  "networkTimeout":{
-    "request":60000
+  "networkTimeout": {
+    "request": 60000
   },
-  "debug":true
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
 }

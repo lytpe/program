@@ -1,8 +1,9 @@
 <!--pages/Users/Users.wxml-->
 <view style="background-image:url('{{link}}');" class="bg">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" lazy-load='true'></image>
    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-   <text>余额为：0</text>
+   <text>余额为：{{balance}}</text>
+   <image class="smallImage" bindtap="previewImage" data-list="{{piclist[0]}}" src="{{piclist[0]}}" lazy-load='true'></image>
 </view>
 <view class="info_list">
     <view wx:for="{{userListInfo}}" wx:key="item">
