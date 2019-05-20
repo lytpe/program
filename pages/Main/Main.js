@@ -62,7 +62,7 @@ Page({
       success: res => {
         if (res.code) {
           wx.request({
-            url: "https://localhost:5001/ProductsManage/GetUserInfo",
+            url: "https://www.ruilanya.top/ProductsManage/GetUserInfo",
             data: {
               code: res.code
             },

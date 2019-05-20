@@ -3,7 +3,8 @@ var app=getApp();
 Page({
   data: {
     userInfo:{},
-    piclist: ["../Images/20190517092752.png"],
+    //piclist: ["../Images/20190517092752.png"],
+    piclist:[],
     // piclist: ["https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJcPfvl3FMjVY23op42K8BhR5oSx4q1kfuRoe1ULo1X366iazZg6R94nXXUibaGNutLTb75Qds5LiaGA/132"],
     isEmployee:"1",
     cid:0,
@@ -55,9 +56,9 @@ Page({
       })
     }
     wx.request({
-      url: 'https://localhost:5001/CustomerManage/AddStaff',
+      url: 'https://www.ruilanya.top/CustomerManage/AddStaff',
       data:{
-       name:that.data.userInfo.nickName,
+        name:that.data.userInfo.nickName,
         gender: that.data.userInfo.gender,
         city: that.data.userInfo.city,
         province: that.data.userInfo.province,
@@ -76,9 +77,11 @@ Page({
           hasQR:res.data.hasQR,
           balance:res.data.balance
         });
+        console.log("show hasRQ");
+        console.log(res);
         if (that.data.hasQR == false) {
           wx.request({
-            url: 'https://localhost:5001/CustomerManage/GetCode',
+            url: 'https://www.ruilanya.top/CustomerManage/GetCode',
             data: {
               s: that.data.cid,
               page: 'pages/Main/Main',
@@ -101,8 +104,27 @@ Page({
           });
         }
         else{
+          wx.request({
+            url: 'https://www.ruilanya.top/CustomerManage/GetQRImage',
+            data: {
+              s: that.data.cid,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            method: 'POST',
+            success: function (res) {
+              that.setData({
+                piclist: res.data.imgurl
+              });
+            },
+            fail: function () {
+              wx.showToast({
+                title: '网络延迟！',
+              });
+            }
+          });
         }
-
       },
       fail: function () {
         wx.showToast({
