@@ -3,9 +3,7 @@ var app=getApp();
 Page({
   data: {
     userInfo:{},
-    //piclist: ["../Images/20190517092752.png"],
     piclist:[],
-    // piclist: ["https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJcPfvl3FMjVY23op42K8BhR5oSx4q1kfuRoe1ULo1X366iazZg6R94nXXUibaGNutLTb75Qds5LiaGA/132"],
     isEmployee:"1",
     cid:0,
     hasQR:false,
@@ -77,8 +75,6 @@ Page({
           hasQR:res.data.hasQR,
           balance:res.data.balance
         });
-        console.log("show hasRQ");
-        console.log(res);
         if (that.data.hasQR == false) {
           wx.request({
             url: 'https://www.ruilanya.top/CustomerManage/GetCode',
@@ -115,7 +111,7 @@ Page({
             method: 'POST',
             success: function (res) {
               that.setData({
-                piclist: res.data.imgurl
+                piclist:[res.data.imgurl]
               });
             },
             fail: function () {
