@@ -62,7 +62,7 @@ Page({
       success: res => {
         if (res.code) {
           wx.request({
-            url: "https://www.ruilanya.top/ProductsManage/GetUserInfo",
+            url: "https://localhost:5001/ProductsManage/GetUserInfo",
             data: {
               code: res.code
             },
@@ -74,15 +74,15 @@ Page({
               app.globalData.openId=res.data.open_id
               app.globalData.accesstoken=res.data.access_token;
             },
-            fail: function () {
-              wx.showToast({
-                title: '登录失败！',
-              });
-            }
+             fail: function () {
+               wx.showToast({
+                 title: '登录失败！',
+               });
+             }
           })
-        }
-      }
-    });
+         }
+       }
+     });
   },
   onShow:function(){
     page = 1;
@@ -110,7 +110,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://www.ruilanya.top/ProductsManage/GetHotProduct',
+      url: 'https://localhost:5001/ProductsManage/GetHotProduct',
       data: {
         page: temppage
       },

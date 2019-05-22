@@ -16,7 +16,7 @@
     
       <block wx:if="{{index%2==1}}" >
           <view bind:tap="directToCompany" class="board">
-              <i-col span="11" i-class="col-class" offset="1">
+              <i-col span="11" i-class="col-class" >
                 <image src="{{item.coursePic}}" mode="widthFix" class="image" lazy-load='true'></image>
                 <view class="word">{{item.courseName}}</view>
                 <view>

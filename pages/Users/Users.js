@@ -2,15 +2,14 @@
 var app=getApp();
 Page({
   data: {
-    userInfo:{},
     piclist:[],
     isEmployee:"1",
     cid:0,
     hasQR:false,
     blanace:"",
     referee:"无",
-    
-    "link":"../Images/top_bg.png",
+    userInfo: {},
+    "link":"https://www.ruilanya.top/images/top_bg.png",
     userListInfo: [{
       icon: '../Images/iconfont-dingdan.png',
       text: '我的订单',
@@ -43,7 +42,7 @@ Page({
     var that = this;
     if(app.globalData.pid!=null){
       that.setData({
-        userInfo: app.globalData.userInfo,
+        userInfo:app.globalData.userInfo,
         referee:app.globalData.pid
       })
     }
@@ -54,15 +53,15 @@ Page({
       })
     }
     wx.request({
-      url: 'https://www.ruilanya.top/CustomerManage/AddStaff',
+      url: 'https://localhost:5001/CustomerManage/AddStaff',
       data:{
-        name:that.data.userInfo.nickName,
-        gender: that.data.userInfo.gender,
-        city: that.data.userInfo.city,
-        province: that.data.userInfo.province,
-        country: that.data.userInfo.country,
+        name:app.globalData.userInfo.nickName,
+        gender: app.globalData.userInfo.gender,
+        city: app.globalData.userInfo.city,
+        province: app.globalData.userInfo.province,
+        country: app.globalData.userInfo.country,
         referee: that.data.referee,
-        picurl:that.data.userInfo.avatarUrl
+        picurl: app.globalData.userInfo.avatarUrl
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -77,7 +76,7 @@ Page({
         });
         if (that.data.hasQR == false) {
           wx.request({
-            url: 'https://www.ruilanya.top/CustomerManage/GetCode',
+            url: 'https://localhost:5001/CustomerManage/GetCode',
             data: {
               s: that.data.cid,
               page: 'pages/Main/Main',
@@ -89,7 +88,7 @@ Page({
             method: 'POST',
             success: function (res) {
               that.setData({
-                piclist: res.data.imgurl
+                piclist:[res.data.imgurl]
               });
             },
             fail: function () {
@@ -101,7 +100,7 @@ Page({
         }
         else{
           wx.request({
-            url: 'https://www.ruilanya.top/CustomerManage/GetQRImage',
+            url: 'https://localhost:5001/CustomerManage/GetQRImage',
             data: {
               s: that.data.cid,
             },

@@ -40,7 +40,7 @@
     
     
       <view wx:if="{{index%2==1}}" bind:tap="showhotproject" class="board" data-info="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
-      <i-col span="11"  offset="1">
+      <i-col span="11" >
         <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
         <view class="word">{{item.name}}</view>
         <view class="pricestyle">￥{{item.price}}</view>
