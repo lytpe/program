@@ -117,7 +117,7 @@ Page({
   },
 
   backToMain: function (event) {
-    console.log(event)
+
     wx.switchTab({
       url: event.currentTarget.dataset.indexs,
     });
@@ -134,7 +134,7 @@ Page({
       timingFunction: 'ease',
       delay: 100,
       success: function (res) {
-        console.log(res);
+        //console.log(res);
       }
     });
     animation.step();

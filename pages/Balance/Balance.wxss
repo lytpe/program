@@ -14,6 +14,7 @@
 }
 .txtarea{
   background:gainsboro;
+  height:150px;
 }
 .bttype{
   background:orange;

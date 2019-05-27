@@ -64,6 +64,8 @@ Page({
   },
   FormSubmit:function(e){
     if(e.detail.value.dates!=null&&e.detail.value.times!=null){
+      console.log("show nickName");
+      console.log(app.globalData.userInfo.nickName);
       wx.request({
         url: 'https://www.ruilanya.top/AppointmentManage/Add',
         data: {

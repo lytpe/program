@@ -7,7 +7,8 @@ Page({
      saletype:[{id:1,name:"微信支付"}],
      totalPrice:0,
      goods:[],
-     deadOrders:[]
+     deadOrders:[],
+     opinions:"",
   },
   /**
    * 生命周期函数--监听页面加载
@@ -119,6 +120,13 @@ Page({
   onShareAppMessage: function(){
 
   },
+  getValue:function(e){
+    console.log("show textarea value");
+    console.log(e.detail.value);
+    this.setData({
+      oopinions:e.detail.value
+    })
+  },
   changeNum:function({detail}){
     var that=this;
     var tempprice=0;
@@ -168,11 +176,11 @@ Page({
     }
   },
 
-  handlechange: function({ detail }){
-    this.setData({
-      current: detail.value
-    })
-  },
+  // handlechange: function({ detail }){
+  //   this.setData({
+  //     current: detail.value
+  //   })
+  // },
   //是否选中该商品
   switchSelect: function(e){
     var tempprice=0;
@@ -210,6 +218,7 @@ Page({
       temp["num"]=that.data.goods[i].num;
       temp["price"]=that.data.goods[i].price;
       temp["username"] = app.globalData.userInfo.nickName;
+      temp["opinions"]=that.data.opinions;
       that.data.deadOrders.push(temp);
     };
 
@@ -218,7 +227,8 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       method: 'POST',
       data:{
-        open_id: app.globalData.openId
+        open_id: app.globalData.openId,
+        totalPrice:that.data.totalPrice
       },
       success: function(res){
         var order=res.data;
@@ -252,7 +262,7 @@ Page({
             });
           },
           fail(res) {
-            console.log(res);
+            
             wx.showToast({
               title: '支付失败',
               duration:1000

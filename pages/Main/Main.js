@@ -62,7 +62,7 @@ Page({
       success: res => {
         if (res.code) {
           wx.request({
-            url: "https://localhost:5001/ProductsManage/GetUserInfo",
+            url: "https://www.ruilanya.top/ProductsManage/GetUserInfo",
             data: {
               code: res.code
             },
@@ -110,7 +110,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://localhost:5001/ProductsManage/GetHotProduct',
+      url: 'https://www.ruilanya.top/ProductsManage/GetHotProduct',
       data: {
         page: temppage
       },

@@ -40,7 +40,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if(app.globalData.pid!=null){
+    if(app.globalData.pid!=undefined){
       that.setData({
         userInfo:app.globalData.userInfo,
         referee:app.globalData.pid
@@ -53,7 +53,7 @@ Page({
       })
     }
     wx.request({
-      url: 'https://localhost:5001/CustomerManage/AddStaff',
+      url: 'https://www.ruilanya.top/CustomerManage/AddStaff',
       data:{
         name:app.globalData.userInfo.nickName,
         gender: app.globalData.userInfo.gender,
@@ -76,7 +76,7 @@ Page({
         });
         if (that.data.hasQR == false) {
           wx.request({
-            url: 'https://localhost:5001/CustomerManage/GetCode',
+            url: 'https://www.ruilanya.top/CustomerManage/GetCode',
             data: {
               s: that.data.cid,
               page: 'pages/Main/Main',
@@ -100,7 +100,7 @@ Page({
         }
         else{
           wx.request({
-            url: 'https://localhost:5001/CustomerManage/GetQRImage',
+            url: 'https://www.ruilanya.top/CustomerManage/GetQRImage',
             data: {
               s: that.data.cid,
             },

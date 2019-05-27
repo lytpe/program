@@ -21,8 +21,8 @@
   </block>
 
  <i-row>
-   <i-col span="22" offset="1">
-     <textarea placeholder='卖家留言' class="txtarea"></textarea>
+   <i-col span="23" offset="2">
+     <textarea placeholder='卖家留言' class="txtarea" bindblur='getValue'  ></textarea>
    </i-col>
  </i-row>
 
@@ -68,10 +68,10 @@
   <i-divider></i-divider>
 
 <view title="付款方式">
-    <i-radio-group current="{{current}}" bindchange="handlechange">
+    <!-- <i-radio-group current="{{current}}" bindchange="handlechange"> -->
         <i-radio wx:for="{{saletype}}"  wx:key="{{item.id}}" value="{{item.name}}" position="{{left}}">
         </i-radio>
-    </i-radio-group>
+    <!-- </i-radio-group> -->
 </view>
 
   <i-divider></i-divider>
