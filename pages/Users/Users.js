@@ -9,7 +9,7 @@ Page({
     blanace:"",
     referee:"无",
     userInfo: {},
-    "link":"https://www.ruilanya.top/images/top_bg.png",
+    "link":"../images/top_bg.png",
     userListInfo: [{
       icon: '../Images/iconfont-dingdan.png',
       text: '我的订单',
@@ -40,7 +40,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if(app.globalData.pid!=undefined){
+    console.log("show pid:");
+    console.log(app.globalData.pid)
+    if (app.globalData.pid!='undefined'){
       that.setData({
         userInfo:app.globalData.userInfo,
         referee:app.globalData.pid
@@ -52,6 +54,8 @@ Page({
         referee: "无"
       })
     }
+    console.log("show after if ");
+    console.log(that.data.referee);
     wx.request({
       url: 'https://www.ruilanya.top/CustomerManage/AddStaff',
       data:{

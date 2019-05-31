@@ -86,6 +86,6 @@ App({
     singleItem:{},
     openId:null,
     accesstoken:null,
-    pid:null,
+    pid:"",
   }
 })

@@ -1,28 +1,21 @@
 // pages/hairdressing/hairdressing.js
-let page=1;
-let reachBottom=false;
+let spage=1;
+let sreachBottom=false;
 var app=getApp();
 Page({
   data:{
      products:[]
   },
-  directto:function(e){
-    app.globalData.singleItem={
-    name: e.currentTarget.dataset.name,
-    pic: e.currentTarget.dataset.pic,
-    price: e.currentTarget.dataset.price,
-    storageNum: e.currentTarget.dataset.storage,
-    productInfo: e.currentTarget.dataset.productinfos,
-    type: e.currentTarget.dataset.type};
-    wx.navigateTo({
-      url: e.currentTarget.dataset.links
-    });
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options){
+    spage = 1;
+    sreachBottom = false;
+    this.setData({
+      products: []
+    })
+    this.getList(spage);
   },
 
   /**
@@ -35,15 +28,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    page=1;
-    reachBottom=false;
+    spage=1;
+    sreachBottom=false;
     this.setData({
       products:[]
     })
-    this.getProductList(page);
-
+    this.getList(spage);
   },
-
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    wx.showLoading({
+      title: '加载中',
+    });
+    this.getList(spage);
+    setTimeout(function () {
+      wx.hideLoading(), 2000
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -62,19 +65,20 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    wx.showLoading({
-      title: '加载中',
+  directto: function (e) {
+    app.globalData.singleItem = {
+      name: e.currentTarget.dataset.name,
+      pic: e.currentTarget.dataset.pic,
+      price: e.currentTarget.dataset.price,
+      storageNum: e.currentTarget.dataset.storage,
+      productInfo: e.currentTarget.dataset.productinfos,
+      type: e.currentTarget.dataset.type
+    };
+    wx.navigateTo({
+      url: e.currentTarget.dataset.links
     });
-    this.getProductList(page);
-    setTimeout(function () {
-      wx.hideLoading(), 2000
-    })
   },
+
 
   /**
    * 用户点击右上角分享
@@ -82,8 +86,8 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getProductList:function(temppage){
-    if(reachBottom!=false){
+  getList:function(temppage){
+    if(sreachBottom!=false){
       wx.showToast({
         title: '到达底部',
       });
@@ -104,10 +108,10 @@ Page({
         for(var i=0;i<res.data.products.length;i++){
           listdata.push(res.data.products[i]);
         }
-        if(res.data.products<5){
-          reachBottom=true;
+        if(res.data.products<6){
+          sreachBottom=true;
         }else{
-          page++;
+          spage++;
         }
         that.setData({
           products:listdata

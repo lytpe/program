@@ -1,6 +1,6 @@
 <!--pages/Admin/Admin.wxml-->
 <view class="auth">
-  <image src="https://ruilanya.top/images/logo.jpg" class="img" mode="aspectFill"></image>
+  <image src="https://www.ruilanya.top/images/logo.jpg" class="img" mode="aspectFill"></image>
   <view class="title">欢迎使用！</view>
   <view class="describe">此页面是微信授权页面</view>
   <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>

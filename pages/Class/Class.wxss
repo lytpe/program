@@ -5,7 +5,7 @@
   border-radius: 4px 4px;
 }
 .image{
-  width:343.75rpx;
+  width:330rpx;
   border-radius: 4px 4px;
 }
 .pricestyle{

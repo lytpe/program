@@ -5,9 +5,9 @@ var app=getApp();
 Page({
   data: {
     imgUrls: [
-      "../../utils/Index.jpg",
-      "../../utils/Index.jpg",
-      "../../utils/Index.jpg"
+      "../../utils/three.png",
+      "../../utils/six.png",
+      "../../utils/seven.png"
     ],
     indicatorDots: true,
     autoplay: true,

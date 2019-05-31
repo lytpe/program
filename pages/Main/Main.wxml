@@ -1,7 +1,7 @@
 <i-row>
   <i-col span="22"  offset="1">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}" wx:key="item">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:450rpx;">
+      <block wx:for="{{imgUrls}}" wx:key="item" >
         <swiper-item>
           <image style="width:100%" src="{{item}}" mode="aspectFit" lazy-load='true'/>
         </swiper-item>
@@ -29,26 +29,28 @@
 
 <i-row>
   <block wx:for="{{detail}}" wx:key="item" wx:for-index="index">
-    
-      <view wx:if="{{index%2==0}}" bind:tap="showhotproject"  class="board"  data-pinfos="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
-      <i-col span="11"  offset="1">
-        <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
-        <view class="word">{{item.name}}</view>
-        <view class="pricestyle">￥{{item.price}}</view>
-        </i-col>
+      <view bind:tap="showhotproject"  class="board"  data-pinfos="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
+          <block wx:if="{{index%2==0}}">
+          <i-col span="11" offset="1">
+            <view>
+              <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
+            </view>
+            <view class="word">{{item.name}}</view>
+            <view class="pricestyle">￥{{item.price}}</view>
+            </i-col>
+          </block>
+          <block wx:if="{{index%2==1}}">
+          <i-col span="11">
+            <view>
+              <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
+            </view>
+            <view class="word">{{item.name}}</view>
+            <view class="pricestyle">￥{{item.price}}</view>
+          </i-col>
+          </block>
       </view>
-    
-    
-      <view wx:if="{{index%2==1}}" bind:tap="showhotproject" class="board" data-info="{{item.productInfos}}" data-price="{{item.price}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-snum="{{item.storageNums}}" data-type="{{item.type}}" >
-      <i-col span="11" >
-        <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
-        <view class="word">{{item.name}}</view>
-        <view class="pricestyle">￥{{item.price}}</view>
-        </i-col>
-      </view>
-    
-    <view wx:if="{{index%2==1}}">
-     <text> \n </text>
-    </view>
+        <view wx:if="{{index%2==1}}">
+          <text> \n </text>
+        </view>
   </block>
 </i-row>

@@ -48,7 +48,7 @@ Page({
     if (res.from === 'menu') {
     }
     return {
-      title: '冰尘',
+      title: '冰晨',
       path: '/pages/Company'
     }
   },
