@@ -78,7 +78,7 @@ Page({
           wx.request({
             url: 'https://www.ruilanya.top/CustomerManage/GetCode',
             data: {
-              s: that.data.cid,
+              cid: that.data.cid,
               page: 'pages/Main/Main',
               access_token: app.globalData.accesstoken
             },
@@ -94,7 +94,7 @@ Page({
             fail: function () {
 
 
-              
+
               wx.showToast({
                 title: '网络延迟！',
               });
@@ -105,7 +105,7 @@ Page({
           wx.request({
             url: 'https://www.ruilanya.top/CustomerManage/GetQRImage',
             data: {
-              s: that.data.cid,
+              cid: that.data.cid,
             },
             header: {
               'content-type': 'application/x-www-form-urlencoded'
