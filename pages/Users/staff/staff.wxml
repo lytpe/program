@@ -4,8 +4,8 @@
    <i-collapse-item title="{{item.userName}}" name="{{item.id}}">
       <view slot="content">
           <i-row>
-            <i-col span="8"><image src="{{item.userPic}}" mode="widthFix" class="imagestyle"/></i-col>
-             <i-col span="10">
+            <i-col span="6"><image src="{{item.userPic}}" mode="widthFix" class="imagestyle"/></i-col>
+             <i-col span="12">
             <view class="fontsize">
                地区:
             </view>

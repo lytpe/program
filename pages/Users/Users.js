@@ -3,7 +3,7 @@ var app=getApp();
 Page({
   data: {
     piclist:[],
-    isEmployee:"1",
+    isEmployee:"3",
     cid:0,
     hasQR:false,
     blanace:"",
@@ -40,8 +40,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log("show pid:");
-    console.log(app.globalData.pid)
     if (app.globalData.pid!='undefined'){
       that.setData({
         userInfo:app.globalData.userInfo,
@@ -54,8 +52,6 @@ Page({
         referee: "无"
       })
     }
-    console.log("show after if ");
-    console.log(that.data.referee);
     wx.request({
       url: 'https://www.ruilanya.top/CustomerManage/AddStaff',
       data:{
@@ -96,6 +92,9 @@ Page({
               });
             },
             fail: function () {
+
+
+              
               wx.showToast({
                 title: '网络延迟！',
               });

@@ -83,7 +83,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: "https://www.ruilanya.top/Customer/GetAllInfos",
+      url: "https://www.ruilanya.top/CustomerManage/GetAllInfos",
       data: {
         page: temppage
       },
@@ -92,7 +92,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (res) {
-        console.log(res);
         var listdata = that.data.staffs;
         for (var i = 0; i < res.data.allstaff.length; i++) {
           listdata.push(res.data.allstaff[i]);

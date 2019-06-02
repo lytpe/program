@@ -6,7 +6,7 @@ Page({
     phone:""
   },
   handleOpen1:function(event) {
-    console.log(event);
+    //console.log(event);
     var that=this;
     that.setData({
       visible: true,

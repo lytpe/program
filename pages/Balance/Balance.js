@@ -31,7 +31,7 @@ Page({
      }
     this.getAddress();
       // wx.request({
-      //   url: 'https://localhost:5001/ProductsManage/GetItemDetail',
+      //   url: 'https://www.ruilanya.top/ProductsManage/GetItemDetail',
       //   data:{
       //     name:options.Name,
       //     num:options.num
@@ -121,10 +121,8 @@ Page({
 
   },
   getValue:function(e){
-    console.log("show textarea value");
-    console.log(e.detail.value);
     this.setData({
-      oopinions:e.detail.value
+      opinions:e.detail.value
     })
   },
   changeNum:function({detail}){

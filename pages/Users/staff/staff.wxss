@@ -7,7 +7,7 @@
   font-size: 12px;
 }
 .imagestyle{
-  width:200rpx;
+  width:150rpx;
   border-radius: 4px 4px;
 }
 .fontsize{

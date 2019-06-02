@@ -24,7 +24,7 @@
                 <text class="txtstyle" decode="{{true}}">&emsp;{{item.text}} </text>
               </view>
         </view>
-         <view wx:if="{{item.text=='公司成员'&&isEmployee=='2'}}" class="weui_cell" bindtap="directto" data-links="{{item.link}}">
+         <view wx:if="{{item.text=='公司成员'&& (isEmployee=='1'||isEmployee=='2')}}" class="weui_cell" bindtap="directto" data-links="{{item.link}}">
               <view class="weui_cell_hd">
                   <image src="{{item.icon}}"></image>
               </view>
