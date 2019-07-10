@@ -1,0 +1,83 @@
+<!--pages/Order/Order.wxml-->
+<view>
+  <i-row>
+    <i-col offset="6" span="12">
+      <view style='text-align: center;'>{{classdetail.courseName}}</view>
+    </i-col>
+  </i-row>
+  <image src="{{classdetail.coursePic}}" class="image" mode="widthFix" lazy-load='true'>课程美图</image>
+  <i-divider content="详情" ></i-divider>
+  <i-row>
+      <i-col offset="1" span="7">
+       <view>课程老师：</view>
+     </i-col>
+      <i-col  span="16">
+       <view>{{classdetail.courseTeacher}}</view>
+     </i-col>
+  </i-row>
+  <i-row>
+       <i-col offset="1" span="7">
+       <text>课程时间：</text>
+     </i-col>
+      <i-col  span="16">
+       <view>{{classdetail.courseTime}}</view>
+     </i-col>
+  </i-row>
+    <i-row>
+    <i-col offset="1" span="7">
+       <view>课程地址：</view>
+    </i-col>
+    <i-col  span="16">
+       <view>{{classdetail.courseAddress}}</view>
+     </i-col>
+  </i-row>
+  <i-row>
+     <i-col offset="1" span="22">
+       <view>课程内容：</view>
+     </i-col>
+  </i-row>
+    <i-row>
+     <i-col offset="1" span="22">
+       <view>{{classdetail.courseContent}}</view>
+     </i-col>
+  </i-row>
+  <i-row>
+     <i-col offset="1" span="22">
+       <view>课程安排:</view>
+     </i-col>
+  </i-row>
+  <i-row>
+     <i-col offset="1" span="22">
+       <view>{{classdetail.courseDescription}}</view>
+     </i-col>
+  </i-row>
+</view>
+  <i-divider content="预约" ></i-divider>
+<view>
+ <i-row>
+    <i-col span="8" offset="8" class="textalign">预约课程</i-col>
+  </i-row>
+<i-row>
+  <i-col span="22" offset="1">
+  <form bindsubmit="FormSubmit" bindreset="FormReset" report-submit='true'>
+      <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="dateBindChange" name="dates">
+          <i-row class="textalign">
+            <i-col span="8">日期选择: </i-col>
+            <i-col span="16">{{dateValue}}</i-col>
+          </i-row>
+      </picker>
+      <picker mode="time" name="times" value="{{time}}" start="00:00" end="23:59" bindchange="timeBindChange">
+        <i-row class="textalign">
+          <i-col span="8">时间选择: </i-col>
+          <i-col span="16">{{time}}</i-col>
+        </i-row>
+      </picker>
+    <i-row>
+      <i-col span="12" offset="6" class="textalign">
+        <button type="primary" form-type="submit">立即预约</button>
+      </i-col>
+    </i-row>
+  </form>
+  </i-col>
+</i-row>
+</view>

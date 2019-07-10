@@ -3,7 +3,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:450rpx;">
       <block wx:for="{{imgUrls}}" wx:key="item" >
         <swiper-item>
-          <image style="width:100%" src="{{item}}" mode="aspectFit" lazy-load='true'/>
+          <image class="swiperImage" src="{{item}}" mode="widthFix" lazy-load='true'/>
         </swiper-item>
       </block>
     </swiper>
@@ -14,8 +14,8 @@
   <block wx:for="{{lists}}" wx:key="item">
     <i-col span="5"  offset="1">
       <view bind:tap="toSection" data-links="{{item.url}}">
-        <image src="{{item.show}}" style="width:40px;height:40px;" lazy-load='true'></image>
-        <view style="width:60px;">{{item.name}}</view>
+        <image class="iconImage" src="{{item.show}}"  lazy-load='true'></image>
+         <view style="width:100rpx;text-align:center;">{{item.name}}</view>
       </view>
     </i-col>
   </block>
@@ -33,19 +33,19 @@
           <block wx:if="{{index%2==0}}">
           <i-col span="11" offset="1">
             <view>
-              <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
+              <image  class="itemimage" src="{{item.picture}}" mode="aspectFit"  lazy-load='true'></image>
+              <view class="word">{{item.name}}</view>
+              <view class="pricestyle">￥{{item.price}}</view>
             </view>
-            <view class="word">{{item.name}}</view>
-            <view class="pricestyle">￥{{item.price}}</view>
             </i-col>
           </block>
           <block wx:if="{{index%2==1}}">
           <i-col span="11">
             <view>
-              <image src="{{item.picture}}" mode="widthFix" class="image" lazy-load='true'></image>
+              <image class="itemimage" src="{{item.picture}}" mode="aspectFit"  lazy-load='true'></image>
+              <view class="word">{{item.name}}</view>
+              <view class="pricestyle">￥{{item.price}}</view>
             </view>
-            <view class="word">{{item.name}}</view>
-            <view class="pricestyle">￥{{item.price}}</view>
           </i-col>
           </block>
       </view>

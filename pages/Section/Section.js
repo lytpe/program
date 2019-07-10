@@ -1,6 +1,7 @@
 // pages/hairdressing/hairdressing.js
 let spage=1;
 let sreachBottom=false;
+let product=[];
 var app=getApp();
 Page({
   data:{
@@ -10,6 +11,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options){
+    product=[];
     spage = 1;
     sreachBottom = false;
     this.setData({
@@ -28,6 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    product = [];
     spage=1;
     sreachBottom=false;
     this.setData({
@@ -104,9 +107,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success:function(res){
-        var listdata=that.data.products;
-        for(var i=0;i<res.data.products.length;i++){
-          listdata.push(res.data.products[i]);
+        for (var i = 0; i < res.data.products.length; i++) {
+          product.push(res.data.products[i]);
         }
         if(res.data.products<6){
           sreachBottom=true;
@@ -114,7 +116,7 @@ Page({
           spage++;
         }
         that.setData({
-          products:listdata
+          products:product
         })
       },
       fail:function(){

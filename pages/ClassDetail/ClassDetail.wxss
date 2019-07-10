@@ -1,0 +1,30 @@
+/* pages/Order/Order.wxss */
+.fixbottom{
+  display:fix;
+  flex-direction: row;
+  position:fixed;
+  bottom:0;
+  width:100%;
+}
+.word{
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif；
+}
+.togglestyle{
+  background: whitesmoke;
+  opacity: 1;
+  position:fixed;
+  width:100%;
+  bottom:0;
+}
+.moneytype{
+  color:#ff7100;
+}
+.image{
+  width:750rpx;
+  border-radius: 4px 4px;
+}
+.smallImage{
+  width:200rpx;
+  border-radius: 4px 4px;
+}

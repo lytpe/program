@@ -1,6 +1,7 @@
 // pages/Class/Class.js
 let page = 1;
 let reachBottom = false;
+let detail=[];
 var app = getApp();
 Page({
 
@@ -8,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: [],
+     details: [],
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,10 +29,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    detail=[];
     page = 1;
     reachBottom = false;
     this.setData({
-      detail: []
+      details: []
     })
     this.getClassList(page);
   },
@@ -69,9 +71,9 @@ Page({
       wx.hideLoading(), 2000
     })
   },
-  directToCompany:function(e) {
-    wx.switchTab({
-      url: '../Company/Company',
+  showClass:function(e) {
+    wx.navigateTo({
+      url: "../ClassDetail/ClassDetail?id="+e.currentTarget.dataset.id,
     })
   },
   /**
@@ -81,7 +83,7 @@ Page({
     if (res.from === 'menu') {
     }
     return {
-      title: '冰尘',
+      title: '冰晨',
       path: '/pages/Class'
     }
   },
@@ -103,17 +105,20 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (res) {
-        var listdata = that.data.detail;
-        for (var i = 0; i < res.data.courses.length; i++) {
-          listdata.push(res.data.courses[i]);
-        }
+
         if (res.data.pros < 4) {
+          for (var i = 0; i < res.data.courses.length; i++) {
+            detail.push(res.data.courses[i]);
+          }
           reachBottom = true;
         } else {
+          for (var i = 0; i < res.data.courses.length; i++) {
+            detail.push(res.data.courses[i]);
+          }
           page++;
         }
         that.setData({
-          detail: listdata
+          details: detail
         })
       },
       fail: function () {
