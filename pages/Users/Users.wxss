@@ -4,6 +4,12 @@
   padding: 50rpx 0;
   align-items: center;
 }
+.bgs{
+  display: flex;
+  flex-direction: column;
+  width:750rpx;
+  align-items: center;
+}
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;

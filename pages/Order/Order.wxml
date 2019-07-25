@@ -28,7 +28,7 @@
   </i-row>
     <i-row>
      <i-col offset="1" span="22">
-       <view>{{productInfo}}</view>
+       <view class="product">{{productInfo}}</view>
      </i-col>
   </i-row>
 </view>

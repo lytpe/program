@@ -28,3 +28,7 @@
   width:200rpx;
   border-radius: 4px 4px;
 }
+.product{
+  padding-bottom:100rpx;
+  margin-bottom: 40rpx;
+}

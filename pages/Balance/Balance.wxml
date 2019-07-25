@@ -30,6 +30,7 @@
 
 <i-row>
     <i-col span="22">
+    <block wx:if="{{address.addressName!=null}}">
      <i-row>
         <i-col span="12" offset="1">{{address.addressName}}</i-col>
         <i-col span="11">{{address.addressPhone}}</i-col>
@@ -38,6 +39,12 @@
        <i-col span="12" offset="1">{{address.addressArea}}</i-col>
        <i-col span="11">{{address.addressDetails}}   </i-col>
      </i-row>
+     </block>
+     <block>
+        <i-row col="2" >
+         <view style="text-align:center;">点击右侧箭头请选择地址</view>
+         </i-row>
+     </block>
     </i-col>
     <i-col span="2">
 

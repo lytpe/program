@@ -38,7 +38,7 @@
   </i-row>
     <i-row>
      <i-col offset="1" span="22">
-       <view>{{classdetail.courseContent}}</view>
+       <view><text space="emsp"> {{classdetail.courseContent}}</text></view>
      </i-col>
   </i-row>
   <i-row>
@@ -48,7 +48,7 @@
   </i-row>
   <i-row>
      <i-col offset="1" span="22">
-       <view>{{classdetail.courseDescription}}</view>
+       <view><text space="emsp"> {{classdetail.courseDescription}}</text></view>
      </i-col>
   </i-row>
 </view>

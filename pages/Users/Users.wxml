@@ -1,5 +1,5 @@
 <!--pages/Users/Users.wxml-->
-<view style="background-image:url('{{link}}');" class="bg">
+<view style="background-image:url('{{link}}');" class="bgs">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" lazy-load='true'></image>
    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
    <text>余额为：{{balance}}</text>

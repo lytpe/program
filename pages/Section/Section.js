@@ -107,12 +107,16 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success:function(res){
-        for (var i = 0; i < res.data.products.length; i++) {
-          product.push(res.data.products[i]);
-        }
+
         if(res.data.products<6){
+          for (var i = 0; i < res.data.products.length; i++) {
+            product.push(res.data.products[i]);
+          }
           sreachBottom=true;
         }else{
+          for (var i = 0; i < res.data.products.length; i++) {
+            product.push(res.data.products[i]);
+          }
           spage++;
         }
         that.setData({

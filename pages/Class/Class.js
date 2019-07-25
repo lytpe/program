@@ -2,6 +2,7 @@
 let page = 1;
 let reachBottom = false;
 let detail=[];
+let counts=0;
 var app = getApp();
 Page({
 
@@ -35,7 +36,9 @@ Page({
     this.setData({
       details: []
     })
-    this.getClassList(page);
+    while(reachBottom===false){
+     this.getClassList(page);
+    }
   },
 
   /**
@@ -96,7 +99,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'https://www.ruilanya.top/CoursesManage/GetCourses',
+      url: 'https://localhost:5001/CoursesManage/GetCourses',
       data: {
         page: temppage
       },
@@ -105,8 +108,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (res) {
-
-        if (res.data.pros < 4) {
+         that.setData({
+           counts:res.data.total
+         })
+        if (page*4<counts) {
           for (var i = 0; i < res.data.courses.length; i++) {
             detail.push(res.data.courses[i]);
           }
